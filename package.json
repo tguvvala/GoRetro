@@ -1,7 +1,7 @@
 {
   "name": "legotrader",
   "version": "1.0.0",
-  "description": "Trading of legos",
+  "description": "Lego trading site",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
