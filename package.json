@@ -16,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ralphplumley/legotrader.git"
+    "url": "https://github.com/HackBlocks/legotrader.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ralphplumley/legotrader/issues"
+    "url": "https://github.com/HackBlocks/legotrader/issues"
   },
-  "homepage": "https://github.com/ralphplumley/legotrader#readme"
+  "homepage": "https://github.com/HackBlocks/legotrader#readme"
 }
