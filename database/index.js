@@ -23,6 +23,19 @@ let listingSchema = mongoose.Schema({
 
 let Listing = mongoose.model('Listing', listingSchema);
 
+let saveListingToDb = (listingInfo) => {
+
+  Listing.create({
+    title: listingInfo.title,
+    description: listingInfo.description,
+    imageUrl: listingInfo.imageUrl,
+    category: listingInfo.category,
+    location: listingInfo.location,
+    email: listingInfo.email
+  });
+
+  listing.save();
+}
 
 
 
