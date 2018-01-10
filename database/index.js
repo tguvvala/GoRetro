@@ -12,19 +12,45 @@ db.once('open', () => {
   console.log('Connected!');
 });
 
-let testSchema = mongoose.Schema({
-  name: String
+let listingSchema = mongoose.Schema({
+  title: String,
+  description: String,
+  imageUrl: String,
+  category: String,
+  location: String,
+  email: String
 });
 
-let Test = mongoose.model('Test', testSchema);
+let Listing = mongoose.model('Listing', listingSchema);
 
-let test1 = new Test({
-  name: 'Lego Man!'
+let listing1 = new Listing({
+  title: "Test",
+  description: "Test",
+  imageUrl: "Test",
+  category: "Test",
+  location: "Test",
+  email: "Test"
 });
 
-test1.save((err, doc) => {
-  console.log('HERE');
-});
+listing1.save((err, doc) => {
+  console.log('Saved: ', doc);
+})
+
+
+
+// let testSchema = mongoose.Schema({
+//   name: String
+// });
+
+// let Test = mongoose.model('Test', testSchema);
+
+// let test1 = new Test({
+//   name: 'Lego Man!'
+// });
+
+// test1.save((err, doc) => {
+//   console.log('HERE');
+// });
 
 
 
