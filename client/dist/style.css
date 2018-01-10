@@ -1,0 +1,10 @@
+img {
+  height: auto;
+  width: auto;
+  max-width: 80%;
+  overflow: hidden;
+}
+
+.card {
+  border: none;
+}
