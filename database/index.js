@@ -23,34 +23,7 @@ let listingSchema = mongoose.Schema({
 
 let Listing = mongoose.model('Listing', listingSchema);
 
-let listing1 = new Listing({
-  title: "Test",
-  description: "Test",
-  imageUrl: "Test",
-  category: "Test",
-  location: "Test",
-  email: "Test"
-});
 
-listing1.save((err, doc) => {
-  console.log('Saved: ', doc);
-})
-
-
-
-// let testSchema = mongoose.Schema({
-//   name: String
-// });
-
-// let Test = mongoose.model('Test', testSchema);
-
-// let test1 = new Test({
-//   name: 'Lego Man!'
-// });
-
-// test1.save((err, doc) => {
-//   console.log('HERE');
-// });
 
 
 
