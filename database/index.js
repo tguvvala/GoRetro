@@ -23,7 +23,7 @@ let listingSchema = mongoose.Schema({
 
 let Listing = mongoose.model('Listing', listingSchema);
 
-let saveListingToDb = (listingInfo) => {
+let saveListing = (listingInfo) => {
 
   Listing.create({
     title: listingInfo.title,
@@ -32,10 +32,14 @@ let saveListingToDb = (listingInfo) => {
     category: listingInfo.category,
     location: listingInfo.location,
     email: listingInfo.email
+  }, (err, listing) => {
+    if (err) {
+      return err;
+    } else {
+      return listing;
+    }
   });
-
-  listing.save();
-}
+};
 
 
 
