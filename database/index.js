@@ -47,9 +47,7 @@ module.exports.saveListing = (listingInfo, callback) => {
 };
 
 module.exports.findQuery = (query, callback) => {
-  let filter = { query: query };
-
-  Listing.find(filter)
+  Listing.find(query)
     .sort({ createdAt: -1 })
     .exec(callback);
 };
