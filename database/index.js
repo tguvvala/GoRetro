@@ -46,13 +46,15 @@ module.exports.saveListing = (listingInfo, callback) => {
   });
 };
 
-module.exports.findCategory = (category, callback) => {
-  Listing.find({
-    category: category
-  })
+module.exports.findQuery = (query, callback) => {
+  let filter = { query: query };
+
+  Listing.find(filter)
     .sort({ createdAt: -1 })
     .exec(callback);
 };
+
+
 
 
 
