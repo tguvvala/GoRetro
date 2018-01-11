@@ -18,7 +18,12 @@ let listingSchema = mongoose.Schema({
   imageUrl: String,
   category: String,
   location: String,
-  email: String
+  email: String,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    required: true
+  }
 });
 
 let Listing = mongoose.model('Listing', listingSchema);
@@ -41,8 +46,12 @@ module.exports.saveListing = (listingInfo, callback) => {
   });
 };
 
-let findCategory = (category) => {
-  Listing.findAll();
+module.exports.findCategory = (category, callback) => {
+  Listing.findAll({
+    category: category
+  })
+    .sort({ createdAt: -1 })
+    .exec(callback);
 };
 
 
