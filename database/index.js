@@ -47,7 +47,7 @@ module.exports.saveListing = (listingInfo, callback) => {
 };
 
 module.exports.findCategory = (category, callback) => {
-  Listing.findAll({
+  Listing.find({
     category: category
   })
     .sort({ createdAt: -1 })
