@@ -23,7 +23,7 @@ let listingSchema = mongoose.Schema({
 
 let Listing = mongoose.model('Listing', listingSchema);
 
-let saveListing = (listingInfo) => {
+module.exports.saveListing = (listingInfo, callback) => {
 
   Listing.create({
     title: listingInfo.title,
@@ -34,12 +34,20 @@ let saveListing = (listingInfo) => {
     email: listingInfo.email
   }, (err, listing) => {
     if (err) {
-      return err;
+      callback(err);
     } else {
-      return listing;
+      callback(listing);
     }
   });
 };
+
+let findCategory = (category) => {
+  Listing.findAll();
+};
+
+
+
+
 
 
 
