@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('../database/index');
 const app = express();
@@ -8,7 +9,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/listings', (req, res) => {
-  res.status(200).send('get request at /listings');
+
+  let queryTerm = req.query;
+  db.findQuery(queryTerm, function(err, data) {
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200).json(data);
+    }
+  });
+
 });
 
 app.post('/listing', (req, res) => {
@@ -20,7 +30,6 @@ app.post('/listing', (req, res) => {
     }
   });
 });
-
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
