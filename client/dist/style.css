@@ -16,6 +16,7 @@
 .ctabuttons:hover {
 
 }
+
 .jumbotron {
 background-image: url('https://www.warnerbros.com/sites/default/files/game/media/browser/legobatman_app_background.jpg');
 
@@ -24,6 +25,17 @@ width: 100%;
 background-size: cover;
 }
 
+.category {
+  box-shadow: -8px 8px 5px #aaa;
+  padding: 30px 30px 30px 30px;
+  border-width: 2px;
+  border-color: #777777;
+}
+.categories {
+  text-align: center;
+
+  padding: 20px 20px 20px 20px;
+}
 
 #navbarHeader {
   background-color: #f9d213;
