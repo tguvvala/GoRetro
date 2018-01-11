@@ -1,9 +1,29 @@
-img {
+.productimg {
   height: auto;
   width: auto;
   max-width: 100%;
   overflow: hidden;
 }
+
+.ctabuttons {
+  height: auto;
+  width: auto;
+
+  max-width: 100%;
+
+}
+
+.ctabuttons:hover {
+
+}
+.jumbotron {
+background-image: url('https://www.warnerbros.com/sites/default/files/game/media/browser/legobatman_app_background.jpg');
+
+height: 30%;
+width: 100%;
+background-size: cover;
+}
+
 
 #navbarHeader {
   background-color: #f9d213;
