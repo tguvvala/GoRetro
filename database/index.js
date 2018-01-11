@@ -38,11 +38,7 @@ module.exports.saveListing = (listingInfo, callback) => {
     location: listingInfo.location,
     email: listingInfo.email
   }, (err, listing) => {
-    if (err) {
-      callback(err);
-    } else {
-      callback(listing);
-    }
+    callback(err, listing);
   });
 };
 
