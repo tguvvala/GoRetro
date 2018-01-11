@@ -1,19 +1,28 @@
-var express = require('express');
-var db = require('../database/index');
-var app = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+const db = require('../database/index');
+const app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/listings', (req, res) => {
   res.status(200).send('get request at /listings');
 });
 
 app.post('/listing', (req, res) => {
-  res.status(200).send('post request to listing');
+  db.saveListing(req.body, function(err, data) {
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
 });
 
 
-var port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`App listening on port ${ port }`);
-})
+});
