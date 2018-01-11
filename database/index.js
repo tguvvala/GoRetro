@@ -13,12 +13,21 @@ db.once('open', () => {
 });
 
 let listingSchema = mongoose.Schema({
-  title: String,
+  title: {
+    type: String,
+    required: true
+  },
   description: String,
   imageUrl: String,
   category: String,
-  location: String,
-  email: String,
+  location: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
   createdAt: {
     type: Date,
     default: Date.now,
