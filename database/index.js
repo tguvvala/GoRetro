@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 let url = process.env.MONGODB_URI || 'mongodb://localhost/legoTrader';
-mongoose.connect(url);
+mongoose.connect(url, { useMongoClient: true });
 
 let db = mongoose.connection;
 
