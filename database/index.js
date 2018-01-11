@@ -23,6 +23,31 @@ let listingSchema = mongoose.Schema({
 
 let Listing = mongoose.model('Listing', listingSchema);
 
+module.exports.saveListing = (listingInfo, callback) => {
+
+  Listing.create({
+    title: listingInfo.title,
+    description: listingInfo.description,
+    imageUrl: listingInfo.imageUrl,
+    category: listingInfo.category,
+    location: listingInfo.location,
+    email: listingInfo.email
+  }, (err, listing) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(listing);
+    }
+  });
+};
+
+let findCategory = (category) => {
+  Listing.findAll();
+};
+
+
+
+
 
 
 
