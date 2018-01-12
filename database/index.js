@@ -43,6 +43,7 @@ let listingSchema = mongoose.Schema({
     required: true
   },
   description: String,
+  condition: String,
   category: String,
   username: {
     type: String,
@@ -71,6 +72,7 @@ module.exports.saveListing = (listingInfo, callback) => {
   Listing.create({
     title: listingInfo.title,
     description: listingInfo.description,
+    condition: listingInfo.condition,
     category: listingInfo.category,
     username: listingInfo.username,
     email: listingInfo.email,
