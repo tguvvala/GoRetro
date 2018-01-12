@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
+const session = require('express-session');
 const db = require('../database/index');
 const fbConfig = require('../facebookConfig');
 
@@ -10,9 +11,9 @@ const app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.cookieParser());
-app.use(express.session({ }));
+app.use(session({ secret: 'Some Crazy Secret', key: 'legos' }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 
 passport.use(new FacebookStrategy(
