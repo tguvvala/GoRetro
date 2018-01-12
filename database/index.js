@@ -38,7 +38,6 @@ module.exports.userSchema = mongoose.Schema({
 
 module.exports.User = mongoose.model('User', module.exports.userSchema);
 
-
 let listingSchema = mongoose.Schema({
   userId: {
     type: String,

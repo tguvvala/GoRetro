@@ -18,8 +18,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-console.log('fbconfig', JSON.stringify(fbConfig, null, 2));
-
 let isLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
@@ -75,7 +73,8 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook',
   {
     successRedirect: '/',
     failureRedirect: '/'
-  }));
+  }
+));
 
 app.get('/listings', (req, res) => {
 
