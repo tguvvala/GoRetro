@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const User = require('./schemas/User');
 
 let url = process.env.MONGODB_URI || 'mongodb://localhost/legoTrader';
 mongoose.connect(url, { useMongoClient: true });
