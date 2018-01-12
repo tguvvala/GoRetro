@@ -12,12 +12,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <Switch>
-        <Route exact path='/' component={Home}/>
-        <RouteProps path='/new-listing' component={NewListing} someProps={'Stringy String'} moreProps={5}/> 
-        <Route path='/view-listing' component={ViewListing}/>
-      </Switch>
-    )
+      <div>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <RouteProps path='/new-listing' component={NewListing} someProps={'Stringy String'} moreProps={5}/> 
+          <Route path='/view-listing' component={ViewListing}/>
+        </Switch>
+      </div>
+    );
   }
 }
 
