@@ -21,18 +21,14 @@ passport.use(new FacebookStrategy(
     console.log('refreshToken: ', refreshToken);
     console.log('profile: ', profile);
     console.log('done: ', done);
-    let userInfo = {
-      access: accessToken,
-      info: done
-    };
 
     db.User.findOneAndUpdate(
       { fbId: { $eq: done.id } },
       {
-        userName: `${ done.name.givenName } ${ done.name.familyName }`,
-        email: done.emails[0].value,
-        fbId: done.id,
-        fbAccessToken: profile.access_token
+        userName: `${ profile.name.givenName } ${ profile.name.familyName }`,
+        email: profile.emails[0].value,
+        fbId: profile.id,
+        fbAccessToken: accessToken
       },
       {
         upsert: true,
@@ -42,9 +38,19 @@ passport.use(new FacebookStrategy(
         if (err) {
           throw err;
         } else {
-          return done(null, user);
+          res.json(user);
         }
       });
+  }));
+
+app.get('/auth/facebook', passport.authenticate('facebook', {
+  scope: ['email', 'public_profile']
+}));
+
+app.get('/auth/facebook/callback', passport.authenticate('facebook',
+  {
+    successRedirect: '/',
+    failureRedirect: '/new-listing'
   }));
 
 app.get('/listings', (req, res) => {
