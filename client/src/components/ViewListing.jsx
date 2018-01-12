@@ -1,27 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+var xprops = {
+      "userId": "1000",
+      "listingId": "1",
+      "title": "Death Star",
+      "collectionCode": "75159",
+      "condition": "New",
+      "description": "Re-enact amazing scenes from the Star Wars saga with the Empires ultimate planet-zapping weapon the Death Star! With over 4000 pieces, this fantastic model has a galaxy of intricate and authentic environments, including a super laser control room, Imperial conference chamber, hangar bay with moving launch rack and Lord Vader's TIE Advanced with space for Vader inside, Emperor Palpatine's throne room, Droid maintenance room, detention block, trash compactor, tractor beam, cargo area, turbo laser with spring-loaded shooters and seats for the 2 death star gunners, and 2 movable turbo laser towers. This fantastic set also includes 23 iconic minifigures and 2 Droids to ensure hours of Star Wars battle fun. Age: 14+ Over 4,000 Pieces.",
+      "imageUrl": "http://aws.com/bucket/images/listing/1/1.jpg",
+      "collection": "Star Wars",
+      "zip": "2030",
+      "email": "me@example.com"
+    };
+
 const ViewListing = (props) => (
   <div>
+
     <div className="container">
+      <ol className="breadcrumb">
+        <li className="breadcrumb-item active"><Link to="/">Home</Link></li>
+      </ol>
       <div className="row">
         <div className="col">
           <img src="deathstar.jpg" className="img-photo img-view-listing rounded" alt="Photo" />
-          <h2 className="post-title">Death Star</h2>
-          <p>Code: <b>75159</b></p>
-          <p>Condirion: <b>New</b></p>
-          <p>Re-enact amazing scenes from the Star Wars saga with the Empires ultimate planet-zapping weapon the Death Star!
-            With over 4000 pieces, this fantastic model has a galaxy of intricate and authentic environments, including a super laser control room,
-
-            Imperial conference chamber, hangar bay with moving launch rack and Lord Vader's TIE Advanced with space for Vader inside, Emperor Palpatine's throne room, Droid maintenance room, detention block, trash compactor, tractor beam, cargo area, turbo laser with spring-loaded shooters and seats for the 2 death star gunners, and 2 movable turbo laser towers.
-
-            This fantastic set also includes 23 iconic minifigures and 2 Droids to ensure hours of Star Wars battle fun.
-
-            Age: 14+
-          Over 4,000 Pieces.</p>
-
-          <p>Category: <b>Star Wars</b></p>
-          <p>ZIP Code: <b>2000</b></p>
+          <h2 className="post-title">{ xprops.title }</h2>
+          <p>Code: <b>{ xprops.collectionCode }</b></p>
+          <p>Condition: <b>{ xprops.condition }</b></p>
+          <p>{ xprops.description }</p>
+          <p>Category: <b>{ xprops.collection }</b></p>
+          <p>ZIP Code: <b>{ xprops.zip }</b></p>
         </div>
 
         <div className="col col-lg-4">
@@ -48,11 +56,6 @@ const ViewListing = (props) => (
         </div>
       </div>
     </div>
-    <Link to="/">
-      <button className="btn">
-        Back
-       </button>
-    </Link>
   </div>
 );
 
