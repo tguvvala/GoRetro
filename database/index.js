@@ -76,7 +76,7 @@ module.exports.saveListing = (listingInfo, callback) => {
     category: listingInfo.category,
     username: listingInfo.username,
     email: listingInfo.email,
-    zipCode: listingInfo.location,
+    zipCode: listingInfo.zipCode,
     legoSetCode: listingInfo.legoSetCode,
     imageUrl: listingInfo.imageUrl
   }, (err, listing) => {
