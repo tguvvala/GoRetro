@@ -39,18 +39,13 @@ module.exports.userSchema = mongoose.Schema({
 module.exports.User = mongoose.model('User', module.exports.userSchema);
 
 let listingSchema = mongoose.Schema({
-  userId: {
-    type: String,
-    required: true
-  },
   title: {
     type: String,
     required: true
   },
   description: String,
-  imageUrl: String,
   category: String,
-  location: {
+  username: {
     type: String,
     required: true
   },
@@ -58,7 +53,12 @@ let listingSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  zipCode: {
+    type: String,
+    required: true
+  },
   legoSetCode: String,
+  imageUrl: String,
   createdAt: {
     type: Date,
     default: Date.now,
@@ -68,18 +68,16 @@ let listingSchema = mongoose.Schema({
 
 let Listing = mongoose.model('Listing', listingSchema);
 
-module.exports.deleteListing = (listingID, callback) => {
-  Listing.remove({ ['_id']: listingID });
-};
-
 module.exports.saveListing = (listingInfo, callback) => {
   Listing.create({
     title: listingInfo.title,
     description: listingInfo.description,
-    imageUrl: listingInfo.imageUrl,
     category: listingInfo.category,
-    location: listingInfo.location,
-    email: listingInfo.email
+    username: listingInfo.username,
+    email: listingInfo.email,
+    zipCode: listingInfo.location,
+    legoSetCode: listingInfo.legoSetCode,
+    imageUrl: listingInfo.imageUrl
   }, (err, listing) => {
     callback(err, listing);
   });
