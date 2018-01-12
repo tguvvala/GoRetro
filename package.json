@@ -9,6 +9,8 @@
     "jquery": "^3.2.1",
     "mongoose": "^4.13.9",
     "nodemailer": "^4.4.1",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-route-props": "^1.0.4",
