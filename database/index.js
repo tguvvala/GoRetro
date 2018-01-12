@@ -57,6 +57,7 @@ let listingSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  legoSetCode: String,
   createdAt: {
     type: Date,
     default: Date.now,
