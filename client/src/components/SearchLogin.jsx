@@ -12,9 +12,7 @@ const SearchLogin = (props) => (
             </Link>
             <img className="ctabuttons float-right" src="login.png" />
           </div>
-
         </div>
-
       </div>
     </section>
   </div>

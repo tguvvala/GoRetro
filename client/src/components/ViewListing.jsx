@@ -48,6 +48,11 @@ const ViewListing = (props) => (
         </div>
       </div>
     </div>
+    <Link to="/">
+      <button className="btn">
+        Back
+       </button>
+    </Link>
   </div>
 );
 

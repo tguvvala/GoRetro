@@ -26,15 +26,13 @@ background-size: cover;
 }
 
 .category {
-  box-shadow: -8px 8px 5px #aaa;
-  padding: 30px 30px 30px 30px;
   border-width: 2px;
   border-color: #777777;
+  padding-right: 20px;
 }
 .categories {
   text-align: center;
-
-  padding: 20px 20px 20px 20px;
+  padding-bottom: 20px;
 }
 
 #navbarHeader {
@@ -104,3 +102,4 @@ background-size: cover;
   padding-top: 20px;
   padding-bottom: 10px;
 }
+
