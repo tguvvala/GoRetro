@@ -1,26 +1,30 @@
-const express = require('express');
-const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const express = require('express');
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const db = require('../database/index');
+const fbConfig = require('../facebookConfig');
+
 const app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.cookieParser());
+app.use(express.session({ }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(passport.initialize());
 
 passport.use(new FacebookStrategy(
   {
-    clientID: '186862941903694',
-    clientSecret: '55c5480cff3e9446d6240fb029445140',
-    callbackURL: 'http://localhost:8080/auth/facebook/callback',
-    profileFields: ['id', 'displayName', 'email', 'name']
+    clientID: fbConfig.clientID,
+    clientSecret: fbConfig.clientSecret,
+    callbackURL: fbConfig.callbackURL,
+    profileFields: fbConfig.profileFields
   }, (accessToken, refreshToken, profile, done) => {
     console.log('accessToken: ', accessToken);
     console.log('refreshToken: ', refreshToken);
     console.log('profile: ', profile);
-    console.log('done: ', done);
 
     db.User.findOneAndUpdate(
       { fbId: { $eq: done.id } },
@@ -35,13 +39,18 @@ passport.use(new FacebookStrategy(
         new: true,
         runValidators: true
       }, (err, user) => {
-        if (err) {
-          throw err;
-        } else {
-          res.json(user);
-        }
+        return done(null, user);
       });
   }));
+
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((userObj, done) => {
+  done(null, userObj);
+});
+
 
 app.get('/auth/facebook', passport.authenticate('facebook', {
   scope: ['email', 'public_profile']
