@@ -27,7 +27,7 @@ app.get('/listings', (req, res) => {
 
 });
 
-app.post('/listing', (req, res) => {
+app.post('/listings', (req, res) => {
   db.saveListing(req.body, function(err, data) {
     if (err) {
       res.sendStatus(500);
