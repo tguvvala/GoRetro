@@ -6,15 +6,26 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const session = require('express-session');
 const db = require('../database/index');
 const fbConfig = require('../facebookConfig');
+const port = process.env.PORT || 8080;
 
 const app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
-app.use(express.cookieParser());
+app.use(cookieParser());
 app.use(session({ secret: 'Some Crazy Secret', key: 'legos' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
+app.use(passport.session());
+
+console.log('fbconfig', JSON.stringify(fbConfig, null, 2));
+
+let isLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
+};
 
 passport.use(new FacebookStrategy(
   {
@@ -23,12 +34,8 @@ passport.use(new FacebookStrategy(
     callbackURL: fbConfig.callbackURL,
     profileFields: fbConfig.profileFields
   }, (accessToken, refreshToken, profile, done) => {
-    console.log('accessToken: ', accessToken);
-    console.log('refreshToken: ', refreshToken);
-    console.log('profile: ', profile);
-
     db.User.findOneAndUpdate(
-      { fbId: { $eq: done.id } },
+      { fbId: { $eq: profile.id } },
       {
         userName: `${ profile.name.givenName } ${ profile.name.familyName }`,
         email: profile.emails[0].value,
@@ -52,6 +59,13 @@ passport.deserializeUser((userObj, done) => {
   done(null, userObj);
 });
 
+app.get('/', (req, res) => {
+  res.render('index', { user: req.user });
+});
+
+app.get('/profile', isLoggedIn, (req, res) => {
+  res.render('profile', { user: req.user });
+});
 
 app.get('/auth/facebook', passport.authenticate('facebook', {
   scope: ['email', 'public_profile']
@@ -60,7 +74,7 @@ app.get('/auth/facebook', passport.authenticate('facebook', {
 app.get('/auth/facebook/callback', passport.authenticate('facebook',
   {
     successRedirect: '/',
-    failureRedirect: '/new-listing'
+    failureRedirect: '/'
   }));
 
 app.get('/listings', (req, res) => {
@@ -86,7 +100,6 @@ app.post('/listing', (req, res) => {
   });
 });
 
-const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`App listening on port ${ port }`);
 });
