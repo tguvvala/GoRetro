@@ -1,4 +1,5 @@
 import React from 'react';
+import RouteProps from 'react-route-props';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Home.jsx';
 import NewListing from './NewListing.jsx';
@@ -13,7 +14,7 @@ class App extends React.Component {
     return (
       <Switch>
         <Route exact path='/' component={Home}/>
-        <Route path='/new-listing' component={NewListing}/>
+        <RouteProps path='/new-listing' component={NewListing} someProps={'Stringy String'} moreProps={5}/> 
         <Route path='/view-listing' component={ViewListing}/>
       </Switch>
     )
@@ -21,3 +22,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+

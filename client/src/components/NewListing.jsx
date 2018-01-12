@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const NewListing = (props) => (
   <div>
     <div className="container">
+
       <form>
         <img src="imagePlaceholder.png" className="img-photo img-thumbnail rounded" alt="Photo" />
         <div className="form-group">
@@ -51,6 +52,11 @@ const NewListing = (props) => (
         </div>
       </form>
     </div>
+    <Link to="/">
+      <button className="btn">
+        Back
+       </button>
+    </Link>
   </div>
 );
 
