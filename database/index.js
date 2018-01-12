@@ -68,6 +68,10 @@ let listingSchema = mongoose.Schema({
 
 let Listing = mongoose.model('Listing', listingSchema);
 
+module.exports.deleteListing = (listingID, callback) => {
+  Listing.remove({ ['_id']: listingID });
+};
+
 module.exports.saveListing = (listingInfo, callback) => {
   Listing.create({
     title: listingInfo.title,
