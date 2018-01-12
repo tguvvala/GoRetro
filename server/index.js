@@ -24,6 +24,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 let isLoggedIn = (req, res, next) => {
+  debugger;
   if (req.isAuthenticated()) {
     return next();
   }
@@ -55,10 +56,13 @@ passport.use(new FacebookStrategy(
   }));
 
 passport.serializeUser((user, done) => {
+  console.log('HERE SERIALIZE');
   done(null, user);
 });
 
 passport.deserializeUser((userObj, done) => {
+  console.log('HERE DESERIALIZE');
+
   done(null, userObj);
 });
 
@@ -67,6 +71,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/profile', isLoggedIn, (req, res) => {
+  console.log('USER: ', req.user);
   res.render('profile', { user: req.user });
 });
 
