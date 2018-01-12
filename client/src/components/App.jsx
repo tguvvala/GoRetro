@@ -12,12 +12,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <Switch>
-        <Route exact path='/' component={Home}/>
-        <RouteProps path='/new-listing' component={NewListing} someProps={'Stringy String'} moreProps={5}/> 
-        <Route path='/view-listing' component={ViewListing}/>
-      </Switch>
-    )
+      <div>
+        <a href="http://localhost:8080/auth/facebook">Login with Facebook</a>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <RouteProps path='/new-listing' component={NewListing} someProps={'Stringy String'} moreProps={5}/> 
+          <Route path='/view-listing' component={ViewListing}/>
+        </Switch>
+      </div>
+    );
   }
 }
 
