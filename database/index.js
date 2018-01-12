@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./schemas/User');
 
 let url = process.env.MONGODB_URI || 'mongodb://localhost/legoTrader';
 mongoose.connect(url, { useMongoClient: true });
@@ -36,6 +37,7 @@ module.exports.userSchema = mongoose.Schema({
 });
 
 module.exports.User = mongoose.model('User', module.exports.userSchema);
+
 
 let listingSchema = mongoose.Schema({
   userId: {
