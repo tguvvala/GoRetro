@@ -1,6 +1,7 @@
 import React from 'react';
+import InfiniteGrid from 'react-infinite-grid';
 import { Link } from 'react-router-dom';
-var tempProps = {color: 'red' }
+var tempProps = {color: 'red' };
 const Listings = (props) => (
   <div>
     <div className="container">
@@ -16,8 +17,8 @@ const Listings = (props) => (
                       <img className="card-img-top productimg" src="https://brickshow.com/wp-content/uploads/2017/10/10256_alt1.jpg"/>
                   </div>
                   <div className="back face center">
-                    <p>This is nice for exposing more information about an image.</p>
-                    <p>Any content can go here.</p>
+                    <p>{tempProps.color}</p>
+
                   </div>
                 </div>
               </div>
