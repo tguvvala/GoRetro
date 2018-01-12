@@ -1,5 +1,6 @@
 import React from 'react';
 import RouteProps from 'react-route-props';
+import $ from 'jquery';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Home.jsx';
 import NewListing from './NewListing.jsx';
@@ -11,6 +12,29 @@ import SignUp from './SignUp.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.getListings = this.getListings.bind(this);
+    this.state = {
+      listings: []
+    };
+  }
+
+  componentDidMount() {
+    this.getListings();
+  }
+
+  getListings(category) {
+    $.ajax({
+      url: '/listings',
+      success: (listings) => {
+        this.setState({
+          listings: listings
+        })
+        console.log('---------------Listings data', listings)
+      },
+      error: (err) => {
+        console.log('Get listings error', err);
+      }
+    });
   }
 
   render() {
