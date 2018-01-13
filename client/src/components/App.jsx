@@ -20,8 +20,7 @@ class App extends React.Component {
     };
   }
 
-  // poll server every few seconds
-
+  // poll server every second for new listings
   componentDidMount() {
     this.getListings();
     setInterval(() => {
@@ -36,15 +35,12 @@ class App extends React.Component {
   }
 
   getListings() {
-    // add this.state.category to params
     $.ajax({
       url: '/listings',
       success: (listings) => {
         this.setState({
           listings: listings
         })
-        console.log('---------------Listings', listings)
-
       },
       error: (err) => {
         console.log('Get listings error', err);

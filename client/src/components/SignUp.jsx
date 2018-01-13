@@ -10,7 +10,7 @@ const SignUp = (props) => (
       <h3 className="contact-header">Create Account</h3>
       <form>
         <div className="form-group">
-          <input type="email" id="inputEmail" className="form-control form-control-lg" placeholder="Email address" required autofocus />
+          <input type="email" id="inputEmail" className="form-control form-control-lg" placeholder="Email address" required autoFocus />
         </div>
 
         <div className="form-group">

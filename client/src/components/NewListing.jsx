@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, Route } from 'react-router-dom';
 
 class NewListing extends React.Component {
 
@@ -16,24 +16,98 @@ class NewListing extends React.Component {
         title: '',
         description: '',
         category: '',
-        name: '',
+        username: '',
         email: '',
         zipCode: '',
         condition: '',
-        legoSetCode: ''
+        legoSetCode: '',
+        imageUrl: ''
       }
     };
   }
 
   handleSubmitClick(e) {
     e.preventDefault();
-    this.postListing();
+    this.postListing(this.clearFields);
+  }
+
+  handleTitleInputChange(event) {
+    this.setState({
+      listing: {
+        ...this.state.listing,
+        title: event.target.value
+      }
+    });
+  }
+
+  handleDescriptionInputChange(event) {
+    this.setState({
+      listing: {
+        ...this.state.listing,
+        description: event.target.value
+      }
+    });
+  }
+
+  handleCategoryInputChange(event) {
+    this.setState({
+      listing: {
+        ...this.state.listing,
+        category: event.target.value
+      }
+    });
   }
 
   handleNameInputChange(event) {
     this.setState({
       listing: {
-        name: event.target.value
+        ...this.state.listing,
+        username: event.target.value
+      }
+    });
+  }
+
+  handleEmailInputChange(event) {
+    this.setState({
+      listing: {
+        ...this.state.listing,
+        email: event.target.value
+      }
+    });
+  }
+
+  handleZipCodeInputChange(event) {
+    this.setState({
+      listing: {
+        ...this.state.listing,
+        zipCode: event.target.value
+      }
+    });
+  }
+
+  handleConditionInputChange(event) {
+    this.setState({
+      listing: {
+        ...this.state.listing,
+        condition: event.target.value
+      }
+    });
+  }
+
+  handleLegoSetCodeInputChange(event) {
+    this.setState({
+      listing: {
+        ...this.state.listing,
+        legoSetCode: event.target.value
+      }
+    });
+  }
+
+  handleImageUrlInputChange(event) {
+    this.setState({
+      listing: {
+        ...this.state.listing,
+        imageUrl: event.target.value
       }
     });
   }
@@ -45,25 +119,28 @@ class NewListing extends React.Component {
         title: '',
         description: '',
         category: '',
-        name: '',
+        username: '',
         email: '',
         zipCode: '',
         condition: '',
-        legoSetCode: ''
+        legoSetCode: '',
+        imageUrl: ''
       }
     })
   }
 
-  postListing() {
-    $.post({
-      url: '/listing',
-      dataType: 'json',
+  postListing(callback) {
+    $.ajax({
+      type: 'POST',
+      url: '/listings',
       data: this.state.listing,
-      success: () => {
-        this.clearFields();
+      success: function() {
+        console.log('Succes on react side')
+        // figure out how to do this the React Router way
+        window.location.href = '/';
       },
-      error: (err) => {
-        console.log('Post listing error', err);
+      error: function(err) {
+        console.log('Post listing errors', err);
       }
     });
   }
@@ -82,12 +159,12 @@ class NewListing extends React.Component {
             </div>
 
             <div className="form-group">
-              <input type="text" className="form-control form-control-lg" id="titleInput" placeholder="Title" />
+              <input type="text" className="form-control form-control-lg" id="titleInput" placeholder="Title" onChange={this.handleTitleInputChange.bind(this)} value={this.state.listing.title}/>
               <small className="form-text text-muted">The title of the lego set.</small>
             </div>
 
             <div className="form-group">
-              <textarea className="form-control form-control-lg" id="descriptionInput" rows="3"  placeholder="Description"></textarea>
+              <textarea className="form-control form-control-lg" id="descriptionInput" rows="3"  placeholder="Description" onChange={this.handleDescriptionInputChange.bind(this)} value={this.state.listing.description}></textarea>
             </div>
 
             <div className="form-group">
@@ -109,20 +186,20 @@ class NewListing extends React.Component {
             </div>
 
             <div className="form-group">
-              <input type="text" className="form-control form-control-lg" id="legoSetCodeInput" placeholder="Code" />
-            </div>
-            <small className="form-text text-muted">The code of the lego set.</small>
-
-            <div className="form-group">
-              <input type="text" className="form-control form-control-lg" id="nameInput" placeholder="Your Name" onChange={this.handleNameInputChange.bind(this)} value={this.state.listing.name} />
+              <input type="text" className="form-control form-control-lg" id="legoSetCodeInput" placeholder="Lego Set Code" onChange={this.handleLegoSetCodeInputChange.bind(this)} value={this.state.listing.legoSetCode}/>
+              <small className="form-text text-muted">The code of the lego set.</small>
             </div>
 
             <div className="form-group">
-              <input type="email" className="form-control form-control-lg" id="emailInput" aria-describedby="emailHelp" placeholder="Email" />
+              <input type="text" className="form-control form-control-lg" id="nameInput" placeholder="Your Name" onChange={this.handleNameInputChange.bind(this)} value={this.state.listing.username} />
             </div>
 
             <div className="form-group">
-              <input type="text" className="form-control form-control-lg" id="zipInput" placeholder="ZIP Code" />
+              <input type="email" className="form-control form-control-lg" id="emailInput" aria-describedby="emailHelp" placeholder="Email" onChange={this.handleEmailInputChange.bind(this)} value={this.state.listing.email}  />
+            </div>
+
+            <div className="form-group">
+              <input type="text" className="form-control form-control-lg" id="zipInput" placeholder="ZIP Code" onChange={this.handleZipCodeInputChange.bind(this)} value={this.state.listing.zipCode} />
             </div>
 
             <div className="form-group row">
@@ -137,8 +214,6 @@ class NewListing extends React.Component {
             </div>
           </form>
         </div>
-        <Link to="/user-listings">user listings</Link>
-        <Link to="/sign-up">sign-up</Link>
       </div>
     );
   }
@@ -147,42 +222,3 @@ class NewListing extends React.Component {
 
 export default NewListing;
 
-
-    // var title = this.titleElement.value;
-
-
-    // this.titleElement = document.getElementById('titleInput');
-    // this.descriptionElement = document.getElementById('descriptionInput');
-    // console.log(this)
-    // var description = this.descriptionElement.value;
-    // console.log(description)
-    // this.categoryElement = document.getElementById('categorySelect');
-    // this.nameElement = document.getElementById('nameInput');
-    // this.emailElement = document.getElementById('emailInput');
-    // this.zipCodeElement = document.getElementById('zipInput');
-    // this.conditionSelectElement = document.getElementById('conditionSelect');
-    // this.legoSetCodeElement = document.getElementById('legoSetCodeInput');
-
-
-
-    // var description = this.descriptionElement.value;
-    // console.log(description)
-    // console.log(this.categoryElement);
-    // var category = this.categoryElement.options[categoryElement.selectedIndex].text;
-    // var name = this.nameElement.value;
-    // var email = this.emailElement.value;
-    // var zipCode = this.zipCodeElement.value;
-    // var condition = this.conditionSelectElement.options[conditionSelect.selectedIndex].text;
-    // var legoSetCode = this.legoSetCodeElement.value;
-
-    // var listing = {
-    //   userId: userId,
-    //   title: title,
-    //   description: description,
-    //   category: category,
-    //   name: name,
-    //   email: email,
-    //   zipCode: zipCode,
-    //   condition: condition,
-    //   legoSetCode: legoSetCode
-    // };
