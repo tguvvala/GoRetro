@@ -1,6 +1,8 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const db = require('../database/index');
+const mailer = require('../mailer/mailer');
+
 const port = process.env.PORT || 8080;
 
 const app = express();
@@ -35,6 +37,18 @@ app.post('/listings', (req, res) => {
       res.sendStatus(200);
     }
   });
+});
+
+app.post('/mailer', (req, res) => {
+  var name = req.body.name;
+  var email = req.body.email;
+  var message = req.body.message;
+  if (name && email && message) {
+    mailer.sendMail(name, email, message);
+    res.sendStatus(200)
+  } else {
+    res.sendStatus(500)
+  }
 });
 
 app.listen(port, () => {
