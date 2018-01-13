@@ -28,7 +28,10 @@ class NewListing extends React.Component {
 
   handleSubmitClick(e) {
     e.preventDefault();
-    this.postListing(this.clearFields);
+    this.postListing(() => {
+      this.clearFields();
+
+    });
   }
 
   handleChange (event) {
@@ -62,8 +65,9 @@ class NewListing extends React.Component {
       success: function() {
         console.log('Succes on react side');
         // figure out how to do this the React Router way
-        window.location.href = '/';
-      },
+        // window.location.href = '/';
+        callback();
+      }.bind(this),
       error: function(err) {
         console.log('Post listing errors', err);
       }
@@ -89,11 +93,11 @@ class NewListing extends React.Component {
             </div>
 
             <div className="form-group">
-              <textarea className="form-control form-control-lg" id="descriptionInput" rows="3"  placeholder="Description" onChange={this.handleChange} name="description" value={this.state.description}></textarea>
+              <textarea className="form-control form-control-lg" id="descriptionInput" rows="3" placeholder="Description" onChange={this.handleChange} name="description" value={this.state.description}></textarea>
             </div>
 
             <div className="form-group">
-              <select className="form-control form-control-lg" id="categorySelect" name="category" value={this.state.category} onChange={this.handleChange}>
+              <select required="true" className="form-control form-control-lg" id="categorySelect" name="category" value={this.state.category} onChange={this.handleChange}>
                 <option value="">-- CATEGORY --</option>
                 <option value="Star Wars">Star Wars</option>
                 <option value="Cityscapes">Cityscapes</option>
@@ -129,7 +133,7 @@ class NewListing extends React.Component {
 
             <div className="form-group row">
               <div className="col-sm-10">
-                <button className="btn btn-primary" onClick={ this.handleSubmitClick }>Submit</button>
+                <button type="submit" className="btn btn-primary" onClick={this.handleSubmitClick}>Submit</button>
                 <Link to="/">
                   <button className="btn">
                     Cancel
