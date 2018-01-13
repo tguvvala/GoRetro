@@ -34,9 +34,23 @@ class App extends React.Component {
 
     console.log('My category', category);
     this.setState({ category: category });
-    this.getListings();
+    this.filterListings();
   }
 
+  filterListings() {
+    $.ajax({
+      url: '/listings',
+      data: {category: this.state.category},
+      success: (listings) => {
+        this.setState({
+          listings: listings
+        });
+      },
+      error: (err) => {
+        console.log('Get categories error', err);
+      }
+    });
+  }
   getListings() {
     $.ajax({
       url: '/listings',
@@ -54,7 +68,7 @@ class App extends React.Component {
   render() {
     return (
       <Switch>
-        <RouteProps exact path='/' component={ Home } listings={ this.state.listings } category={ this.state.category } handleCategoryClick={ this.handleCategoryClick }/>
+        <RouteProps exact path='/' component={ Home } listings={ this.state.listings } category={ this.state.category } handleCategoryClick={ this.handleCategoryClick } />
         <Route exact path='/sign-up' component={ SignUp }/>
         <Route exact path='/sign-in' component={ SignIn }/>
         <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 
