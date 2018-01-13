@@ -1,5 +1,4 @@
 import React from 'react';
-import InfiniteGrid from 'react-infinite-grid';
 import { Link } from 'react-router-dom';
 import Listing from './Listing.jsx';
 
