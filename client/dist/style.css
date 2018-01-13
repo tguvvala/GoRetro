@@ -102,3 +102,17 @@ background-size: cover;
   padding-top: 20px;
   padding-bottom: 10px;
 }
+.profile-img {
+  width: 160px;
+}
+
+.profile-name span {
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+}
+
+footer {
+  background-color: #FAC80A;
+  width: 100%;
+}
