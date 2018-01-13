@@ -8,19 +8,13 @@ class Listing extends React.Component {
 
   render() {
     return (
-      <div>
-        <div class="container">
-          <div className="row">
-            <div className="col">
-              <Link to='/view-listing'>
-                <img className="productimg" src="https://brickshow.com/wp-content/uploads/2017/10/10256_alt1.jpg"/>
-                <div className="overlay">
-                  <p class="info">{this.props.listing.title}</p>
-                </div>
-              </Link>
-            </div>
+      <div className="col-sm-6">
+        <Link to='/view-listing'>
+          <img className="productimg" src="https://brickshow.com/wp-content/uploads/2017/10/10256_alt1.jpg"/>
+          <div className="overlay">
+            <p className="info">{this.props.listing.title}</p>
           </div>
-        </div>
+        </Link>
       </div>
     );
   }

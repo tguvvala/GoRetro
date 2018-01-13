@@ -31,6 +31,8 @@ class App extends React.Component {
 
   handleCategoryClick(category) {
     category = category || '';
+
+    console.log('My category', category);
     this.setState({ category: category });
     this.getListings();
   }
@@ -52,7 +54,7 @@ class App extends React.Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/' component={ Home } listings={ this.state.listings } />
+        <RouteProps exact path='/' component={ Home } listings={ this.state.listings } category={ this.state.category } handleCategoryClick={ this.handleCategoryClick }/>
         <Route exact path='/sign-up' component={ SignUp }/>
         <Route exact path='/sign-in' component={ SignIn }/>
         <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 

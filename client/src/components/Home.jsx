@@ -7,10 +7,10 @@ const Home = (props) => (
   <div>
     <main role="main">
       <SearchLogin />
-      <Categories />
-      <Listings />
+      <Categories category={ props.category } handleCategoryClick={ props.handleCategoryClick }/>
+      <Listings listings={ props.listings }/>
     </main>
   </div>
-)
+);
 
 export default Home;
