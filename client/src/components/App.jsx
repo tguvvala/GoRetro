@@ -16,7 +16,8 @@ class App extends React.Component {
     this.handleCategoryClick = this.handleCategoryClick.bind(this);
     this.state = {
       listings: [],
-      category: ''
+      category: '',
+      selectedListing: ''
     };
   }
 
@@ -51,12 +52,12 @@ class App extends React.Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/' component={ Home }/>
+        <Route exact path='/' component={ Home } listings={ this.state.listings } />
         <Route exact path='/sign-up' component={ SignUp }/>
         <Route exact path='/sign-in' component={ SignIn }/>
-        <RouteProps path='/new-listing' component={ NewListing } moreProps={5}/> 
-        <RouteProps path='/user-listings' component={ UserListings } someProps={'Stringy String'} moreProps={ 5 }/> 
-        <Route path='/view-listing' component={ ViewListing }/>
+        <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 
+        <RouteProps path='/user-listings' component={ UserListings } listings={ this.state.listings }/> 
+        <Route path='/view-listing' component={ ViewListing } listing={ this.selectedListing }/>
       </Switch>
     )
   }

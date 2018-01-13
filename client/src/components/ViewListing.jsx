@@ -2,16 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 var xprops = {
-      "userId": "1000",
-      "listingId": "1",
-      "title": "Death Star",
-      "legoSetCode": "75159",
-      "condition": "New",
-      "description": "Re-enact amazing scenes from the Star Wars saga with the Empires ultimate planet-zapping weapon the Death Star! With over 4000 pieces, this fantastic model has a galaxy of intricate and authentic environments, including a super laser control room, Imperial conference chamber, hangar bay with moving launch rack and Lord Vader's TIE Advanced with space for Vader inside, Emperor Palpatine's throne room, Droid maintenance room, detention block, trash compactor, tractor beam, cargo area, turbo laser with spring-loaded shooters and seats for the 2 death star gunners, and 2 movable turbo laser towers. This fantastic set also includes 23 iconic minifigures and 2 Droids to ensure hours of Star Wars battle fun. Age: 14+ Over 4,000 Pieces.",
-      "imageUrl": "http://aws.com/bucket/images/listing/1/1.jpg",
-      "category": "Star Wars",
-      "zipCode": "2030",
-      "email": "me@example.com"
+        "_id": "5a590b8868bfac731cec4d85",
+        "title": "Star Wars Boba Fett",
+        "description": "Brand new. My kid wanted Batman.",
+        "condition": "New",
+        "category": "Star Wars",
+        "username": "SuburbanDad",
+        "email": "bob@bob.com",
+        "zipCode": "52645",
+        "legoSetCode": "4D1F56",
+        "imageUrl": "http://aws.com/bucket/images/listing/1/3.jpg",
+        "__v": 0,
+        "createdAt": "2018-01-12T19:24:56.463Z"
     };
 
 const ViewListing = (props) => (
