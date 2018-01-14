@@ -9,7 +9,12 @@ class NewListing extends React.Component {
     super(props);
 
     this.state = {
-      title: '',
+      title: {
+        value: '',
+        isValid: () => {
+          return this.state.title.value > 0;
+        },
+      },
       description: '',
       category: '',
       username: '',
@@ -17,20 +22,42 @@ class NewListing extends React.Component {
       zipCode: '',
       condition: '',
       legoSetCode: '',
-      imageUrl: ''
+      imageUrl: '',
+      isValid: () => {
+        return this.state.title.isValid;
+      }
     };
+
+    this.defaultMessages = {
+      title: 'Title of your listing'
+    };
+    // this.isValid = (
+    //   this.state.title.validator &&
+    //   this.state.category.validator &&
+    //   this.state.email.validator &&
+    //   this.state.zipCode.validator
+    // );
 
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
     this.postListing = this.postListing.bind(this);
     this.clearFields = this.clearFields.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.state.isValid = this.state.isValid.bind(this);
+    this.state.title.isValid = this.state.title.isValid.bind(this);
+  }
+
+  handleBlur(e) {
+    let prop = e.nativeEvent.target.name;
+    console.log('onblur', this.state.isValid);
+    console.log('this', e.target);
+    return this.state[prop].isValid();
   }
 
   handleSubmitClick(e) {
     e.preventDefault();
     this.postListing(() => {
       this.clearFields();
-
     });
   }
 
@@ -38,22 +65,24 @@ class NewListing extends React.Component {
     let name = event.nativeEvent.target.name;
     let value = event.nativeEvent.target.value;
     this.setState({
-      [name]: value
+      [name]: { value: value }
     });
   }
 
   clearFields() {
-    console.log('Clearing fields');
+    // console.log('Clearing fields');
     this.setState({
-      title: '',
-      description: '',
-      category: '',
-      username: '',
-      email: '',
-      zipCode: '',
-      condition: '',
-      legoSetCode: '',
-      imageUrl: ''
+      listing: {
+        title: '',
+        description: '',
+        category: '',
+        username: '',
+        email: '',
+        zipCode: '',
+        condition: '',
+        legoSetCode: '',
+        imageUrl: ''
+      }
     });
   }
 
@@ -101,10 +130,14 @@ class NewListing extends React.Component {
                 id="titleInput"
                 placeholder="Title"
                 name="title"
-                value={this.state.title}
+                value={this.state.title.value}
                 onChange={this.handleChange}
+                onBlur={this.handleBlur}
               />
-              <small className="form-text text-muted">The title of the lego set.</small>
+              <small className="form-text text-muted">
+                Title of your listing
+              </small>
+
             </div>
 
             <div className="form-group">
@@ -208,9 +241,11 @@ class NewListing extends React.Component {
                   onClick={this.handleSubmitClick}>Submit
                 </button>
                 <Link to="/">
-                  <button className="btn">
+                  <input type="submit" disabled={`${this.state.isValid}`}/>
+                {/*  <button className="btn">
                     Cancel
                   </button>
+                */}
                 </Link>
               </div>
             </div>
@@ -220,7 +255,6 @@ class NewListing extends React.Component {
     );
   }
 }
-
 
 export default NewListing;
 
