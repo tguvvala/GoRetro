@@ -9,12 +9,7 @@ class NewListing extends React.Component {
     super(props);
 
     this.state = {
-      title: {
-        value: '',
-        isValid: () => {
-          return this.state.title.value > 0;
-        },
-      },
+      title: '',
       description: '',
       category: '',
       username: '',
@@ -28,8 +23,13 @@ class NewListing extends React.Component {
       }
     };
 
-    this.defaultMessages = {
-      title: 'Title of your listing'
+    this.defaults = {
+      title: {
+        value: 'Title of your listing',
+        isValid: () => {
+          return this.state.title.length > 0;
+        }
+      }
     };
     // this.isValid = (
     //   this.state.title.validator &&
@@ -44,14 +44,26 @@ class NewListing extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.state.isValid = this.state.isValid.bind(this);
-    this.state.title.isValid = this.state.title.isValid.bind(this);
   }
 
-  handleBlur(e) {
-    let prop = e.nativeEvent.target.name;
-    console.log('onblur', this.state.isValid);
-    console.log('this', e.target);
-    return this.state[prop].isValid();
+  nonState(field) {
+    console.log('length: ', this.state[field].length);
+    return this.defaults[field].isValid();
+  }
+
+  handleBlur(event) {
+    let e = event.nativeEvent.target;
+    let prop = e.name;
+    let next = e.nextSibling;
+
+    console.log('default2', this.defaults[prop]);
+    console.log('nonState', this.nonState(prop));
+
+    if (!this.nonState(prop)) {
+      next.textContent = 'REQUIRED';
+    } else {
+      next.textContent = this.defaults[prop].value;
+    }
   }
 
   handleSubmitClick(e) {
@@ -65,7 +77,7 @@ class NewListing extends React.Component {
     let name = event.nativeEvent.target.name;
     let value = event.nativeEvent.target.value;
     this.setState({
-      [name]: { value: value }
+      [name]: value
     });
   }
 
@@ -242,7 +254,7 @@ class NewListing extends React.Component {
                 </button>
                 <Link to="/">
                   <input type="submit" disabled={`${this.state.isValid}`}/>
-                {/*  <button className="btn">
+                  {/*  <button className="btn">
                     Cancel
                   </button>
                 */}
