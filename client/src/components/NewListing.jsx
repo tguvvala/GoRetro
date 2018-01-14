@@ -82,22 +82,53 @@ class NewListing extends React.Component {
             <li className="breadcrumb-item active"><Link to="/">Home</Link></li>
           </ol>
           <form>
-            <img src="imagePlaceholder.png" className="img-photo img-thumbnail rounded" alt="Photo" />
+            <img
+              src="imagePlaceholder.png"
+              className="img-photo img-thumbnail rounded"
+              alt="Photo" />
             <div className="form-group">
-              <input type="file" className="form-control-file" id="selectImage"/>
+              <input
+                type="file"
+                className="form-control-file"
+                id="selectImage"
+              />
             </div>
 
             <div className="form-group">
-              <input type="text"className="form-control form-control-lg" id="titleInput" placeholder="Title" onChange={this.handleChange} name="title" value={this.state.title}/>
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                id="titleInput"
+                placeholder="Title"
+                name="title"
+                value={this.state.title}
+                onChange={this.handleChange}
+              />
               <small className="form-text text-muted">The title of the lego set.</small>
             </div>
 
             <div className="form-group">
-              <textarea className="form-control form-control-lg" id="descriptionInput" rows="3" placeholder="Description" onChange={this.handleChange} name="description" value={this.state.description}></textarea>
+              <textarea
+                className="form-control form-control-lg"
+                id="descriptionInput"
+                rows="3"
+                placeholder="Description"
+                name="description"
+                value={this.state.description}
+                onChange={this.handleChange}
+              >
+              </textarea>
             </div>
 
             <div className="form-group">
-              <select required="true" className="form-control form-control-lg" id="categorySelect" name="category" value={this.state.category} onChange={this.handleChange}>
+              <select
+                required="true"
+                className="form-control form-control-lg"
+                id="categorySelect"
+                name="category"
+                value={this.state.category}
+                onChange={this.handleChange}
+              >
                 <option value="">-- CATEGORY --</option>
                 <option value="Star Wars">Star Wars</option>
                 <option value="Cityscapes">Cityscapes</option>
@@ -106,7 +137,12 @@ class NewListing extends React.Component {
             </div>
 
             <div className="form-group">
-              <select className="form-control form-control-lg" id="conditionSelect" name="condition" value={this.state.condition} onChange={this.handleChange}>
+              <select
+                className="form-control form-control-lg"
+                id="conditionSelect"
+                name="condition"
+                value={this.state.condition}
+                onChange={this.handleChange}>
                 <option value="">-- CONDITION --</option>
                 <option value="new">New</option>
                 <option value="used">Used</option>
@@ -115,25 +151,62 @@ class NewListing extends React.Component {
             </div>
 
             <div className="form-group">
-              <input type="text" className="form-control form-control-lg" id="legoSetCodeInput" placeholder="Lego Set Code" onChange={this.handleChange} name="legoSetCode" value={this.state.legoSetCode}/>
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                id="legoSetCodeInput"
+                placeholder="Lego Set Code"
+                name="legoSetCode"
+                value={this.state.legoSetCode}
+                onChange={this.handleChange}
+              />
               <small className="form-text text-muted">The code of the lego set.</small>
             </div>
 
             <div className="form-group">
-              <input type="text" className="form-control form-control-lg" id="nameInput" placeholder="Your Name" onChange={this.handleChange} name="username" value={this.state.username} />
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                id="nameInput"
+                placeholder="Your Name"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
             </div>
 
             <div className="form-group">
-              <input type="email" className="form-control form-control-lg" id="emailInput" aria-describedby="emailHelp" placeholder="Email" onChange={this.handleChange} name="email" value={this.state.email} />
+              <input
+                type="email"
+                className="form-control form-control-lg"
+                id="emailInput"
+                aria-describedby="emailHelp"
+                placeholder="Email"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
             </div>
 
             <div className="form-group">
-              <input type="text" className="form-control form-control-lg" id="zipInput" placeholder="ZIP Code" onChange={this.handleChange} name="zipCode" value={this.state.zipCode} />
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                id="zipInput"
+                placeholder="ZIP Code"
+                name="zipCode"
+                value={this.state.zipCode}
+                onChange={this.handleChange}
+              />
             </div>
 
             <div className="form-group row">
               <div className="col-sm-10">
-                <button type="submit" className="btn btn-primary" onClick={this.handleSubmitClick}>Submit</button>
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  onClick={this.handleSubmitClick}>Submit
+                </button>
                 <Link to="/">
                   <button className="btn">
                     Cancel
