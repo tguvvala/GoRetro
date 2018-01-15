@@ -10,9 +10,9 @@ class Listing extends React.Component {
     return (
       <div className="col-sm-6">
         <Link to='/view-listing'>
-          <img className="productimg" src="https://brickshow.com/wp-content/uploads/2017/10/10256_alt1.jpg"/>
+          <img className="productimg" src={ this.props.listing.imageUrl }/>
           <div className="overlay">
-            <p className="info">{this.props.listing.title}</p>
+            <p className="info">{ this.props.listing.title }</p>
           </div>
         </Link>
       </div>
