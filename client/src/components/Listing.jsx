@@ -9,6 +9,8 @@ class Listing extends React.Component {
   }
 
   render() {
+    let path = `/view-listing?_id${this.props.listing['_id']}`;
+
     return (
       <div className="col-sm-12 listing-area">
         <Link to='/view-listing'>

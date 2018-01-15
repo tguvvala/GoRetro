@@ -85,7 +85,7 @@ class ViewListing extends React.Component {
           <div className="row">
             <div className="col">
               <img src="deathstar.jpg" className="img-photo img-view-listing rounded" alt="Photo" />
-              <h2 className="post-title">{ this.props.listing.title }</h2>
+              <h2 className="post-title">{ xprops.title }</h2>
               <p>Code: <b>{ xprops.legoSetCode }</b></p>
               <p>Condition: <b>{ xprops.condition }</b></p>
               <p>{ xprops.description }</p>

@@ -51,6 +51,7 @@ class App extends React.Component {
       }
     });
   }
+
   getListings() {
 
     $.ajax({
@@ -58,7 +59,7 @@ class App extends React.Component {
       success: (listings) => {
         this.setState({
           listings: listings
-        })
+        });
       },
       error: (err) => {
         console.log('Get listings error', err);
@@ -74,9 +75,9 @@ class App extends React.Component {
         <Route exact path='/sign-in' component={ SignIn }/>
         <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 
         <RouteProps path='/user-listings' component={ UserListings } listings={ this.state.listings }/> 
-        <Route path='/view-listing' component={ ViewListing } listing={ this.selectedListing }/>
+        <RouteProps path='/view-listing' component={ ViewListing } listing={ this.selectedListing }/>
       </Switch>
-    )
+    );
   }
 }
 
