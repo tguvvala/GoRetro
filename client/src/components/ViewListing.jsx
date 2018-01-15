@@ -22,9 +22,8 @@ class ViewListing extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmitButtonClicked = this.handleSubmitButtonClicked.bind(this);
-    this.handleNameInputChange = this.handleNameInputChange.bind(this);
-    this.handleEmailInputChange = this.handleEmailInputChange.bind(this);
-    this.handleMessageInputChange = this.handleMessageInputChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
     this.state = {
       name: '',
       email: '',
@@ -34,38 +33,19 @@ class ViewListing extends React.Component {
   }
 
   componentDidMount() {
-    $.ajax({
-      type: 'GET',
-      url: `http://localhost:8080${this.props.location.pathname + this.props.location.search}`,
-      dataType: 'json',
-      success: function(data) {
-        console.log('listing: ', data);
-        this.setState({
-          listing: data
-        });
-        console.log('this.state.listing: ', JSON.stringigy(this.state.listing, null, 2));
-      },
-      error: function(err) {
-        console.log('Could not retrieve listing: ', err);
-      }
+    this.getListing(this.props.location.search, (data) => {
+      this.setState({
+        listing: data.slice()[0]
+      });
     });
   }
 
-  handleNameInputChange(event) {
+  handleChange(event) {
+    let e = event.nativeEvent;
+    let name = e.target.name;
+    let value = e.target.value;
     this.setState({
-      name: event.target.value
-    });
-  }
-
-  handleEmailInputChange(event) {
-    this.setState({
-      email: event.target.value
-    });
-  }
-
-  handleMessageInputChange(event) {
-    this.setState({
-      message: event.target.value
+      [name]: value
     });
   }
 
@@ -94,6 +74,20 @@ class ViewListing extends React.Component {
     });
   }
 
+  getListing(id, callback) {
+    $.ajax({
+      type: 'GET',
+      url: `http://localhost:8080/listings${id}`,
+      dataType: 'json',
+      success: function(data) {
+        callback(data);
+      },
+      error: function(err) {
+        console.log('Could not retrieve listing: ', err);
+      }
+    });
+  }
+
   render() {
     return (
       <div>
@@ -103,29 +97,28 @@ class ViewListing extends React.Component {
           </ol>
           <div className="row">
             <div className="col">
-              <img src="deathstar.jpg" className="img-photo img-view-listing rounded" alt="Photo" />
-              <h2 className="post-title">{ this.props.listing }</h2>
-              {/*<p>Code: <b>{ this.props.listing.legoSetCode }</b></p>
-              <p>Condition: <b>{ this.props.listing.condition }</b></p>
-              <p>{ this.props.listing.description }</p>
-              <p>Category: <b>{ this.props.listing.category }</b></p>
-              <p>ZIP Code: <b>{ this.props.listing.zipCode }</b></p>
-             */}
+              <img src={this.state.listing.imageUrl} className="img-photo img-view-listing rounded" alt="Photo" />
+              <h2 className="post-title">{ this.state.listing.title }</h2>
+              <p>CODE: <b>{ this.state.listing.legoSetCode }</b></p>
+              <p>CONDITION: <b>{ this.state.listing.condition }</b></p>
+              <p>DESCRIPTION: <b>{ this.state.listing.description }</b></p>
+              <p>CATEGORY: <b>{ this.state.listing.category }</b></p>
+              <p>ZIP CODE: <b>{ this.state.listing.zipCode }</b></p>
             </div>
 
             <div className="col col-lg-4">
               <h3 className="contact-header">Contact the owner</h3>
               <form>
                 <div className="form-group">
-                  <input type="text" className="form-control form-control-lg" id="nameInput" placeholder="Your Name" value={ this.state.name } onChange={ this.handleNameInputChange.bind(this) }/>
+                  <input type="text" className="form-control form-control-lg" id="nameInput" placeholder="Your Name" name="name" value={ this.state.name } onChange={ this.handleChange }/>
                 </div>
 
                 <div className="form-group">
-                  <input type="email" className="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Email" value={ this.state.email } onChange={ this.handleEmailInputChange.bind(this) }/>
+                  <input type="email" className="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Email" name="email" value={ this.state.email } onChange={ this.handleChange }/>
                 </div>
 
                 <div className="form-group">
-                  <textarea className="form-control form-control-lg" id="descriptionInput" rows="3" placeholder="Your message" value={ this.state.message } onChange={ this.handleMessageInputChange.bind(this) }></textarea>
+                  <textarea className="form-control form-control-lg" id="descriptionInput" rows="3" placeholder="Your message" name="message" value={ this.state.message } onChange={ this.handleChange }></textarea>
                 </div>
 
                 <div className="form-group row">
