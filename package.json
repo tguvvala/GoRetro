@@ -37,8 +37,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "react-server": "webpack -d --watch",
-    "start": "node server/index.js",
-    "server-dev": "nodemon --inspect server/index.js"
+    "server-dev": "nodemon --inspect server/index.js",
+    "build:production": "NODE_ENV=production webpack --config webpack.config.js",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
