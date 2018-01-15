@@ -13,6 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.getListings = this.getListings.bind(this);
+    this.filterListings = this.filterListings.bind(this);
     this.handleCategoryClick = this.handleCategoryClick.bind(this);
     this.state = {
       listings: [],
@@ -25,24 +26,23 @@ class App extends React.Component {
   componentDidMount() {
     this.getListings();
     setInterval(() => {
-      this.getListings
-    }, 1000)
+      this.getListings;
+    }, 1000);
   }
 
   handleCategoryClick(category) {
     category = category || '';
 
-    console.log('My category', category);
     this.setState({ category: category });
     this.filterListings();
   }
 
   filterListings() {
+    var that = this;
     $.ajax({
-      url: '/listings',
-      data: {category: this.state.category},
+      url: '/listings?category=' + that.state.category,
       success: (listings) => {
-        this.setState({
+        that.setState({
           listings: listings
         });
       },
@@ -52,6 +52,7 @@ class App extends React.Component {
     });
   }
   getListings() {
+
     $.ajax({
       url: '/listings',
       success: (listings) => {
