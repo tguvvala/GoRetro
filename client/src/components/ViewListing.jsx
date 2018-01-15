@@ -2,20 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
-var xprops = {
-        "_id": "5a590b8868bfac731cec4d85",
-        "title": "Star Wars Boba Fett",
-        "description": "Brand new. My kid wanted Batman.",
-        "condition": "New",
-        "category": "Star Wars",
-        "username": "SuburbanDad",
-        "email": "bob@bob.com",
-        "zipCode": "52645",
-        "legoSetCode": "4D1F56",
-        "imageUrl": "http://aws.com/bucket/images/listing/1/3.jpg",
-        "__v": 0,
-        "createdAt": "2018-01-12T19:24:56.463Z"
-    };
+// var xprops = {
+//         "_id": "5a590b8868bfac731cec4d85",
+//         "title": "Star Wars Boba Fett",
+//         "description": "Brand new. My kid wanted Batman.",
+//         "condition": "New",
+//         "category": "Star Wars",
+//         "username": "SuburbanDad",
+//         "email": "bob@bob.com",
+//         "zipCode": "52645",
+//         "legoSetCode": "4D1F56",
+//         "imageUrl": "http://aws.com/bucket/images/listing/1/3.jpg",
+//         "__v": 0,
+//         "createdAt": "2018-01-12T19:24:56.463Z"
+//     };
 
 class ViewListing extends React.Component {
 
@@ -67,7 +67,7 @@ class ViewListing extends React.Component {
           email: '',
           message: ''
         });
-        console.log('Message sent')
+        console.log('Message sent');
       },
       error: function(err) {
         console.log('Message sent errors', err);
