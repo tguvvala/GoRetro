@@ -21,9 +21,9 @@ app.get('/listings', (req, res) => {
   let queryTerm = req.query;
   db.findQuery(queryTerm, function(err, data) {
     if (err) {
-      res.sendStatus(500);
+      res.status(500).send(err);
     } else {
-      res.json(data);
+      res.status(200).json(data);
     }
   });
 
@@ -32,9 +32,10 @@ app.get('/listings', (req, res) => {
 app.post('/listings', (req, res) => {
   db.saveListing(req.body, function(err, data) {
     if (err) {
-      res.sendStatus(500);
+      res.status(500).send(err);
     } else {
-      res.sendStatus(200);
+      console.log('data at server: ', data);
+      res.status(200).json(data);
     }
   });
 });
@@ -45,9 +46,9 @@ app.post('/mailer', (req, res) => {
   var message = req.body.message;
   if (name && email && message) {
     mailer.sendMail(name, email, message);
-    res.sendStatus(200)
+    res.sendStatus(200);
   } else {
-    res.sendStatus(500)
+    res.sendStatus(500);
   }
 });
 
