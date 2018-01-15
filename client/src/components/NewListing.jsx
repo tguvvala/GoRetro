@@ -186,9 +186,10 @@ class NewListing extends React.Component {
         if(xhr.status === 200){
           document.getElementById('preview').src = url;
           document.getElementById('image-url').value = url;
-          this.setState({
+          that.setState({
             imageUrl: url
           });
+          console.log('----------->>>>>', that.state)
         }
         else{
           alert('Could not upload file.');
