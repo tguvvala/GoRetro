@@ -15,9 +15,10 @@ let transporter = nodemailer.createTransport({
 
 let sendMail = function(name, email, message) {
   let mailOptions = {
-    from: 'Lego Trader',
+    from: 'grantspilsbury@me.com',
     to: 'grantspilsbury@gmail.com',
     subject: 'Contact from a buyer',
+    text: 'Hello',
     html: '<p>Hello</p>'
     // html: '<p>From: ' + name + ' </p><p>Email: ' + email + ' </p><p>Message: ' + message + ' </p>'
   };
@@ -25,6 +26,8 @@ let sendMail = function(name, email, message) {
     if (error) {
       return console.log(error);
     }
+    console.log('name', name)
+    console.log('email', email)
     console.log('Message sent: %s', info.messageId);
   });
 };
