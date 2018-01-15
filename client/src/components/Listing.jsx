@@ -2,18 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Listing extends React.Component {
+  
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div className="col-sm-6">
+      <div className="col-sm-12 listing-area">
         <Link to='/view-listing'>
-          <img className="productimg" src={ this.props.listing.imageUrl }/>
-          <div className="overlay">
-            <p className="info">{ this.props.listing.title }</p>
-          </div>
+          <h2>{this.props.listing.title}</h2>
+          <img className="productimg mx-auto d-block" src={ this.props.listing.imageUrl }/>
         </Link>
       </div>
     );
