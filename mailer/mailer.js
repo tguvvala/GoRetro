@@ -18,7 +18,8 @@ let sendMail = function(name, email, message) {
     from: 'Lego Trader',
     to: 'info@legotrader.com',
     subject: 'Contact from a buyer',
-    html: '<p>From: ' + name + ' </p><p>Email: ' + email + ' </p><p>Message: ' + message + ' </p>'
+    html: '<p>Hello</p>'
+    // html: '<p>From: ' + name + ' </p><p>Email: ' + email + ' </p><p>Message: ' + message + ' </p>'
   };
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
