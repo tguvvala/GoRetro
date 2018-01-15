@@ -141,14 +141,14 @@ class ViewListing extends React.Component {
             <li className="breadcrumb-item active"><Link to="/">Home</Link></li>
           </ol>
           <div className="row">
-            <div className="col">
+            <div className="col listing-info">
               <img src={this.state.listing.imageUrl} className="img-photo img-view-listing rounded" alt="Photo" />
               <h2 className="post-title">{ this.state.listing.title }</h2>
-              <p><b>CODE:</b> { this.state.listing.legoSetCode }</p>
-              <p><b>CONDITION:</b> { this.state.listing.condition }</p>
-              <p><b>DESCRIPTION:</b> { this.state.listing.description }</p>
-              <p><b>CATEGORY:</b> { this.state.listing.category }</p>
-              <p><b>ZIP CODE:</b> { this.state.listing.zipCode }</p>
+              <p>CODE: { this.state.listing.legoSetCode }</p>
+              <p>CONDITION: { this.state.listing.condition }</p>
+              <p>DESCRIPTION: { this.state.listing.description }</p>
+              <p>CATEGORY: { this.state.listing.category }</p>
+              <p>ZIP CODE: { this.state.listing.zipCode }</p>
             </div>
 
             <div className="col col-lg-4">
