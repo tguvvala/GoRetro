@@ -33,7 +33,6 @@ app.get('/listings', (req, res) => {
 });
 
 app.post('/listings', (req, res) => {
-  console.log('---------------=========----', req.body)
   db.saveListing(req.body, function(err, data) {
     if (err) {
       res.status(500).send(err);
@@ -78,11 +77,6 @@ app.get('/sign-s3', (req, res) => {
     res.write(JSON.stringify(returnData));
     res.end();
   });
-});
-
-app.post('/save-details', (req, res) => {
-  // TODO: Read POSTed form data and do something useful
-  console.log('---------- save details in server', req.body);
 });
 
 

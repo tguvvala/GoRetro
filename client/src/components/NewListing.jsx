@@ -189,7 +189,6 @@ class NewListing extends React.Component {
           that.setState({
             imageUrl: url
           });
-          console.log('----------->>>>>', that.state)
         }
         else{
           alert('Could not upload file.');
