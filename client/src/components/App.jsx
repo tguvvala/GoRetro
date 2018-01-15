@@ -33,13 +33,13 @@ class App extends React.Component {
     category = category || '';
 
     this.setState({ category: category });
-    this.filterListings();
+    this.filterListings(category);
   }
 
-  filterListings() {
+  filterListings(category) {
     var that = this;
     $.ajax({
-      url: '/listings?category=' + that.state.category,
+      url: '/listings?category=' + category,
       success: (listings) => {
         that.setState({
           listings: listings

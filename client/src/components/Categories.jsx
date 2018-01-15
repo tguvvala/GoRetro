@@ -8,7 +8,6 @@ class Categories extends React.Component {
 
 
   handleClick(e) {
-
     this.props.handleCategoryClick(e.currentTarget.dataset.cat);
   }
 
