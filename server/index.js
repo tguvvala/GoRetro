@@ -20,15 +20,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/listings', (req, res) => {
-
   let queryTerm = req.query;
-  // console.log('-------------- query term', queryTerm)
 
   db.findQuery(queryTerm, function(err, data) {
     if (err) {
       res.status(500).send(err);
     } else {
-      // console.log('------------- data', data)
       res.status(200).json(data);
     }
   });
@@ -40,7 +37,6 @@ app.post('/listings', (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      console.log('data at server: ', data);
       res.status(200).json(data);
     }
   });
@@ -70,7 +66,7 @@ app.get('/sign-s3', (req, res) => {
     ACL: 'public-read'
   };
   s3.getSignedUrl('putObject', s3Params, (err, data) => {
-    if(err){
+    if (err) {
       return res.end();
     }
     const returnData = {
