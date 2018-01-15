@@ -22,13 +22,13 @@ app.get('/', (req, res) => {
 app.get('/listings', (req, res) => {
 
   let queryTerm = req.query;
-  console.log('-------------- query term', queryTerm)
+  // console.log('-------------- query term', queryTerm)
 
   db.findQuery(queryTerm, function(err, data) {
     if (err) {
       res.status(500).send(err);
     } else {
-      console.log('------------- data', data)
+      // console.log('------------- data', data)
       res.status(200).json(data);
     }
   });

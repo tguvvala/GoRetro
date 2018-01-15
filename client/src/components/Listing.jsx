@@ -9,11 +9,11 @@ class Listing extends React.Component {
   }
 
   render() {
-    let path = `/view-listing?_id${this.props.listing['_id']}`;
+    let path = `/view-listing?_id=${this.props.listing['_id']}`;
 
     return (
       <div className="col-sm-12 listing-area">
-        <Link to='/view-listing'>
+        <Link to={ path }>
           <h2>{this.props.listing.title}</h2>
           <img className="productimg mx-auto d-block" src={ this.props.listing.imageUrl }/>
         </Link>

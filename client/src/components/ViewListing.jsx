@@ -28,8 +28,27 @@ class ViewListing extends React.Component {
     this.state = {
       name: '',
       email: '',
-      message: ''
+      message: '',
+      listing: ''
     };
+  }
+
+  componentDidMount() {
+    $.ajax({
+      type: 'GET',
+      url: `http://localhost:8080${this.props.location.pathname + this.props.location.search}`,
+      dataType: 'json',
+      success: function(data) {
+        console.log('listing: ', data);
+        this.setState({
+          listing: data
+        });
+        console.log('this.state.listing: ', JSON.stringigy(this.state.listing, null, 2));
+      },
+      error: function(err) {
+        console.log('Could not retrieve listing: ', err);
+      }
+    });
   }
 
   handleNameInputChange(event) {
@@ -85,12 +104,13 @@ class ViewListing extends React.Component {
           <div className="row">
             <div className="col">
               <img src="deathstar.jpg" className="img-photo img-view-listing rounded" alt="Photo" />
-              <h2 className="post-title">{ xprops.title }</h2>
-              <p>Code: <b>{ xprops.legoSetCode }</b></p>
-              <p>Condition: <b>{ xprops.condition }</b></p>
-              <p>{ xprops.description }</p>
-              <p>Category: <b>{ xprops.category }</b></p>
-              <p>ZIP Code: <b>{ xprops.zipCode }</b></p>
+              <h2 className="post-title">{ this.props.listing }</h2>
+              {/*<p>Code: <b>{ this.props.listing.legoSetCode }</b></p>
+              <p>Condition: <b>{ this.props.listing.condition }</b></p>
+              <p>{ this.props.listing.description }</p>
+              <p>Category: <b>{ this.props.listing.category }</b></p>
+              <p>ZIP Code: <b>{ this.props.listing.zipCode }</b></p>
+             */}
             </div>
 
             <div className="col col-lg-4">
