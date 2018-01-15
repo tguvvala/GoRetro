@@ -7,7 +7,6 @@ class NewListing extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       title: '',
       description: '',
