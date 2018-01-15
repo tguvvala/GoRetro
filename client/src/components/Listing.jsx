@@ -3,7 +3,7 @@ import RouteProps from 'react-route-props';
 import { Link } from 'react-router-dom';
 
 class Listing extends React.Component {
-  
+
   constructor(props) {
     super(props);
   }
