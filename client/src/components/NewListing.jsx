@@ -178,6 +178,7 @@ class NewListing extends React.Component {
   }
 
   uploadFile(file, signedRequest, url){
+    var that = this;
     const xhr = new XMLHttpRequest();
     xhr.open('PUT', signedRequest);
     xhr.onreadystatechange = () => {
@@ -185,6 +186,9 @@ class NewListing extends React.Component {
         if(xhr.status === 200){
           document.getElementById('preview').src = url;
           document.getElementById('image-url').value = url;
+          this.setState({
+            imageUrl: url
+          });
         }
         else{
           alert('Could not upload file.');
