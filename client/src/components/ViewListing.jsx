@@ -124,7 +124,7 @@ class ViewListing extends React.Component {
   getListing(id, callback) {
     $.ajax({
       type: 'GET',
-      url: `http://localhost:8080/listings${id}`,
+      url: `/listings${id}`,
       dataType: 'json',
       success: function(data) {
         callback(data);
