@@ -10,7 +10,7 @@ class Listing extends React.Component {
     return (
       <div className="col-sm-6">
         <Link to='/view-listing'>
-          <img className="productimg" src={ this.props.listing.imageUrl }/>
+          <img className="productimg" src={this.props.listing.imageUrl}/>
           <div className="overlay">
             <p className="info">{this.props.listing.title}</p>
           </div>
