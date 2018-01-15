@@ -39,7 +39,7 @@
     "react-server": "webpack -d --watch",
     "server-dev": "nodemon --inspect server/index.js",
     "build:production": "NODE_ENV=production webpack --config webpack.config.js",
-    "start": "node server/index.js",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
