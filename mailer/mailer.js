@@ -15,7 +15,7 @@ let transporter = nodemailer.createTransport({
 
 let sendMail = function(name, email, message) {
   let mailOptions = {
-    from: '"Lego Trader',
+    from: 'Lego Trader',
     to: 'info@legotrader.com',
     subject: 'Contact from a buyer',
     html: '<p>From: ' + name + ' </p><p>Email: ' + email + ' </p><p>Message: ' + message + ' </p>'

@@ -17,8 +17,7 @@ class App extends React.Component {
     this.handleCategoryClick = this.handleCategoryClick.bind(this);
     this.state = {
       listings: [],
-      category: '',
-      selectedListing: ''
+      category: ''
     };
   }
 
@@ -34,13 +33,13 @@ class App extends React.Component {
     category = category || '';
 
     this.setState({ category: category });
-    this.filterListings(category);
+    this.filterListings();
   }
 
-  filterListings(category) {
+  filterListings() {
     var that = this;
     $.ajax({
-      url: '/listings?category=' + category,
+      url: '/listings?category=' + that.state.category,
       success: (listings) => {
         that.setState({
           listings: listings
@@ -51,14 +50,14 @@ class App extends React.Component {
       }
     });
   }
-  getListings() {
 
+  getListings() {
     $.ajax({
       url: '/listings',
       success: (listings) => {
         this.setState({
           listings: listings
-        })
+        });
       },
       error: (err) => {
         console.log('Get listings error', err);
@@ -69,14 +68,14 @@ class App extends React.Component {
   render() {
     return (
       <Switch>
-        <RouteProps exact path='/' component={ Home } listings={ this.state.listings } category={ this.state.category } handleCategoryClick={ this.handleCategoryClick } />
+        <RouteProps exact path='/' component={ Home } listings={ this.state.listings } category={ this.state.category } handleCategoryClick={ this.handleCategoryClick } setSelectedListing={ this.setSelectedListing }/>
         <Route exact path='/sign-up' component={ SignUp }/>
         <Route exact path='/sign-in' component={ SignIn }/>
         <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 
         <RouteProps path='/user-listings' component={ UserListings } listings={ this.state.listings }/> 
-        <Route path='/view-listing' component={ ViewListing } listing={ this.selectedListing }/>
+        <Route path='/view-listing' component={ ViewListing } />
       </Switch>
-    )
+    );
   }
 }
 

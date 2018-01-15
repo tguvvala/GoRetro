@@ -8,7 +8,7 @@ const Home = (props) => (
     <main role="main">
       <SearchLogin />
       <Categories category={ props.category } handleCategoryClick={ props.handleCategoryClick }/>
-      <Listings listings={ props.listings }/>
+      <Listings listings={ props.listings } setSelectedListing={ props.setSelectedListing } />
     </main>
   </div>
 );
