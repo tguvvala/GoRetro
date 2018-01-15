@@ -32,7 +32,7 @@ class NewListing extends React.Component {
 
     this.defaults = {
       title: {
-        value: 'TITLE OF YOUR LISTING',
+        value: 'TITLE',
         errorMessage: 'REQUIRED',
         isValid: () => {
           return this.validate.valueEntered('title');
@@ -102,7 +102,7 @@ class NewListing extends React.Component {
         this.clearFields();
       });
     } else {
-      alert('PLEASE CHECK YOUR LISTING TO ENSURE ALL REQUIRED FIELDS FILLED IN');
+      alert('PLEASE CHECK YOUR LISTING TO ENSURE ALL REQUIRED FIELDS ARE FILLED IN');
     }
   }
 
@@ -115,7 +115,6 @@ class NewListing extends React.Component {
   }
 
   clearFields() {
-    // console.log('Clearing fields');
     this.setState({
       title: '',
       description: '',
@@ -134,11 +133,13 @@ class NewListing extends React.Component {
       type: 'POST',
       url: '/listings',
       data: this.state,
-      success: function() {
-        console.log('Succes on react side');
+      dataType: 'json',
+      success: function(data) {
+        alert(`YOUR LISTING WAS SUCCESSFULLY ADDED!
+               YOUR LISTING ID IS: ${data['_id']}`);
         // figure out how to do this the React Router way
         // window.location.href = '/';
-        callback();
+        callback(data);
       }.bind(this),
       error: function(err) {
         console.log('Post listing errors', err);
@@ -173,12 +174,12 @@ class NewListing extends React.Component {
                 id="titleInput"
                 placeholder="Title"
                 name="title"
-                value={this.state.title.value}
+                value={this.state.title}
                 onChange={this.handleChange}
                 onBlur={this.handleBlur}
               />
               <small className="form-text text-muted">
-                TITLE OF YOUR LISTING
+                TITLE
               </small>
 
             </div>
@@ -212,6 +213,7 @@ class NewListing extends React.Component {
                 <option value="Star Wars">Star Wars</option>
                 <option value="Cityscapes">Cityscapes</option>
                 <option value="Star Wars">Farmers</option>
+                <option value="Other">Other</option>
               </select>
               <small className="form-text text-muted">
                 CATEGORY
