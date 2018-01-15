@@ -13,6 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.getListings = this.getListings.bind(this);
+    this.filterListings = this.filterListings.bind(this);
     this.handleCategoryClick = this.handleCategoryClick.bind(this);
     this.state = {
       listings: [],
@@ -25,19 +26,33 @@ class App extends React.Component {
   componentDidMount() {
     this.getListings();
     setInterval(() => {
-      this.getListings
-    }, 1000)
+      this.getListings;
+    }, 1000);
   }
 
   handleCategoryClick(category) {
     category = category || '';
 
-    console.log('My category', category);
     this.setState({ category: category });
-    this.getListings();
+    this.filterListings();
   }
 
+  filterListings() {
+    var that = this;
+    $.ajax({
+      url: '/listings?category=' + that.state.category,
+      success: (listings) => {
+        that.setState({
+          listings: listings
+        });
+      },
+      error: (err) => {
+        console.log('Get categories error', err);
+      }
+    });
+  }
   getListings() {
+
     $.ajax({
       url: '/listings',
       success: (listings) => {
@@ -54,7 +69,7 @@ class App extends React.Component {
   render() {
     return (
       <Switch>
-        <RouteProps exact path='/' component={ Home } listings={ this.state.listings } category={ this.state.category } handleCategoryClick={ this.handleCategoryClick }/>
+        <RouteProps exact path='/' component={ Home } listings={ this.state.listings } category={ this.state.category } handleCategoryClick={ this.handleCategoryClick } />
         <Route exact path='/sign-up' component={ SignUp }/>
         <Route exact path='/sign-in' component={ SignIn }/>
         <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 

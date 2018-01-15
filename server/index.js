@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 app.get('/listings', (req, res) => {
 
   let queryTerm = req.query;
+
   db.findQuery(queryTerm, function(err, data) {
     if (err) {
       res.status(500).send(err);
