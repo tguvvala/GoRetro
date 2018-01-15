@@ -17,60 +17,93 @@ class NewListing extends React.Component {
       zipCode: '',
       condition: '',
       legoSetCode: '',
-      imageUrl: '',
-      isValid: () => {
-        return this.state.title.isValid;
+      imageUrl: ''
+    };
+
+    this.validate = {
+      valueEntered: (field) => {
+        return this.state[field].length > 0;
+      },
+      validEmail: (field) => {
+        let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return emailPattern.test(this.state[field]);
       }
     };
 
     this.defaults = {
       title: {
-        value: 'Title of your listing',
+        value: 'TITLE OF YOUR LISTING',
+        errorMessage: 'REQUIRED',
         isValid: () => {
-          return this.state.title.length > 0;
+          return this.validate.valueEntered('title');
+        }
+      },
+      username: {
+        value: 'YOUR NAME',
+        errorMessage: 'REQUIRED',
+        isValid: () => {
+          return this.validate.valueEntered('username');
+        }
+      },
+      email: {
+        value: 'EMAIL',
+        errorMessage: 'VALID EMAIL REQUIRED',
+        isValid: () => {
+          return this.validate.valueEntered('email') &&
+                 this.validate.validEmail('email');
+        }
+      },
+      zipCode: {
+        value: 'ZIP CODE',
+        errorMessage: 'REQUIRED',
+        isValid: () => {
+          return this.validate.valueEntered('zipCode');
         }
       }
     };
-    // this.isValid = (
-    //   this.state.title.validator &&
-    //   this.state.category.validator &&
-    //   this.state.email.validator &&
-    //   this.state.zipCode.validator
-    // );
 
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
     this.postListing = this.postListing.bind(this);
     this.clearFields = this.clearFields.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
-    this.state.isValid = this.state.isValid.bind(this);
   }
 
-  nonState(field) {
-    console.log('length: ', this.state[field].length);
-    return this.defaults[field].isValid();
+  allFieldsValid() {
+    let valid = true;
+    for (var key in this.defaults) {
+      if (!this.isFieldValid(key)) {
+        valid = false;
+      }
+    }
+    return valid;
+  }
+
+  isFieldValid(prop) {
+    let next = $(`input[name=${prop}]`)['0'].nextSibling;
+    if (!this.defaults[prop].isValid()) {
+      next.textContent = this.defaults[prop].errorMessage;
+      return false;
+    }
+    next.textContent = this.defaults[prop].value;
+    return true;
   }
 
   handleBlur(event) {
     let e = event.nativeEvent.target;
     let prop = e.name;
-    let next = e.nextSibling;
-
-    console.log('default2', this.defaults[prop]);
-    console.log('nonState', this.nonState(prop));
-
-    if (!this.nonState(prop)) {
-      next.textContent = 'REQUIRED';
-    } else {
-      next.textContent = this.defaults[prop].value;
-    }
+    this.isFieldValid(prop);
   }
 
   handleSubmitClick(e) {
     e.preventDefault();
-    this.postListing(() => {
-      this.clearFields();
-    });
+    if (this.allFieldsValid()) {
+      this.postListing(() => {
+        this.clearFields();
+      });
+    } else {
+      alert('PLEASE CHECK YOUR LISTING TO ENSURE ALL REQUIRED FIELDS FILLED IN');
+    }
   }
 
   handleChange (event) {
@@ -84,17 +117,15 @@ class NewListing extends React.Component {
   clearFields() {
     // console.log('Clearing fields');
     this.setState({
-      listing: {
-        title: '',
-        description: '',
-        category: '',
-        username: '',
-        email: '',
-        zipCode: '',
-        condition: '',
-        legoSetCode: '',
-        imageUrl: ''
-      }
+      title: '',
+      description: '',
+      category: '',
+      username: '',
+      email: '',
+      zipCode: '',
+      condition: '',
+      legoSetCode: '',
+      imageUrl: ''
     });
   }
 
@@ -147,7 +178,7 @@ class NewListing extends React.Component {
                 onBlur={this.handleBlur}
               />
               <small className="form-text text-muted">
-                Title of your listing
+                TITLE OF YOUR LISTING
               </small>
 
             </div>
@@ -163,6 +194,9 @@ class NewListing extends React.Component {
                 onChange={this.handleChange}
               >
               </textarea>
+              <small className="form-text text-muted">
+                DESCRIPTION
+              </small>
             </div>
 
             <div className="form-group">
@@ -179,6 +213,9 @@ class NewListing extends React.Component {
                 <option value="Cityscapes">Cityscapes</option>
                 <option value="Star Wars">Farmers</option>
               </select>
+              <small className="form-text text-muted">
+                CATEGORY
+              </small>
             </div>
 
             <div className="form-group">
@@ -193,6 +230,9 @@ class NewListing extends React.Component {
                 <option value="used">Used</option>
                 <option value="missing pieces">Missing Pieces</option>
               </select>
+              <small className="form-text text-muted">
+                CONDITION
+              </small>
             </div>
 
             <div className="form-group">
@@ -205,7 +245,9 @@ class NewListing extends React.Component {
                 value={this.state.legoSetCode}
                 onChange={this.handleChange}
               />
-              <small className="form-text text-muted">The code of the lego set.</small>
+              <small className="form-text text-muted">
+                THE LEGO CODE FOR YOUR SET
+              </small>
             </div>
 
             <div className="form-group">
@@ -217,7 +259,11 @@ class NewListing extends React.Component {
                 name="username"
                 value={this.state.username}
                 onChange={this.handleChange}
+                onBlur={this.handleBlur}
               />
+              <small className="form-text text-muted">
+                YOUR NAME
+              </small>
             </div>
 
             <div className="form-group">
@@ -230,7 +276,11 @@ class NewListing extends React.Component {
                 name="email"
                 value={this.state.email}
                 onChange={this.handleChange}
+                onBlur={this.handleBlur}
               />
+              <small className="form-text text-muted">
+                EMAIL
+              </small>
             </div>
 
             <div className="form-group">
@@ -242,7 +292,11 @@ class NewListing extends React.Component {
                 name="zipCode"
                 value={this.state.zipCode}
                 onChange={this.handleChange}
+                onBlur={this.handleBlur}
               />
+              <small className="form-text text-muted">
+                ZIP CODE
+              </small>
             </div>
 
             <div className="form-group row">
@@ -250,14 +304,15 @@ class NewListing extends React.Component {
                 <button
                   type="submit"
                   className="btn btn-primary"
-                  onClick={this.handleSubmitClick}>Submit
+                  onClick={this.handleSubmitClick}
+                >
+                  Submit
                 </button>
                 <Link to="/">
-                  <input type="submit" disabled={`${this.state.isValid}`}/>
-                  {/*  <button className="btn">
+                  {/* <input type="submit" onClick={this.handleSubmitClick} disabled="false"/> */}
+                  <button className="btn">
                     Cancel
                   </button>
-                */}
                 </Link>
               </div>
             </div>
