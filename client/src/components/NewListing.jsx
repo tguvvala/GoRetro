@@ -141,8 +141,8 @@ class NewListing extends React.Component {
         alert(`YOUR LISTING WAS SUCCESSFULLY ADDED!
                YOUR LISTING ID IS: ${data['_id']}`);
         // figure out how to do this the React Router way
-        // window.location.href = '/';
-        callback(data);
+        window.location.href = '/';
+        // callback(data);
       }.bind(this),
       error: function(err) {
         console.log('Post listing errors', err);
