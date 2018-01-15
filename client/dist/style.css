@@ -4,7 +4,7 @@
 
 #header-area {
   margin-top: 60px;
-  margin-bottom: 40px;
+  margin-bottom: 100px;
   
   /* background-color: #ED2225; */
   background-image: url("redwall.png");
@@ -61,6 +61,11 @@
   border-color: #777777;
   padding-right: 20px;
 }
+
+#categoriesArea {
+  padding-top: 40px;
+}
+
 .categories {
 
   text-align: center;
@@ -148,13 +153,26 @@
   margin-bottom: 40px;
 }
 
+.listing-title {
+  text-transform: uppercase;
+}
+
 h2.post-title {
   margin-bottom: 25px;
 }
 
- .listing-info {
+.listing-info p {
   font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
 }
+
+.listing-info span {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  /* color: red; */
+}
+
+
 
 footer {
   margin-top: 60px;

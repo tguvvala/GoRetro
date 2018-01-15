@@ -14,7 +14,7 @@ class Listing extends React.Component {
     return (
       <div className="col-sm-12 listing-area">
         <Link to={ path }>
-          <h2>{this.props.listing.title}</h2>
+          <h2 class="listing-title">{this.props.listing.title}</h2>
           <img className="productimg mx-auto d-block" src={ this.props.listing.imageUrl }/>
         </Link>
       </div>
