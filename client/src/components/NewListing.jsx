@@ -67,6 +67,9 @@ class NewListing extends React.Component {
     this.clearFields = this.clearFields.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+    this.handleSelectImageChange = this.handleSelectImageChange.bind(this);
+    this.getSignedRequest = this.getSignedRequest.bind(this);
+    this.uploadFile = this.uploadFile.bind(this);
   }
 
   allFieldsValid() {
@@ -147,6 +150,50 @@ class NewListing extends React.Component {
     });
   }
 
+  handleSelectImageChange() {
+    const files = document.getElementById("selectImage").files;
+    const file = files[0];
+    if(file == null){
+      return alert('No file selected.');
+    }
+    this.getSignedRequest(file);
+  }
+
+  getSignedRequest(file) {
+    var that = this;
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4){
+        if(xhr.status === 200){
+          const response = JSON.parse(xhr.responseText);
+          that.uploadFile(file, response.signedRequest, response.url);
+        }
+        else{
+          console.log('Error uploading file')
+        }
+      }
+    };
+    xhr.send();
+  }
+
+  uploadFile(file, signedRequest, url){
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', signedRequest);
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4){
+        if(xhr.status === 200){
+          document.getElementById('preview').src = url;
+          document.getElementById('image-url').value = url;
+        }
+        else{
+          alert('Could not upload file.');
+        }
+      }
+    };
+    xhr.send(file);
+  }
+
   render() {
     return (
       <div>
@@ -155,15 +202,23 @@ class NewListing extends React.Component {
             <li className="breadcrumb-item active"><Link to="/">Home</Link></li>
           </ol>
           <form>
+            <input
+              type="hidden"
+              id="image-url"
+              name="image-url"
+              value="imagePlaceholder.png" />
             <img
+              id="preview"
               src="imagePlaceholder.png"
               className="img-photo img-thumbnail rounded"
               alt="Photo" />
+            <p id="status">Please select a file</p>
             <div className="form-group">
               <input
                 type="file"
                 className="form-control-file"
                 id="selectImage"
+                onChange={this.handleSelectImageChange}
               />
             </div>
 
