@@ -75,6 +75,11 @@
   color: white;
 }
 
+.invalid {
+  border: 1.5px solid red;
+  color: red;
+}
+
 /* .overlay {
   position: absolute;
   bottom: 100%;

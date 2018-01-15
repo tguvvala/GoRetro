@@ -31,7 +31,7 @@ class ViewListing extends React.Component {
     this.defaults = {
       name: {
         value: 'NAME',
-        errorMessage: 'REQUIRED',
+        errorMessage: 'NAME REQUIRED',
         isValid: () => {
           return this.validate.valueEntered('name');
         }
@@ -69,9 +69,11 @@ class ViewListing extends React.Component {
     let next = $(`input[name=${prop}]`)['0'].nextSibling;
     if (!this.defaults[prop].isValid()) {
       next.textContent = this.defaults[prop].errorMessage;
+      $(`input[name=${prop}]`).addClass('invalid');
       return false;
     }
     next.textContent = this.defaults[prop].value;
+    $(`input[name=${prop}]`).removeClass('invalid');
     return true;
   }
 
@@ -165,9 +167,7 @@ class ViewListing extends React.Component {
                     onChange={ this.handleChange }
                     onBlur={ this.handleBlur }
                   />
-                  <small className="form-text text-muted">
-
-                  </small>
+                  <p className=""></p>
                 </div>
 
                 <div className="form-group">
@@ -182,9 +182,7 @@ class ViewListing extends React.Component {
                     onChange={ this.handleChange }
                     onBlur={ this.handleBlur }
                   />
-                  <small className="form-text text-muted">
-
-                  </small>
+                  <p className=""></p>
                 </div>
 
                 <div className="form-group">
@@ -198,6 +196,7 @@ class ViewListing extends React.Component {
                     onChange={ this.handleChange }
                   >
                   </textarea>
+                  <p className=""></p>
                 </div>
 
                 <div className="form-group row">

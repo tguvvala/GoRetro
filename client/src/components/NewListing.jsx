@@ -85,9 +85,11 @@ class NewListing extends React.Component {
     let next = $(`input[name=${prop}]`)['0'].nextSibling;
     if (!this.defaults[prop].isValid()) {
       next.textContent = this.defaults[prop].errorMessage;
+      $(`input[name=${prop}]`).addClass('invalid');
       return false;
     }
     next.textContent = this.defaults[prop].value;
+    $(`input[name=${prop}]`).removeClass('invalid');
     return true;
   }
 
@@ -152,7 +154,7 @@ class NewListing extends React.Component {
   handleSelectImageChange() {
     const files = document.getElementById("selectImage").files;
     const file = files[0];
-    if(file == null){
+    if (file == null) {
       return alert('No file selected.');
     }
     this.getSignedRequest(file);
@@ -163,33 +165,31 @@ class NewListing extends React.Component {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
     xhr.onreadystatechange = () => {
-      if(xhr.readyState === 4){
-        if(xhr.status === 200){
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
           const response = JSON.parse(xhr.responseText);
           that.uploadFile(file, response.signedRequest, response.url);
-        }
-        else{
-          console.log('Error uploading file')
+        } else {
+          console.log('Error uploading file');
         }
       }
     };
     xhr.send();
   }
 
-  uploadFile(file, signedRequest, url){
+  uploadFile(file, signedRequest, url) {
     var that = this;
     const xhr = new XMLHttpRequest();
     xhr.open('PUT', signedRequest);
     xhr.onreadystatechange = () => {
-      if(xhr.readyState === 4){
-        if(xhr.status === 200){
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
           document.getElementById('preview').src = url;
           document.getElementById('image-url').value = url;
           that.setState({
             imageUrl: url
           });
-        }
-        else{
+        } else {
           alert('Could not upload file.');
         }
       }
@@ -371,7 +371,6 @@ class NewListing extends React.Component {
                   Submit
                 </button>
                 <Link to="/">
-                  {/* <input type="submit" onClick={this.handleSubmitClick} disabled="false"/> */}
                   <button className="btn">
                     Cancel
                   </button>
