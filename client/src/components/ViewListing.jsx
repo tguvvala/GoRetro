@@ -2,20 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
-// var xprops = {
-//         "_id": "5a590b8868bfac731cec4d85",
-//         "title": "Star Wars Boba Fett",
-//         "description": "Brand new. My kid wanted Batman.",
-//         "condition": "New",
-//         "category": "Star Wars",
-//         "username": "SuburbanDad",
-//         "email": "bob@bob.com",
-//         "zipCode": "52645",
-//         "legoSetCode": "4D1F56",
-//         "imageUrl": "http://aws.com/bucket/images/listing/1/3.jpg",
-//         "__v": 0,
-//         "createdAt": "2018-01-12T19:24:56.463Z"
-//     };
 
 class ViewListing extends React.Component {
 
@@ -23,12 +9,41 @@ class ViewListing extends React.Component {
     super(props);
     this.handleSubmitButtonClicked = this.handleSubmitButtonClicked.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
 
     this.state = {
       name: '',
       email: '',
       message: '',
       listing: ''
+    };
+
+    this.validate = {
+      valueEntered: (field) => {
+        return this.state[field].length > 0;
+      },
+      validEmail: (field) => {
+        let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return emailPattern.test(this.state[field]);
+      }
+    };
+
+    this.defaults = {
+      name: {
+        value: 'NAME',
+        errorMessage: 'REQUIRED',
+        isValid: () => {
+          return this.validate.valueEntered('name');
+        }
+      },
+      email: {
+        value: 'EMAIL',
+        errorMessage: 'VALID EMAIL REQUIRED',
+        isValid: () => {
+          return this.validate.valueEntered('email') &&
+                 this.validate.validEmail('email');
+        }
+      }
     };
   }
 
@@ -38,6 +53,32 @@ class ViewListing extends React.Component {
         listing: data.slice()[0]
       });
     });
+  }
+
+  allFieldsValid() {
+    let valid = true;
+    for (var key in this.defaults) {
+      if (!this.isFieldValid(key)) {
+        valid = false;
+      }
+    }
+    return valid;
+  }
+
+  isFieldValid(prop) {
+    let next = $(`input[name=${prop}]`)['0'].nextSibling;
+    if (!this.defaults[prop].isValid()) {
+      next.textContent = this.defaults[prop].errorMessage;
+      return false;
+    }
+    next.textContent = this.defaults[prop].value;
+    return true;
+  }
+
+  handleBlur(event) {
+    let e = event.nativeEvent.target;
+    let prop = e.name;
+    this.isFieldValid(prop);
   }
 
   handleChange(event) {
@@ -52,26 +93,30 @@ class ViewListing extends React.Component {
   handleSubmitButtonClicked(e) {
     var that = this;
     e.preventDefault();
-    $.ajax({
-      type: 'POST',
-      url: '/mailer',
-      data: {
-        name: this.state.name,
-        email: this.state.email,
-        message: this.state.message
-      },
-      success: function() {
-        that.setState({
-          name: '',
-          email: '',
-          message: ''
-        });
-        console.log('Message sent');
-      },
-      error: function(err) {
-        console.log('Message sent errors', err);
-      }
-    });
+    if (this.allFieldsValid()) {
+      $.ajax({
+        type: 'POST',
+        url: '/mailer',
+        data: {
+          name: this.state.name,
+          email: this.state.email,
+          message: this.state.message
+        },
+        success: function() {
+          that.setState({
+            name: '',
+            email: '',
+            message: ''
+          });
+          console.log('Message sent');
+        },
+        error: function(err) {
+          console.log('Message sent errors', err);
+        }
+      });
+    } else {
+      alert('PLEASE CHECK YOUR LISTING TO ENSURE ALL REQUIRED FIELDS ARE FILLED IN');
+    }
   }
 
   getListing(id, callback) {
@@ -110,15 +155,49 @@ class ViewListing extends React.Component {
               <h3 className="contact-header">Contact the owner</h3>
               <form>
                 <div className="form-group">
-                  <input type="text" className="form-control form-control-lg" id="nameInput" placeholder="Your Name" name="name" value={ this.state.name } onChange={ this.handleChange }/>
+                  <input
+                    type="text"
+                    className="form-control form-control-lg"
+                    id="nameInput"
+                    placeholder="Your Name"
+                    name="name"
+                    value={ this.state.name }
+                    onChange={ this.handleChange }
+                    onBlur={ this.handleBlur }
+                  />
+                  <small className="form-text text-muted">
+
+                  </small>
                 </div>
 
                 <div className="form-group">
-                  <input type="email" className="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Email" name="email" value={ this.state.email } onChange={ this.handleChange }/>
+                  <input
+                    type="email"
+                    className="form-control form-control-lg"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Your Email"
+                    name="email"
+                    value={ this.state.email }
+                    onChange={ this.handleChange }
+                    onBlur={ this.handleBlur }
+                  />
+                  <small className="form-text text-muted">
+
+                  </small>
                 </div>
 
                 <div className="form-group">
-                  <textarea className="form-control form-control-lg" id="descriptionInput" rows="3" placeholder="Your message" name="message" value={ this.state.message } onChange={ this.handleChange }></textarea>
+                  <textarea
+                    className="form-control form-control-lg"
+                    id="descriptionInput"
+                    rows="3"
+                    placeholder="Your message"
+                    name="message"
+                    value={ this.state.message }
+                    onChange={ this.handleChange }
+                  >
+                  </textarea>
                 </div>
 
                 <div className="form-group row">
