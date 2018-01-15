@@ -16,18 +16,15 @@ let transporter = nodemailer.createTransport({
 let sendMail = function(name, email, message) {
   let mailOptions = {
     from: 'grantspilsbury@gmail.com',
-    to: 'grantspilsbury@me.com',
+    to: email,
     subject: 'Contact from a buyer',
     text: 'Hello',
-    html: '<p>Hello</p>'
-    // html: '<p>From: ' + name + ' </p><p>Email: ' + email + ' </p><p>Message: ' + message + ' </p>'
+    html: '<p>From: ' + name + ' </p><p>Email: ' + email + ' </p><p>Message: ' + message + ' </p>'
   };
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return console.log(error);
     }
-    console.log('name', name)
-    console.log('email', email)
     console.log('Message sent: %s', info.messageId);
   });
 };
