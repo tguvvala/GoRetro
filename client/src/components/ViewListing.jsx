@@ -30,14 +30,12 @@ class ViewListing extends React.Component {
 
     this.defaults = {
       name: {
-        value: 'NAME',
         errorMessage: 'NAME REQUIRED',
         isValid: () => {
           return this.validate.valueEntered('name');
         }
       },
       email: {
-        value: 'EMAIL',
         errorMessage: 'VALID EMAIL REQUIRED',
         isValid: () => {
           return this.validate.valueEntered('email') &&
@@ -72,7 +70,7 @@ class ViewListing extends React.Component {
       $(`input[name=${prop}]`).addClass('invalid');
       return false;
     }
-    next.textContent = this.defaults[prop].value;
+    next.textContent = '';
     $(`input[name=${prop}]`).removeClass('invalid');
     return true;
   }
@@ -110,10 +108,10 @@ class ViewListing extends React.Component {
             email: '',
             message: ''
           });
-          console.log('Message sent');
+          alert('YOUR MESSAGE HAS BEEN SENT!');
         },
         error: function(err) {
-          console.log('Message sent errors', err);
+          ALERT('OH NO, SOMETHING WENT WRONG.', err);
         }
       });
     } else {
@@ -146,11 +144,11 @@ class ViewListing extends React.Component {
             <div className="col">
               <img src={this.state.listing.imageUrl} className="img-photo img-view-listing rounded" alt="Photo" />
               <h2 className="post-title">{ this.state.listing.title }</h2>
-              <p>CODE: <b>{ this.state.listing.legoSetCode }</b></p>
-              <p>CONDITION: <b>{ this.state.listing.condition }</b></p>
-              <p>DESCRIPTION: <b>{ this.state.listing.description }</b></p>
-              <p>CATEGORY: <b>{ this.state.listing.category }</b></p>
-              <p>ZIP CODE: <b>{ this.state.listing.zipCode }</b></p>
+              <p><b>CODE:</b> { this.state.listing.legoSetCode }</p>
+              <p><b>CONDITION:</b> { this.state.listing.condition }</p>
+              <p><b>DESCRIPTION:</b> { this.state.listing.description }</p>
+              <p><b>CATEGORY:</b> { this.state.listing.category }</p>
+              <p><b>ZIP CODE:</b> { this.state.listing.zipCode }</p>
             </div>
 
             <div className="col col-lg-4">

@@ -118,6 +118,10 @@
   margin-bottom: 40px;
 }
 
+h2.post-title {
+  margin-bottom: 25px;
+}
+
 footer {
   margin-top: 40px;
   background-color: #FAC80A;
