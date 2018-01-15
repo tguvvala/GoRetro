@@ -115,7 +115,7 @@ class ViewListing extends React.Component {
         }
       });
     } else {
-      alert('PLEASE CHECK YOUR LISTING TO ENSURE ALL REQUIRED FIELDS ARE FILLED IN');
+      alert('PLEASE ENSURE THAT ALL REQUIRED FIELDS ARE FILLED IN');
     }
   }
 
