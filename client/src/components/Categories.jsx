@@ -15,7 +15,7 @@ class Categories extends React.Component {
     return (
       <div>
         <section>
-          <div className="container">
+          <div className="container" id="categoriesArea">
             <div className="row">
               <div className="col-sm-2 categories">
                 <img src="batman.png" className="category img-fluid" data-cat="batman" onClick={this.handleClick.bind(this)}/>

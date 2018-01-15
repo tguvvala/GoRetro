@@ -144,11 +144,11 @@ class ViewListing extends React.Component {
             <div className="col listing-info">
               <img src={this.state.listing.imageUrl} className="img-photo img-view-listing rounded" alt="Photo" />
               <h2 className="post-title">{ this.state.listing.title }</h2>
-              <p>CODE: { this.state.listing.legoSetCode }</p>
-              <p>CONDITION: { this.state.listing.condition }</p>
-              <p>DESCRIPTION: { this.state.listing.description }</p>
-              <p>CATEGORY: { this.state.listing.category }</p>
-              <p>ZIP CODE: { this.state.listing.zipCode }</p>
+              <p>CODE: <span>{ this.state.listing.legoSetCode }</span></p>
+              <p>CONDITION: <span>{ this.state.listing.condition }</span></p>
+              <p>DESCRIPTION: <span>{ this.state.listing.description }</span></p>
+              <p>CATEGORY: <span>{ this.state.listing.category }</span></p>
+              <p>ZIP CODE: <span>{ this.state.listing.zipCode }</span></p>
             </div>
 
             <div className="col col-lg-4">
