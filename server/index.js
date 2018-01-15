@@ -33,6 +33,7 @@ app.get('/listings', (req, res) => {
 });
 
 app.post('/listings', (req, res) => {
+  console.log('---------------=========----', req.body)
   db.saveListing(req.body, function(err, data) {
     if (err) {
       res.status(500).send(err);
