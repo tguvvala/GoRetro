@@ -139,8 +139,7 @@ class NewListing extends React.Component {
       data: this.state,
       dataType: 'json',
       success: function(data) {
-        alert(`YOUR LISTING WAS SUCCESSFULLY ADDED!
-               YOUR LISTING ID IS: ${data['_id']}`);
+        alert('YOUR LISTING WAS SUCCESSFULLY ADDED!\nYOUR LISTING ID IS: ' + ' ' + data['_id']);
         // figure out how to do this the React Router way
         window.location.href = '/';
         // callback(data);
@@ -152,7 +151,7 @@ class NewListing extends React.Component {
   }
 
   handleSelectImageChange() {
-    const files = document.getElementById("selectImage").files;
+    const files = document.getElementById('selectImage').files;
     const file = files[0];
     if (file == null) {
       return alert('No file selected.');

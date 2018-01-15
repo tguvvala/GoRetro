@@ -18,22 +18,22 @@ class Categories extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-sm-2 categories">
-                <img src="batman.png" className="category img-fluid" data-cat="batman" onClick={this.handleClick.bind(this)}/>
+                <img src="batman.png" className="category img-fluid" data-cat="Batman" onClick={this.handleClick.bind(this)}/>
               </div>
               <div className="col-sm-2 categories">
-                <img src="city.png" className="category img-fluid" data-cat="city" onClick={this.handleClick.bind(this)}/>
+                <img src="city.png" className="category img-fluid" data-cat="City" onClick={this.handleClick.bind(this)}/>
               </div>
               <div className="col-sm-2 categories">
-                <img src="ninjago.png" className="category img-fluid" data-cat="ninjago" onClick={this.handleClick.bind(this)}/>
+                <img src="ninjago.png" className="category img-fluid" data-cat="Ninjago" onClick={this.handleClick.bind(this)}/>
               </div>
               <div className="col-sm-2 categories">
-                <img src="friends.png" className="category img-fluid" data-cat="friends" onClick={this.handleClick.bind(this)}/>
+                <img src="friends.png" className="category img-fluid" data-cat="Friends" onClick={this.handleClick.bind(this)}/>
               </div>
               <div className="col-sm-2 categories">
-                <img src="starwars.png" className="category img-fluid" data-cat="starwars" onClick={this.handleClick.bind(this)}/>
+                <img src="starwars.png" className="category img-fluid" data-cat="Star Wars" onClick={this.handleClick.bind(this)}/>
               </div>
               <div className="col-sm-2 categories">
-                <img src="HP.png" className="category img-fluid" data-cat="harrypotter" onClick={this.handleClick.bind(this)}/>
+                <img src="HP.png" className="category img-fluid" data-cat="Harry Potter" onClick={this.handleClick.bind(this)}/>
               </div>
             </div>
           </div>
