@@ -19,6 +19,7 @@ class NewListing extends React.Component {
       imageUrl: ''
     };
 
+    // Generial validation rules
     this.validate = {
       valueEntered: (field) => {
         return this.state[field].length > 0;
@@ -29,6 +30,7 @@ class NewListing extends React.Component {
       }
     };
 
+    // Set validation rules for form fields
     this.defaults = {
       title: {
         value: 'TITLE',
@@ -71,6 +73,7 @@ class NewListing extends React.Component {
     this.uploadFile = this.uploadFile.bind(this);
   }
 
+  // Function that checks all form fields with validation rule
   allFieldsValid() {
     let valid = true;
     for (var key in this.defaults) {
@@ -81,6 +84,9 @@ class NewListing extends React.Component {
     return valid;
   }
 
+
+  // Function that validates an individual form field.
+  // If invalid, error styling is added to the field
   isFieldValid(prop) {
     let next = $(`input[name=${prop}]`)['0'].nextSibling;
     if (!this.defaults[prop].isValid()) {
@@ -93,12 +99,16 @@ class NewListing extends React.Component {
     return true;
   }
 
+  // Function that runs validator once a field becomes inactive
   handleBlur(event) {
     let e = event.nativeEvent.target;
     let prop = e.name;
     this.isFieldValid(prop);
   }
 
+  // Function that checks all form fields for validation
+  // before sending POST request to server.
+  // If all fields are valid, information is sent to server
   handleSubmitClick(e) {
     e.preventDefault();
     if (this.allFieldsValid()) {
@@ -118,6 +128,7 @@ class NewListing extends React.Component {
     });
   }
 
+  // Function that clears form fields after submission
   clearFields() {
     this.setState({
       title: '',
@@ -132,7 +143,7 @@ class NewListing extends React.Component {
     });
   }
 
-  postListing(callback) {
+  postListing() {
     $.ajax({
       type: 'POST',
       url: '/listings',
@@ -140,9 +151,7 @@ class NewListing extends React.Component {
       dataType: 'json',
       success: function(data) {
         alert('YOUR LISTING WAS SUCCESSFULLY ADDED!\nYOUR LISTING ID IS: ' + ' ' + data['_id']);
-        // figure out how to do this the React Router way
         window.location.href = '/';
-        // callback(data);
       }.bind(this),
       error: function(err) {
         console.log('Post listing errors', err);
@@ -204,6 +213,9 @@ class NewListing extends React.Component {
             <li className="breadcrumb-item active"><Link to="/">Home</Link></li>
           </ol>
           <form>
+
+            {/* Image Upload Section */}
+
             <input
               type="hidden"
               id="image-url"
@@ -224,6 +236,9 @@ class NewListing extends React.Component {
               />
             </div>
 
+
+            {/* Title Section */}
+
             <div className="form-group">
               <input
                 type="text"
@@ -238,8 +253,10 @@ class NewListing extends React.Component {
               <small className="form-text text-muted">
                 TITLE
               </small>
-
             </div>
+
+
+            {/* Description Section */}
 
             <div className="form-group">
               <textarea
@@ -256,6 +273,9 @@ class NewListing extends React.Component {
                 DESCRIPTION
               </small>
             </div>
+
+
+            {/* Category Section */}
 
             <div className="form-group">
               <select
@@ -279,6 +299,9 @@ class NewListing extends React.Component {
               </small>
             </div>
 
+
+            {/* Condition Section */}
+
             <div className="form-group">
               <select
                 className="form-control form-control-lg"
@@ -296,6 +319,9 @@ class NewListing extends React.Component {
               </small>
             </div>
 
+
+            {/* Lego Code Section */}
+
             <div className="form-group">
               <input
                 type="text"
@@ -310,6 +336,9 @@ class NewListing extends React.Component {
                 THE LEGO CODE FOR YOUR SET
               </small>
             </div>
+
+
+            {/* Username Section */}
 
             <div className="form-group">
               <input
@@ -327,6 +356,9 @@ class NewListing extends React.Component {
               </small>
             </div>
 
+
+            {/* Email Section */}
+
             <div className="form-group">
               <input
                 type="email"
@@ -343,6 +375,9 @@ class NewListing extends React.Component {
                 EMAIL
               </small>
             </div>
+
+
+            {/* Zip Code Section */}
 
             <div className="form-group">
               <input
