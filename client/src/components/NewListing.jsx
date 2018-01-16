@@ -211,7 +211,7 @@ class NewListing extends React.Component {
               value="imagePlaceholder.png" />
             <img
               id="preview"
-              src="imagePlaceholder.png"
+              src="img/imagePlaceholder.png"
               className="img-photo img-thumbnail rounded"
               alt="Photo" />
             <p id="status">Please select a file</p>
