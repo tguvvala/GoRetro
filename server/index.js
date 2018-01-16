@@ -48,7 +48,7 @@ app.post('/mailer', (req, res) => {
   var message = req.body.message;
   if (name && email && message) {
     mailer.sendMail(name, email, message);
-    console.log(name, email, message)
+    console.log(name, email, message);
     res.sendStatus(200);
   } else {
     res.sendStatus(500);
