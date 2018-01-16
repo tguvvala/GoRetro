@@ -6,6 +6,6 @@ const UserListingEntry = (props) => (
     <td>{ props.createdAt }</td>
     <td>Delete somehow</td>
   </tr>
-)
+);
 
 export default UserListingEntry;
