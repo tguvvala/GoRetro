@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+const config = require('../config');
 
-let url = process.env.MONGODB_URI || 'mongodb://localhost/legoTrader';
+let url = config.MONGODB_URI;
+console.log('-------------', url)
 mongoose.connect(url, { useMongoClient: true });
 
 let db = mongoose.connection;

@@ -1,9 +1,10 @@
 'use strict';
 
 const nodemailer = require('nodemailer');
+const config = require('../config.js');
 
-let user = process.env.SENDGRID_USER;
-let password = process.env.SENDGRID_PASSWORD;
+let user = config.SENDGRID_USER;
+let password = config.SENDGRID_PASSWORD;
 
 let transporter = nodemailer.createTransport({
   service: 'SendGrid',
@@ -15,7 +16,7 @@ let transporter = nodemailer.createTransport({
 
 let sendMail = function(name, email, message) {
   let mailOptions = {
-    from: 'grantspilsbury@gmail.com',
+    from: user,
     to: email,
     subject: 'Contact from a buyer',
     text: 'Hello',
