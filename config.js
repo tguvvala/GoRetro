@@ -1,11 +1,6 @@
-module.exports = {
-  aws: {
-    accessKeyID: 'AKIAINIPCNUONYMQQAWQ',
-    secretAccessKey: '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'
-  },
-  cloudinary: {
-    API_KEY: '719548954131794',
-    API_SECRET: 'jMq9kULqYFTyAC-lEBRUoi_P6y8',
-    ENV_VAR: 'cloudinary://719548954131794:jMq9kULqYFTyAC-lEBRUoi_P6y8@khamd002/'
-  }
-};
+module.exports.AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID || 'AKIAIYACVUQX5VLNLLQQ';
+module.exports.AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY || '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';
+module.exports.S3_BUCKET = process.env.S3_BUCKET || 'legotestimages';
+module.exports.SENDGRID_USER = process.env.SENDGRID_USER || 'grantspilsbury@gmail.com';
+module.exports.SENDGRID_PASSWORD = process.env.SENDGRID_PASSWORD || 'Tinley123';
+module.exports.MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/legoTrader'
