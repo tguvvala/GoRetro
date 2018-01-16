@@ -31,7 +31,7 @@ Lego Trader lets you trade your lego sets with other Lego enthusiasts!
 1. In the root directory of your app run ```npm install```
 2. Sign up for a SendGrid account and take note of the username and password that you used to login to the site.
 3. Sign in to Amazon Web Services. Locate and take note of your (IAM) credentials (API key and secret).
-4. Create a bucket on AWS S3 with public read access. Keep track of the bucket name. Make sure you set up CORS permissions (https://devcenter.heroku.com/articles/s3-upload-node).
+4. Create a bucket on AWS S3 with public read access. Keep track of the bucket name. [Make sure you set up CORS permissions](https://devcenter.heroku.com/articles/s3-upload-node).
 5. In the root of your app change the name of config.example.js to config.js. You can update your local variables here.
 6. Start the React server by running ```npm run react-server```
 7. Start the node server by running ```npm run server-dev```
