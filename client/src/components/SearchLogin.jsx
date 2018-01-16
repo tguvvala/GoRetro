@@ -6,12 +6,12 @@ const SearchLogin = (props) => (
     <section>
       <div className="container">
         <div className="row">
-           <div className="col">
+          <div className="col">
             <Link to='/new-listing'>
-              <img className="ctabuttons float-right" src="post.png" />
+              <img className="ctabuttons float-right" src="img/post.png" />
             </Link>
             <Link to="/sign-in">
-              <img className="ctabuttons float-right" src="login.png" />
+              <img className="ctabuttons float-right" src="img/login.png" />
             </Link>
           </div>
         </div>
