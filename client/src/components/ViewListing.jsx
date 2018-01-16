@@ -18,6 +18,8 @@ class ViewListing extends React.Component {
       listing: ''
     };
 
+
+    // Generial validation rules
     this.validate = {
       valueEntered: (field) => {
         return this.state[field].length > 0;
@@ -28,6 +30,7 @@ class ViewListing extends React.Component {
       }
     };
 
+    // Set validation rules for form fields
     this.defaults = {
       name: {
         errorMessage: 'NAME REQUIRED',
@@ -45,6 +48,9 @@ class ViewListing extends React.Component {
     };
   }
 
+  // Once ready, send GET request to server to obtain
+  // information of the clicked listing from the previous
+  // page.
   componentDidMount() {
     this.getListing(this.props.location.search, (data) => {
       this.setState({
@@ -53,6 +59,7 @@ class ViewListing extends React.Component {
     });
   }
 
+  // Function that checks all form fields with validation rule
   allFieldsValid() {
     let valid = true;
     for (var key in this.defaults) {
@@ -63,6 +70,8 @@ class ViewListing extends React.Component {
     return valid;
   }
 
+  // Function that validates an individual form field.
+  // If invalid, error styling is added to the field
   isFieldValid(prop) {
     let next = $(`input[name=${prop}]`)['0'].nextSibling;
     if (!this.defaults[prop].isValid()) {
@@ -75,6 +84,7 @@ class ViewListing extends React.Component {
     return true;
   }
 
+  // Function that runs validator once a field becomes inactive
   handleBlur(event) {
     let e = event.nativeEvent.target;
     let prop = e.name;
@@ -119,6 +129,9 @@ class ViewListing extends React.Component {
     }
   }
 
+  // Sends a query for a listing that matches listing
+  // ID. ID is passed via the path in the Listing
+  // component
   getListing(id, callback) {
     $.ajax({
       type: 'GET',
@@ -141,6 +154,9 @@ class ViewListing extends React.Component {
             <li className="breadcrumb-item active"><Link to="/">Home</Link></li>
           </ol>
           <div className="row">
+
+            {/* Render selected Listing Information */}
+
             <div className="col listing-info">
               <img src={this.state.listing.imageUrl} className="img-photo img-view-listing rounded" alt="Photo" />
               <h2 className="post-title">{ this.state.listing.title }</h2>
@@ -150,6 +166,8 @@ class ViewListing extends React.Component {
               <p>CATEGORY: <span>{ this.state.listing.category }</span></p>
               <p>ZIP CODE: <span>{ this.state.listing.zipCode }</span></p>
             </div>
+
+            {/* Name Section */}
 
             <div className="col col-lg-4">
               <h3 className="contact-header">Contact the owner</h3>
@@ -168,6 +186,8 @@ class ViewListing extends React.Component {
                   <p className=""></p>
                 </div>
 
+                {/* Email Section */}
+
                 <div className="form-group">
                   <input
                     type="email"
@@ -182,6 +202,8 @@ class ViewListing extends React.Component {
                   />
                   <p className=""></p>
                 </div>
+
+                {/* Message Section */}
 
                 <div className="form-group">
                   <textarea
