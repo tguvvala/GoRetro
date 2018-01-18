@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const S3_BUCKET = config.S3_BUCKET;
+const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-east-2';
 
 app.get('/', (req, res) => {
