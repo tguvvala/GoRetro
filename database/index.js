@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const config = require('../config.js');
+// const config = require('../config.js');
 
 let url = process.env.MONGODB_URI;
 console.log('-------------', url)

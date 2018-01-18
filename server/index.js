@@ -3,7 +3,7 @@ const express = require('express');
 const db = require('../database/index');
 const mailer = require('../mailer/mailer');
 const aws = require('aws-sdk');
-const config = require('../config.js');
+// const config = require('../config.js');
 
 const port = process.env.PORT || 8080;
 
