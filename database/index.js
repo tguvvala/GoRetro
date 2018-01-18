@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-// const config = require('../config.js');
 
-let url = process.env.MONGODB_URI;
+// let url = process.env.MONGODB_URI;
+let url = 'mongodb://localhost/voyagelego'
 console.log('-------------', url)
 mongoose.connect(url, { useMongoClient: true });
 
