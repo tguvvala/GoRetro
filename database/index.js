@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // let url = process.env.MONGODB_URI;
-let url = 'mongodb://localhost/voyagelego'
+let url = 'mongodb://localhost/zaylegos'
 console.log('-------------', url)
 mongoose.connect(url, { useMongoClient: true });
 
