@@ -1,10 +1,10 @@
 'use strict';
 
 const nodemailer = require('nodemailer');
-const config = require('../config.js');
+// const config = require('../config.js');
 
-let user = config.SENDGRID_USER;
-let password = config.SENDGRID_PASSWORD;
+let user = process.env.SENDGRID_USER;
+let password = process.env.SENDGRID_PASSWORD;
 
 let transporter = nodemailer.createTransport({
   service: 'SendGrid',
