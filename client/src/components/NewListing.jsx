@@ -416,4 +416,3 @@ class NewListing extends React.Component {
 }
 
 export default NewListing;
-
