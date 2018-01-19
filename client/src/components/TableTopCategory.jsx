@@ -17,9 +17,9 @@ class TableTopCategory extends React.Component {
 
   render() {
     return (
-      <Dropdown text='Tabletops' value='Tabletops'>
+      <Dropdown text='Toys/Games' value='Toys/Games'>
       <Dropdown.Menu >
-        <Dropdown.Item  onClick={this.handleCategorySelect.bind(this)} text='All' value='Toys/Tabletops'/>
+        <Dropdown.Item  onClick={this.handleCategorySelect.bind(this)} text='All' value='Toys/Games'/>
         <Dropdown.Item  onClick={this.handleSubCategorySelect.bind(this)} text='Board Games' value='Board Games'/>
         <Dropdown.Item onClick={this.handleSubCategorySelect.bind(this)} text='Toys' value='Toys'/>
         <Dropdown.Item onClick={this.handleSubCategorySelect.bind(this)} text='Collectibles' value='Collectibles'/>
