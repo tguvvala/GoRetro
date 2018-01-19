@@ -1,5 +1,7 @@
 import React from 'react';
-import ElectronicsCategory from './ElectronicsCategory.jsx'
+import ElectronicsCategory from './ElectronicsCategory.jsx';
+import TableTopCategory from './TableTopCategory.jsx';
+import GearCategory from './GearCategory.jsx';
 
 
 class Categories extends React.Component {
@@ -22,10 +24,10 @@ class Categories extends React.Component {
                 <ElectronicsCategory handleCategoryClick={this.props.handleCategoryClick} handleSubCategoryClick= { this.props.handleSubCategoryClick} />
               </div>
               <div className="col-sm-2 categories">
-                <img src="img/city.png" className="category img-fluid" data-cat="city" onClick={ this.handleClick.bind(this) }/>
+                <TableTopCategory handleCategoryClick={this.props.handleCategoryClick} handleSubCategoryClick= { this.props.handleSubCategoryClick} />
               </div>
               <div className="col-sm-2 categories">
-                <img src="img/ninjago.png" className="category img-fluid" data-cat="ninjago" onClick={ this.handleClick.bind(this) }/>
+                <GearCategory handleCategoryClick={this.props.handleCategoryClick} handleSubCategoryClick= { this.props.handleSubCategoryClick} />
               </div>
             </div>
           </div>

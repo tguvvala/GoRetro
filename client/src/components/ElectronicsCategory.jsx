@@ -15,7 +15,6 @@ class ElectronicsCategory extends React.Component {
     this.props.handleSubCategoryClick(data.value)
   }
 
-
   render() {
     return (
       <Dropdown text='Electronics' value='Electronics'>
@@ -29,9 +28,5 @@ class ElectronicsCategory extends React.Component {
   );
   }
 }
-
-
-
-
 
 export default ElectronicsCategory;
