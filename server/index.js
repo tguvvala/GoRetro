@@ -4,12 +4,19 @@ const session = require('express-session');
 const db = require('../database/index');
 const mailer = require('../mailer/mailer');
 const aws = require('aws-sdk');
+<<<<<<< b7b468f023ea224e6ab564e3bed97212e427bf52
 var passport = require('passport');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 var Strategy = require('passport-facebook').Strategy;
 const User = db.User;
+=======
+const flash = require('connect-flash');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const router = express.Router();
+>>>>>>> begun work on Local Strategy authentication
 
 const port = process.env.PORT || 8080;
 
@@ -58,6 +65,7 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 require('../config/passport.js');
+<<<<<<< b7b468f023ea224e6ab564e3bed97212e427bf52
 
 app.use(session({
   secret: 'b12gdh',
@@ -93,6 +101,8 @@ app.get('/logOut', (req, res) => {
     res.send(false);
   });
 });
+=======
+>>>>>>> begun work on Local Strategy authentication
 
 const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-east-2';
