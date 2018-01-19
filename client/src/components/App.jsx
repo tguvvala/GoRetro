@@ -2,12 +2,15 @@ import React from 'react';
 import RouteProps from 'react-route-props';
 import $ from 'jquery';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {StripeProvider} from 'react-stripe-elements';
 import Home from './Home.jsx';
 import NewListing from './NewListing.jsx';
 import ViewListing from './ViewListing.jsx';
 import UserListings from './UserListings.jsx';
 import SignIn from './SignIn.jsx';
 import SignUp from './SignUp.jsx';
+import passport from 'passport';
+import flash from 'connect-flash';
 
 class App extends React.Component {
   constructor(props) {

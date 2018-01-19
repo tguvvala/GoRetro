@@ -1,8 +1,13 @@
 const bodyParser = require('body-parser');
 const express = require('express');
+const session = require('express-session');
 const db = require('../database/index');
 const mailer = require('../mailer/mailer');
 const aws = require('aws-sdk');
+const flash = require('connect-flash');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const router = express.Router();
 
 const port = process.env.PORT || 8080;
 
@@ -11,6 +16,14 @@ const app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(require('express-session')({
+  secret: 'something something darkside',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+require('../config/passport.js');
 
 const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-east-2';
@@ -18,7 +31,24 @@ aws.config.region = 'us-east-2';
 app.get('/', (req, res) => {
   res.render('index', { user: req.user });
 });
+/*
+============= Login Through Passport =======
+*/
+// app.post('/login',
+//   passport.authenticate('local'),
+//   function(req, res) {
+//     // If this funct  ion gets called, authentication was successful.
+//     // `req.user` contains the authenticated user.
+//     res.redirect('/users/' + req.user.username);
+//   });
 
+app.post('/signup', passport.authenticate('local.signup', {
+  successRedirect: '/',
+  failureRedirect: '/signup'
+}))
+/*
+=============================================
+*/
 app.get('/listings', (req, res) => {
   let queryTerm = req.query;
 
