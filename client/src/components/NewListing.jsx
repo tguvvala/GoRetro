@@ -287,12 +287,9 @@ class NewListing extends React.Component {
                 onChange={this.handleChange}
               >
                 <option value="">-- CATEGORY --</option>
-                <option value="starwars">Star Wars</option>
-                <option value="harrypotter">Harry Potter</option>
-                <option value="city">City</option>
-                <option value="friends">Friends</option>
-                <option value="ninjago">Ninjago</option>
-                <option value="batman">Batman</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Toys/Games">Toys/Games</option>
+                <option value="Gear">Gear</option>
               </select>
               <small className="form-text text-muted">
                 CATEGORY

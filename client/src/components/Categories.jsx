@@ -1,4 +1,7 @@
 import React from 'react';
+import ElectronicsCategory from './ElectronicsCategory.jsx';
+import TableTopCategory from './TableTopCategory.jsx';
+import GearCategory from './GearCategory.jsx';
 
 
 class Categories extends React.Component {
@@ -18,22 +21,13 @@ class Categories extends React.Component {
           <div className="container" id="categoriesArea">
             <div className="row">
               <div className="col-sm-2 categories">
-                <img src="img/batman.png" className="category img-fluid" data-cat="batman" onClick={ this.handleClick.bind(this) }/>
+                <ElectronicsCategory handleCategoryClick={this.props.handleCategoryClick} handleSubCategoryClick= { this.props.handleSubCategoryClick} />
               </div>
               <div className="col-sm-2 categories">
-                <img src="img/city.png" className="category img-fluid" data-cat="city" onClick={ this.handleClick.bind(this) }/>
+                <TableTopCategory handleCategoryClick={this.props.handleCategoryClick} handleSubCategoryClick= { this.props.handleSubCategoryClick} />
               </div>
               <div className="col-sm-2 categories">
-                <img src="img/ninjago.png" className="category img-fluid" data-cat="ninjago" onClick={ this.handleClick.bind(this) }/>
-              </div>
-              <div className="col-sm-2 categories">
-                <img src="img/friends.png" className="category img-fluid" data-cat="friends" onClick={ this.handleClick.bind(this) }/>
-              </div>
-              <div className="col-sm-2 categories">
-                <img src="img/starwars.png" className="category img-fluid" data-cat="starwars" onClick={ this.handleClick.bind(this) }/>
-              </div>
-              <div className="col-sm-2 categories">
-                <img src="img/HP.png" className="category img-fluid" data-cat="harrypotter" onClick={ this.handleClick.bind(this) }/>
+                <GearCategory handleCategoryClick={this.props.handleCategoryClick} handleSubCategoryClick= { this.props.handleSubCategoryClick} />
               </div>
             </div>
           </div>
@@ -45,3 +39,4 @@ class Categories extends React.Component {
 }
 
 export default Categories;
+

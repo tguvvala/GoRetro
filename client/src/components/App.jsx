@@ -15,9 +15,11 @@ class App extends React.Component {
     this.getListings = this.getListings.bind(this);
     this.filterListings = this.filterListings.bind(this);
     this.handleCategoryClick = this.handleCategoryClick.bind(this);
+    this.handleSubCategoryClick = this.handleSubCategoryClick.bind(this);
     this.state = {
       listings: [],
-      category: ''
+      category: '',
+      subCategory: ''
     };
   }
 
@@ -34,6 +36,13 @@ class App extends React.Component {
 
     this.setState({ category: category });
     this.filterListings(category);
+  }
+
+  handleSubCategoryClick(subCategory) {
+    subCategory = subCategory || '';
+
+    this.setState({ subCategory: subCategory });
+    // this.filterListings(category, subCategory );
   }
 
   filterListings(category) {
@@ -68,7 +77,7 @@ class App extends React.Component {
   render() {
     return (
       <Switch>
-        <RouteProps exact path='/' component={ Home } listings={ this.state.listings } category={ this.state.category } handleCategoryClick={ this.handleCategoryClick } setSelectedListing={ this.setSelectedListing }/>
+        <RouteProps exact path='/' component={ Home } listings={ this.state.listings } category={ this.state.category } handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick } setSelectedListing={ this.setSelectedListing }/>
         <Route exact path='/sign-up' component={ SignUp }/>
         <Route exact path='/sign-in' component={ SignIn }/>
         <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 

@@ -7,7 +7,7 @@ const Home = (props) => (
   <div>
     <main role="main">
       <SearchLogin />
-      <Categories category={ props.category } handleCategoryClick={ props.handleCategoryClick }/>
+      <Categories category={ props.category } handleCategoryClick={ props.handleCategoryClick } handleSubCategoryClick={ props.handleSubCategoryClick} />
       <Listings listings={ props.listings } setSelectedListing={ props.setSelectedListing } />
     </main>
   </div>
