@@ -2,6 +2,7 @@ import React from 'react';
 import RouteProps from 'react-route-props';
 import $ from 'jquery';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {StripeProvider} from 'react-stripe-elements';
 import Home from './Home.jsx';
 import NewListing from './NewListing.jsx';
 import ViewListing from './ViewListing.jsx';

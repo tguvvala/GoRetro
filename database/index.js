@@ -9,6 +9,7 @@ let url = process.env.MONGODB_URI;
 
 
 mongoose.connect(url, { useMongoClient: true });
+require('../config/passport');
 
 let db = mongoose.connection;
 
