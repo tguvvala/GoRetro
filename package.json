@@ -23,9 +23,12 @@
     "react-form-validator-core": "^0.3.0",
     "react-route-props": "^1.0.4",
     "react-router-dom": "^4.2.2",
+<<<<<<< HEAD
     "request": "^2.83.0",
     "semantic-react": "^0.12.0",
     "semantic-ui-react": "^0.77.2"
+=======
+>>>>>>> 4e265bd97ecab982a3c1c66830f4d6d96b1dcd85
     "react-stripe-elements": "^1.4.0",
     "request": "^2.83.0",
     "stripe": "^5.4.0"
