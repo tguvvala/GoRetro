@@ -10,6 +10,11 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 var Strategy = require('passport-facebook').Strategy;
 const User = db.User;
+const flash = require('connect-flash');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const router = express.Router();
+
 const port = process.env.PORT || 8080;
 
 const url = 'http://localhost:8080';
