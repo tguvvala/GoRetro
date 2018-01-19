@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 let url = 'mongodb://localhost/voyagelego'
 console.log('-------------', url)
 mongoose.connect(url, { useMongoClient: true });
+require('../config/passport');
 
 let db = mongoose.connection;
 
