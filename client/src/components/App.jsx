@@ -12,6 +12,7 @@ import SignUp from './SignUp.jsx';
 import passport from 'passport';
 import flash from 'connect-flash';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -123,6 +124,16 @@ render() {
         <RouteProps path='/user-listings' component={ UserListings } listings={ this.state.listings }/> 
         <Route path='/view-listing' component={ ViewListing } />
       </Switch>
+      <StripeProvider apiKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh">
+        <Switch>
+          <RouteProps exact path='/' component={ Home } listings={ this.state.listings } category={ this.state.category } handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick } setSelectedListing={ this.setSelectedListing }/>
+          <Route exact path='/sign-up' component={ SignUp }/>
+          <Route exact path='/sign-in' component={ SignIn }/>
+          <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 
+          <RouteProps path='/user-listings' component={ UserListings } listings={ this.state.listings }/> 
+          <Route path='/view-listing' component={ ViewListing } />
+        </Switch>
+      </StripeProvider>
     );
   }
 
