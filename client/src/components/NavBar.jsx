@@ -8,7 +8,7 @@ const NavBar = (props) => (
       <Container>
         <Menu.Item as='a' header>
           <Image
-            size='mini'
+            size='small'
             src='img/banner.png'
             style={{ marginRight: '1.5em' }}
           />
