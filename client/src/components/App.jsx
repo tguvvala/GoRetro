@@ -17,6 +17,7 @@ class App extends React.Component {
     this.filterListings = this.filterListings.bind(this);
     this.handleCategoryClick = this.handleCategoryClick.bind(this);
     this.handleSubCategoryClick = this.handleSubCategoryClick.bind(this);
+    this.resetListings = this.resetListings.bind(this);
     this.state = {
       listings: [],
       category: '',
@@ -69,14 +70,28 @@ class App extends React.Component {
   handleCategoryClick(category) {
     category = category || '';
 
-    this.setState({ category: category });
+    this.setState({ category: category, subCategory: '' });
     this.filterListings('category', category );
+  }
+  resetListings() {
+    this.setState({category: '', subCategory: ''});
+    this.filterListings('');
   }
 
   handleSubCategoryClick(subCategory) {
+    const categoryPairs = {
+      'Console': 'Electronics',
+      'PC': 'Electronics',
+      'Handheld': 'Electronics',
+      'Board Games': 'Toys/Games',
+      'Toys': 'Toys/Games',
+      'Collectibles': 'Toys/Games',
+      'Mens': 'Gear',
+      'Womens': 'Gear',
+      'Kids': 'Gear'
+    };
     subCategory = subCategory || '';
-
-    this.setState({ subCategory: subCategory });
+    this.setState({ category: categoryPairs[subCategory], subCategory: subCategory });
     this.filterListings('subCategory', subCategory );
   }
 
@@ -116,7 +131,8 @@ render() {
       <div>
       <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn} handleLogOut={this.handleLogOut.bind(this)} />
       <Switch>
-        <RouteProps exact path='/' component={ Home } isSignedIn={this.state.isSignedIn} userId={this.state.userId} username={this.state.username} handleLogOut={this.handleLogOut.bind(this)} listings={ this.state.listings } category={ this.state.category } subCategory ={this.state.subCategory}handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick } setSelectedListing={ this.setSelectedListing }/>
+        <RouteProps exact path='/' component={ Home } isSignedIn={this.state.isSignedIn} userId={this.state.userId} username={this.state.username} handleLogOut={this.handleLogOut.bind(this)} listings={ this.state.listings } category={ this.state.category } subCategory ={this.state.subCategory}handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick }
+          resetListings = {this.resetListings} setSelectedListing={ this.setSelectedListing }/>
         <Route exact path='/sign-up' component={ SignUp }/>
         <Route exact path='/sign-in' component={ SignIn }/>
         <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 

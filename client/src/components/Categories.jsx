@@ -2,7 +2,7 @@ import React from 'react';
 import ElectronicsCategory from './ElectronicsCategory.jsx';
 import TableTopCategory from './TableTopCategory.jsx';
 import GearCategory from './GearCategory.jsx';
-
+import AllListingsButton from './AllListingsButton.jsx';
 
 class Categories extends React.Component {
   constructor(props) {
@@ -29,6 +29,10 @@ class Categories extends React.Component {
               <div className="col-sm-2 categories">
                 <GearCategory handleCategoryClick={this.props.handleCategoryClick} handleSubCategoryClick= { this.props.handleSubCategoryClick} />
               </div>
+              <div className="col-sm-2 categories">
+                <AllListingsButton handleClick={this.props.resetListings} />
+              </div>
+
             </div>
           </div>
         </section>
