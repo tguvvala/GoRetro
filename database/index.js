@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-let url = process.env.MONGODB_URI;
+// let url = process.env.MONGODB_URI;
 
 
 
-// let url = 'mongodb://localhost/voyagelego';
+let url = 'mongodb://localhost/voyagelego';
 
 
 

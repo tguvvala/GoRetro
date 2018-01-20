@@ -6,8 +6,8 @@ import Categories from './Categories.jsx';
 const Home = (props) => (
   <div>
     <main role="main">
-      <Categories category={ props.category } handleCategoryClick={ props.handleCategoryClick } handleSubCategoryClick={ props.handleSubCategoryClick} resetListings ={props.resetListings}  />
-      <Listings listings={ props.listings } category={props.category} subCategory={props.subCategory} setSelectedListing={ props.setSelectedListing } />
+      <Categories category={ props.category } handleCategoryClick={ props.handleCategoryClick } handleSubCategoryClick={ props.handleSubCategoryClick} />
+      <Listings listings={ props.listings } setSelectedListing={ props.setSelectedListing } />
     </main>
   </div>
 );
@@ -15,4 +15,3 @@ const Home = (props) => (
 export default Home;
 
 
-// <SearchLogin isSignedIn={props.isSignedIn} userId={props.userId} username={props.username} handleLogOut={props.handleLogOut}/>

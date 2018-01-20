@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Divider, Dropdown, Header, Image, List, Menu } from 'semantic-ui-react';
+import { Container, Divider, Dropdown, Header, Image, List, Menu, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const NavBar = (props) => (
@@ -8,7 +8,7 @@ const NavBar = (props) => (
       <Container>
         <Menu.Item as='a' header>
           <Image
-            size='small'
+            size='tiny'
             src='img/banner.png'
             style={{ marginRight: '1.5em' }}
           />
@@ -21,6 +21,13 @@ const NavBar = (props) => (
       }
 
       <Menu.Item as={Link} to='/new-listing'>Post</Menu.Item>
+      <Menu.Item as={Link} to='/checkout'>
+        <Button>
+          <Button.Content>
+            <Icon name='shop' />
+          </Button.Content>
+        </Button> 
+      </Menu.Item>
 
 
         <Dropdown item simple position='right' text={props.username || 'My Account'}>
