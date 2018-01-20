@@ -9,6 +9,7 @@ let url = 'mongodb://localhost/voyagelego';
 
 
 mongoose.connect(url, { useMongoClient: true });
+require('../config/passport');
 
 let db = mongoose.connection;
 
