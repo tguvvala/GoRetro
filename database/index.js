@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 
 // let url = process.env.MONGODB_URI;
 
+
 let url = 'mongodb://localhost/zaylegos';
+
 
 mongoose.connect(url, { useMongoClient: true });
 
