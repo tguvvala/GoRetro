@@ -141,7 +141,6 @@ render() {
             <Route path='/view-listing' component={ ViewListing } />
             <Route path='/checkout' component={ Checkout } />
           </Switch>
-
       </div>
     );
   }
