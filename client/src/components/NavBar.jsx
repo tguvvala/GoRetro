@@ -44,10 +44,13 @@ const NavBar = (props) => (
         <Dropdown item simple position='right' text={props.username || 'My Account'}>
           <Dropdown.Menu>
             <Dropdown.Item>My Profile</Dropdown.Item>
+<<<<<<< 05e784bc536de034e80e4a23004f5181d42d82c6
 <<<<<<< e0d29c36b40f1bad63ceec37398b2b0f6b02eda9
 =======
             <Dropdown.Item>List Item</Dropdown.Item>
 >>>>>>> Add functioning NavBar
+=======
+>>>>>>> Remove extra dropdown list item
           </Dropdown.Menu>
         </Dropdown>
 
