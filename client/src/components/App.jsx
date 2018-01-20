@@ -9,20 +9,8 @@ import ViewListing from './ViewListing.jsx';
 import UserListings from './UserListings.jsx';
 import SignIn from './SignIn.jsx';
 import SignUp from './SignUp.jsx';
-<<<<<<< f1e5cbba9a04d356fabee9fdff83fee8d8d0b11a
 import NavBar from './NavBar.jsx';
-<<<<<<< 030a647f8194faa9f27a40681fb07a64a74c47ac
-<<<<<<< e0d29c36b40f1bad63ceec37398b2b0f6b02eda9
 import Checkout from './Checkout.jsx';
-=======
->>>>>>> Add functioning NavBar
-=======
-=======
-import passport from 'passport';
-import flash from 'connect-flash';
->>>>>>> begun work on Local Strategy authentication
->>>>>>> fixed merge conflicts
-
 
 class App extends React.Component {
   constructor(props) {
@@ -143,7 +131,6 @@ render() {
     // }
     return (
       <div>
-<<<<<<< e0d29c36b40f1bad63ceec37398b2b0f6b02eda9
         <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn} handleLogOut={this.handleLogOut.bind(this)} />
           <Switch>
             <RouteProps exact path='/' component={ Home } isSignedIn={this.state.isSignedIn} userId={this.state.userId} username={this.state.username} handleLogOut={this.handleLogOut.bind(this)} listings={ this.state.listings } category={ this.state.category } subCategory ={this.state.subCategory}handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick } setSelectedListing={ this.setSelectedListing }/>
@@ -154,18 +141,7 @@ render() {
             <Route path='/view-listing' component={ ViewListing } />
             <Route path='/checkout' component={ Checkout } />
           </Switch>
-=======
-      <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn} handleLogOut={this.handleLogOut.bind(this)} />
-      <Switch>
-        <RouteProps exact path='/' component={ Home } isSignedIn={this.state.isSignedIn} userId={this.state.userId} username={this.state.username} handleLogOut={this.handleLogOut.bind(this)} listings={ this.state.listings } category={ this.state.category } subCategory ={this.state.subCategory}handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick }
-          resetListings = {this.resetListings} setSelectedListing={ this.setSelectedListing }/>
-        <Route exact path='/sign-up' component={ SignUp }/>
-        <Route exact path='/sign-in' component={ SignIn }/>
-        <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 
-        <RouteProps path='/user-listings' component={ UserListings } listings={ this.state.listings }/> 
-        <Route path='/view-listing' component={ ViewListing } />
-      </Switch>
->>>>>>> Add functioning NavBar
+
       </div>
     );
   }
