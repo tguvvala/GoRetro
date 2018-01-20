@@ -26,7 +26,6 @@ const NavBar = (props) => (
         <Dropdown item simple position='right' text={props.username || 'My Account'}>
           <Dropdown.Menu>
             <Dropdown.Item>My Profile</Dropdown.Item>
-            <Dropdown.Item>List Item</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
 
