@@ -11,11 +11,11 @@ class NewListing extends React.Component {
       title: '',
       description: '',
       category: '',
+      subCategory: '',
       username: '',
       email: '',
       zipCode: '',
       condition: '',
-      legoSetCode: '',
       imageUrl: ''
     };
 
@@ -134,11 +134,11 @@ class NewListing extends React.Component {
       title: '',
       description: '',
       category: '',
+      subCategory: '',
       username: '',
       email: '',
       zipCode: '',
       condition: '',
-      legoSetCode: '',
       imageUrl: ''
     });
   }
@@ -296,6 +296,33 @@ class NewListing extends React.Component {
               </small>
             </div>
 
+            {/*SubCategory Section*/}
+
+            <div className="form-group">
+              <select
+                required="true"
+                className="form-control form-control-lg"
+                id="subCategorySelect"
+                name="subCategory"
+                value={this.state.subCategory}
+                onChange={this.handleChange}
+              >
+                <option value="">-- SUBCATEGORY --</option>
+                <option value="Console">Console</option>
+                <option value="PC">PC</option>
+                <option value="Handheld">Handheld</option>
+                <option value="Board Games">Board Games</option>
+                <option value="Toys">Toys</option>
+                <option value="Collectibles">Collectibles</option>
+                <option value="Mens">Mens</option>
+                <option value="Womens">Womens</option>
+                <option value="Kids">Kids</option>
+              </select>
+              <small className="form-text text-muted">
+                SUBCATEGORY
+              </small>
+            </div>
+
 
             {/* Condition Section */}
 
@@ -315,25 +342,6 @@ class NewListing extends React.Component {
                 CONDITION
               </small>
             </div>
-
-
-            {/* Lego Code Section */}
-
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control form-control-lg"
-                id="legoSetCodeInput"
-                placeholder="Lego Set Code"
-                name="legoSetCode"
-                value={this.state.legoSetCode}
-                onChange={this.handleChange}
-              />
-              <small className="form-text text-muted">
-                THE LEGO CODE FOR YOUR SET
-              </small>
-            </div>
-
 
             {/* Username Section */}
 

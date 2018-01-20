@@ -19,36 +19,70 @@ class App extends React.Component {
     this.state = {
       listings: [],
       category: '',
-      subCategory: ''
+      subCategory: '',
+      isSignedIn: false,
+      userId: '',
+      username: ''
     };
   }
 
   // poll server every second for new listings
   componentDidMount() {
+    this.signIn();
     this.getListings();
     setInterval(() => {
       this.getListings;
     }, 1000);
   }
 
+  signIn() {
+    var that = this;
+    $.ajax({
+      url: '/checkSession',
+      success: function(response) {
+        that.setState({ isSignedIn: response.isSignedIn, userId: response.userId, username: response.username });
+      },
+      error: function() {
+        console.log('check access token error');
+      }
+    });
+  }
+
+  handleLogOut() {
+    this.logOut();
+  }
+
+  logOut() {
+    var that = this;
+    $.ajax({
+      url: '/logOut',
+      success: function(isSignedIn) {
+        that.setState({ isSignedIn: isSignedIn, userId: '', username: '' });
+      },
+      error: function() {
+        console.log('logout error');
+      }
+    });
+  }
+
   handleCategoryClick(category) {
     category = category || '';
 
     this.setState({ category: category });
-    this.filterListings(category);
+    this.filterListings('category', category );
   }
 
   handleSubCategoryClick(subCategory) {
     subCategory = subCategory || '';
 
     this.setState({ subCategory: subCategory });
-    // this.filterListings(category, subCategory );
+    this.filterListings('subCategory', subCategory );
   }
 
-  filterListings(category) {
+  filterListings(catType, name) {
     var that = this;
     $.ajax({
-      url: '/listings?category=' + category,
+      url: `/listings?${catType}=${name}`,
       success: (listings) => {
         that.setState({
           listings: listings
@@ -73,11 +107,13 @@ class App extends React.Component {
       }
     });
   }
+render() {
+    // if (this.state.isSignedIn) {
 
-  render() {
+    // }
     return (
       <Switch>
-        <RouteProps exact path='/' component={ Home } listings={ this.state.listings } category={ this.state.category } handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick } setSelectedListing={ this.setSelectedListing }/>
+        <RouteProps exact path='/' component={ Home } isSignedIn={this.state.isSignedIn} userId={this.state.userId} username={this.state.username} handleLogOut={this.handleLogOut.bind(this)} listings={ this.state.listings } category={ this.state.category } handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick } setSelectedListing={ this.setSelectedListing }/>
         <Route exact path='/sign-up' component={ SignUp }/>
         <Route exact path='/sign-in' component={ SignIn }/>
         <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 
@@ -86,6 +122,26 @@ class App extends React.Component {
       </Switch>
     );
   }
+
+// render () {
+//     if (this.state.isSignedIn) {
+//       return (
+//         <div>
+//           <p>Welcome</p>
+//           <a onClick={ this.handleLogOut.bind(this) }> Log out</a>
+//         </div>
+//       )
+//     } else {
+//       return (
+//         <div>
+//         <p>Sign in</p>
+//           <a href="/login/facebook">Log In with Facebook</a>
+//         </div>
+//       )
+//     }
+//   }
+
 }
+
 
 export default App;
