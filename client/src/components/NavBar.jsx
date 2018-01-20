@@ -28,9 +28,6 @@ const NavBar = (props) => (
           </Button.Content>
         </Button> 
       </Menu.Item>
-
-
-
         <Dropdown item simple position='right' text={props.username || 'My Account'}>
           <Dropdown.Menu>
             <Dropdown.Item>My Profile</Dropdown.Item>
@@ -44,5 +41,4 @@ const NavBar = (props) => (
     </Menu>
   </div>
 );
-
 export default NavBar;
