@@ -74,14 +74,24 @@ class App extends React.Component {
   handleCategoryClick(category) {
     category = category || '';
 
-    this.setState({ category: category });
+    this.setState({ category: category, subCategory: '' });
     this.filterListings('category', category );
   }
 
   handleSubCategoryClick(subCategory) {
+    const categoryPairs = {
+      'Console': 'Electronics',
+      'PC': 'Electronics',
+      'Handheld': 'Electronics',
+      'Board Games': 'Toys/Games',
+      'Toys': 'Toys/Games',
+      'Collectibles': 'Toys/Games',
+      'Mens': 'Gear',
+      'Womens': 'Gear',
+      'Kids': 'Gear'
+    };
     subCategory = subCategory || '';
-
-    this.setState({ subCategory: subCategory });
+    this.setState({ category: categoryPairs[subCategory], subCategory: subCategory });
     this.filterListings('subCategory', subCategory );
   }
 
