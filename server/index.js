@@ -151,6 +151,20 @@ app.get('/sign-s3', (req, res) => {
   });
 });
 
+app.get('/searchListings', (req, res) => {
+  console.log('SEARCH LISTINGS endpoint');
+  let queryTerm = req.query;
+   console.log('query req', queryTerm);
+  db.findTitle(queryTerm, function(err, data) {
+    console.log('data in searchListings', data);
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).json(data);
+    }
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`App listening on port ${ port }`);

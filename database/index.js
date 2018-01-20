@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-let url = process.env.MONGODB_URI;
+//let url = process.env.MONGODB_URI;
 
 
 
-// let url = 'mongodb://localhost/voyagelego';
+let url = 'mongodb://localhost/legotrader';
 
 
 
@@ -71,6 +71,20 @@ module.exports.findQuery = (query, callback) => {
   Listing.find(query)
     .sort({ createdAt: -1 })
     .exec(callback);
+};
+
+module.exports.findTitle = (query, callback) => {
+  console.log('qqq', `/${query.title}/`);
+  console.log('hardcoded', '/Poke/');
+  Listing.find({title: { "$regex": `${query.title}`, "$options": "i" } }, (err, results) => {
+    if (err) {
+      console.log('err in database findTitle', err);
+      callback(err, null);
+    } else {
+      console.log('success in findTitle', results);
+      callback(null, results);
+    }
+  });
 };
 
 var FacebookUserSchema = new mongoose.Schema({
