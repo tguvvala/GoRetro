@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "aws-sdk": "^2.181.0",
+    "axios": "^0.17.1",
     "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
@@ -29,6 +31,7 @@
     "babel-preset-react": "^6.23.0",
     "eslint": "^4.15.0",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
