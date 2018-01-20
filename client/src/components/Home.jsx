@@ -13,6 +13,3 @@ const Home = (props) => (
 );
 
 export default Home;
-
-
-// <SearchLogin isSignedIn={props.isSignedIn} userId={props.userId} username={props.username} handleLogOut={props.handleLogOut}/>

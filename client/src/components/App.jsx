@@ -10,8 +10,7 @@ import UserListings from './UserListings.jsx';
 import SignIn from './SignIn.jsx';
 import SignUp from './SignUp.jsx';
 import NavBar from './NavBar.jsx';
-
-
+import Checkout from './Checkout.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -132,21 +131,21 @@ render() {
     // }
     return (
       <div>
-      <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn} handleLogOut={this.handleLogOut.bind(this)} />
-      <Switch>
-        <RouteProps exact path='/' component={ Home } isSignedIn={this.state.isSignedIn} userId={this.state.userId} username={this.state.username} handleLogOut={this.handleLogOut.bind(this)} listings={ this.state.listings } category={ this.state.category } subCategory ={this.state.subCategory}handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick }
-          resetListings = {this.resetListings} setSelectedListing={ this.setSelectedListing }/>
-        <Route exact path='/sign-up' component={ SignUp }/>
-        <Route exact path='/sign-in' component={ SignIn }/>
-        <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 
-        <RouteProps path='/user-listings' component={ UserListings } listings={ this.state.listings }/> 
-        <Route path='/view-listing' component={ ViewListing } />
-      </Switch>
+        <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn} handleLogOut={this.handleLogOut.bind(this)} />
+          <Switch>
+            <RouteProps exact path='/' component={ Home } isSignedIn={this.state.isSignedIn} userId={this.state.userId} username={this.state.username} handleLogOut={this.handleLogOut.bind(this)} listings={ this.state.listings } category={ this.state.category } subCategory ={this.state.subCategory}handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick } setSelectedListing={ this.setSelectedListing }/>
+            <Route exact path='/sign-up' component={ SignUp }/>
+            <Route exact path='/sign-in' component={ SignIn }/>
+            <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 
+            <RouteProps path='/user-listings' component={ UserListings } listings={ this.state.listings }/> 
+            <Route path='/view-listing' component={ ViewListing } />
+            <Route path='/checkout' component={ Checkout } />
+          </Switch>
       </div>
-
     );
   }
 
+// 
 // render () {
 //     if (this.state.isSignedIn) {
 //       return (
