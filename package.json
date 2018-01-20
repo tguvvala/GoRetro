@@ -16,6 +16,7 @@
     "nodemailer": "^4.4.1",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-form-validator-core": "^0.3.0",
@@ -25,6 +26,7 @@
     "request": "^2.83.0",
     "semantic-react": "^0.12.0",
     "semantic-ui-react": "^0.77.2",
+    "react-stripe-elements": "^1.4.0",
     "stripe": "^5.4.0"
   },
   "devDependencies": {

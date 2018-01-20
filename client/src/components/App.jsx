@@ -9,11 +9,19 @@ import ViewListing from './ViewListing.jsx';
 import UserListings from './UserListings.jsx';
 import SignIn from './SignIn.jsx';
 import SignUp from './SignUp.jsx';
+<<<<<<< f1e5cbba9a04d356fabee9fdff83fee8d8d0b11a
 import NavBar from './NavBar.jsx';
+<<<<<<< 030a647f8194faa9f27a40681fb07a64a74c47ac
 <<<<<<< e0d29c36b40f1bad63ceec37398b2b0f6b02eda9
 import Checkout from './Checkout.jsx';
 =======
 >>>>>>> Add functioning NavBar
+=======
+=======
+import passport from 'passport';
+import flash from 'connect-flash';
+>>>>>>> begun work on Local Strategy authentication
+>>>>>>> fixed merge conflicts
 
 class App extends React.Component {
   constructor(props) {
