@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 // let url = process.env.MONGODB_URI;
-let url = 'mongodb://localhost/zaylegos'
-console.log('-------------', url)
+let url = 'mongodb://localhost/voyagelego';
+console.log('-------------', url);
 mongoose.connect(url, { useMongoClient: true });
 require('../config/passport');
 
