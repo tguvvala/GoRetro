@@ -23,6 +23,7 @@ import flash from 'connect-flash';
 >>>>>>> begun work on Local Strategy authentication
 >>>>>>> fixed merge conflicts
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
