@@ -30,6 +30,7 @@ const NavBar = (props) => (
       </Menu.Item>
 
 
+
         <Dropdown item simple position='right' text={props.username || 'My Account'}>
           <Dropdown.Menu>
             <Dropdown.Item>My Profile</Dropdown.Item>
