@@ -3,6 +3,7 @@ import RouteProps from 'react-route-props';
 import { Link } from 'react-router-dom';
 import { Item } from 'semantic-ui-react';
 
+
 class Listing extends React.Component {
 
   constructor(props) {
