@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Icon } from 'semantic-ui-react';
 
 const SignIn = (props) => (
   <div className="container">
@@ -8,7 +9,10 @@ const SignIn = (props) => (
     </ol>
     <div className="col col-lg-4">
       <h3 className="contact-header">Please sign in with Facebook</h3>
-     <a href="/login/facebook">Login</a>
+
+    <Button href="/login/facebook" color='facebook'>
+      <Icon name='facebook' /> Facebook
+    </Button>
     </div>
   </div>
 );
