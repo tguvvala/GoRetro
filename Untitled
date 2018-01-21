@@ -1,0 +1,48 @@
+// Hot Sellers
+// <Grid>
+//   <Grid.Row columns={4}>
+//     <Grid.Column>
+//       <div style={{ float: 'left', position: 'relative' }}>
+//         <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Nintendo-64-wController-L.jpg/300px-Nintendo-64-wController-L.jpg"/*open an anchor tag and insert image*/>
+//           <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Nintendo-64-wController-L.jpg/300px-Nintendo-64-wController-L.jpg" style={{ borderRadius: '10px' }} /*set the size of the image*/ />
+//         </a>
+//       </div>
+//     </Grid.Column>
+//   </Grid.Row>
+// </Grid>
+
+export AWS_ACCESS_KEY_ID="AKIAIQYYNSV22TSDZ4LA"
+export AWS_SECRET_ACCESS_KEY="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"
+export S3_BUCKET="zaymarket"
+export SENDGRID_PASSWORD="charmander28"
+export SENDGRID_USER="themoonlee.1@gmail.com"
+
+Footer
+<div id="profile-bg">
+    <div class="container">
+
+        <!--Grid row-->
+        <div class="w-100 row py-4 d-flex align-items-center text-center">
+          <div class="mx-auto d-block">
+            <img src="img/Luna.png" class="img-fluid rounded profile-img" alt="...">
+            <p class="profile-name"><span>Luna</span><br/>Software Engineer</p>
+          </div>
+
+          <div class="mx-auto d-block">
+            <img src="img/Grant.png" class="img-fluid rounded profile-img" alt="...">
+            <p class="profile-name"><span>Grant</span><br/>Software Engineer</p>
+          </div>
+
+          <div class="mx-auto d-block">
+            <img src="img/Patty.png" class="img-fluid rounded profile-img" alt="...">
+            <p class="profile-name"><span>Patty</span><br/>Scrum Master</p>
+          </div>
+
+          <div class="mx-auto d-block">
+            <img src="img/Ralph.png" class="img-fluid rounded profile-img" alt="...">
+            <p class="profile-name"><span>Ralph</span><br/>Product Owner</p>
+          </div>
+        </div>
+
+      </div>
+</div>

@@ -20,6 +20,7 @@ passport.use(new Strategy({
   passReqToCallback: true
 },
 function(req, accessToken, refreshToken, profile, done) {
+  console.log(profile);
   db.updateOrCreateUser({ fbId: profile.id, displayName: profile.displayName, sessionID: req.sessionID }, function (err, user) {
     return done(err, user);
   });
@@ -93,7 +94,7 @@ app.get('/', (req, res) => {
 
 app.get('/listings', (req, res) => {
   let queryTerm = req.query;
-
+  console.log(queryTerm);
   db.findQuery(queryTerm, function(err, data) {
     if (err) {
       res.status(500).send(err);
@@ -102,6 +103,24 @@ app.get('/listings', (req, res) => {
     }
   });
 
+});
+
+app.get('/seller', (req, res) => {
+  let queryTerm = req.query;
+  db.findQuery(queryTerm, function(err, data) {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).json(data);
+    }
+  });
+  // db.findQuery(queryTerm, function(err, data) {
+  //   if (err) {
+  //     res.status(500).send(err);
+  //   } else {
+  //     res.status(200).json(data);
+  //   }
+  // });
 });
 
 app.post('/listings', (req, res) => {

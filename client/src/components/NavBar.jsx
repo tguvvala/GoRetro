@@ -46,3 +46,16 @@ const NavBar = (props) => (
 );
 
 export default NavBar;
+<<<<<<< HEAD
+=======
+
+// Image Logo
+// <Menu.Item as='a' header>
+//   <Image
+//     size='tiny'
+//     src='img/banner.png'
+//     style={{ marginRight: '1.5em' }}
+//   />
+//   Lego Trader
+// </Menu.Item>
+>>>>>>> seller profile updates

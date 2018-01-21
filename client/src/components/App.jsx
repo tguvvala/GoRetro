@@ -17,6 +17,7 @@ class App extends React.Component {
     super(props);
     this.getListings = this.getListings.bind(this);
     this.filterListings = this.filterListings.bind(this);
+    this.getUserListings = this.getUserListings.bind(this);
     this.handleCategoryClick = this.handleCategoryClick.bind(this);
     this.handleSubCategoryClick = this.handleSubCategoryClick.bind(this);
     this.resetListings = this.resetListings.bind(this);
@@ -136,10 +137,24 @@ class App extends React.Component {
       }
     });
   }
-render() {
-    // if (this.state.isSignedIn) {
 
-    // }
+  getUserListings(username) {
+    console.log('getting user listings');
+    var that = this;
+    $.ajax({
+      url: `/seller?username=${username}`,
+      success: (listings) => {
+        this.setState({
+          listings: listings
+        });
+      },
+      error: () => {
+        console.log('error');
+      }
+    });
+  }
+
+  render() {
     return (
       <div>
       <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn} handleLogOut={this.handleLogOut.bind(this)} />

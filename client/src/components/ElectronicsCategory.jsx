@@ -11,7 +11,7 @@ class ElectronicsCategory extends React.Component {
     this.props.handleCategoryClick(data.value);
   }
 
-   handleSubCategorySelect(e, data) {
+  handleSubCategorySelect(e, data) {
     this.props.handleSubCategoryClick(data.value)
   }
 

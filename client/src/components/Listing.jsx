@@ -10,8 +10,12 @@ class Listing extends React.Component {
     super(props);
   }
 
+  handleSubCategorySelect() {
+    this.props.getUserListings(this.props.listing.username);
+  }
+
   render() {
-    let path = `/view-listing?_id=${this.props.listing['_id']}`;
+    let path = `/seller?username=${this.props.listing.username}`;
 
     return (
       <Item>
@@ -19,7 +23,9 @@ class Listing extends React.Component {
         <Item.Content>
           <Item.Header as='a'>{ this.props.listing.title }</Item.Header>
           <Item.Meta>{ this.props.listing.category }</Item.Meta>
-          <Item.Extra>zayseoul</Item.Extra>
+          <Link to={ path }><Item.Extra onClick={ this.handleSubCategorySelect.bind(this) }>
+            { this.props.listing.username }
+          </Item.Extra></Link>
           <Item.Extra>$150</Item.Extra>
           <Item.Extra>{ this.props.listing.description}</Item.Extra>
         </Item.Content>
