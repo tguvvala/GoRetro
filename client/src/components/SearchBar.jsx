@@ -40,7 +40,7 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div className="container">
-        <Input focus placeholder='Search...' onChange={ this.handleChange} />
+        <Input size='small' icon='search' placeholder='Search...' onChange={ this.handleChange} />
       </div>
     );
   }

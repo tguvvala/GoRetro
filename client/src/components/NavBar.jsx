@@ -6,27 +6,28 @@ const NavBar = (props) => (
   <div>
     <Menu className='fixedNav' fixed='top' inverted>
       <Container>
-        <Menu.Item as='a' header>
+        <Menu.Item as={Link} to='/' header>
           <Image
             size='tiny'
             src='img/banner.png'
             style={{ marginRight: '1.5em' }}
           />
-          Lego Trader
+          Home
         </Menu.Item>
 
-        <Menu.Item as={Link} to ='/'>Home</Menu.Item>
         {!props.isSignedIn &&
         <Menu.Item as={Link} to="/sign-in">Login</Menu.Item>
       }
-
-      <Menu.Item as={Link} to='/new-listing'>Post</Menu.Item>
+      {!props.isSignedIn &&
+      <Menu.Item as={Link} to='/sign-in'>Post</Menu.Item>
+    }
+    {props.isSignedIn && <Menu.Item as={Link} to='new-listing'>Post</Menu.Item>}
       <Menu.Item as={Link} to='/checkout'>
         <Button>
           <Button.Content>
             <Icon name='shop' />
           </Button.Content>
-        </Button> 
+        </Button>
       </Menu.Item>
 
 

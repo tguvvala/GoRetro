@@ -27,7 +27,8 @@ class App extends React.Component {
       subCategory: '',
       isSignedIn: false,
       userId: '',
-      username: ''
+      username: '',
+      isSearchResults: false
     };
   }
 
@@ -42,7 +43,10 @@ class App extends React.Component {
 
   searchByUserInput(result) {
     this.setState({
-      listings: result
+      listings: result,
+      category: '',
+      subCategory: '',
+      isSearchResults: true
     });
   }
 
@@ -79,11 +83,11 @@ class App extends React.Component {
   handleCategoryClick(category) {
     category = category || '';
 
-    this.setState({ category: category, subCategory: '' });
+    this.setState({ category: category, subCategory: '', isSearchResults: false });
     this.filterListings('category', category );
   }
   resetListings() {
-    this.setState({category: '', subCategory: ''});
+    this.setState({category: '', subCategory: '', isSearchResults: false});
     this.filterListings('');
   }
 
@@ -141,7 +145,7 @@ render() {
       <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn} handleLogOut={this.handleLogOut.bind(this)} />
       <Switch>
         <RouteProps exact path='/' component={ Home } isSignedIn={this.state.isSignedIn} userId={this.state.userId} username={this.state.username} handleLogOut={this.handleLogOut.bind(this)} listings={ this.state.listings } searchByUserInput = {this.searchByUserInput} category={ this.state.category } subCategory ={this.state.subCategory}handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick }
-          resetListings = {this.resetListings} setSelectedListing={ this.setSelectedListing }/>
+          resetListings = {this.resetListings} isSearchResults={this.state.isSearchResults} setSelectedListing={ this.setSelectedListing }/>
         <Route exact path='/sign-up' component={ SignUp }/>
         <Route exact path='/sign-in' component={ SignIn }/>
         <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 

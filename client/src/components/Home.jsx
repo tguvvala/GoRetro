@@ -9,7 +9,7 @@ const Home = (props) => (
     <main role="main">
       <Categories category={ props.category } handleCategoryClick={ props.handleCategoryClick } handleSubCategoryClick={ props.handleSubCategoryClick} resetListings ={props.resetListings}  />
       <SearchBar searchByUserInput = {props.searchByUserInput}/>
-      <Listings listings={ props.listings } category={props.category} subCategory={props.subCategory} setSelectedListing={ props.setSelectedListing } />
+      <Listings listings={ props.listings } category={props.category} subCategory={props.subCategory} setSelectedListing={ props.setSelectedListing } isSearchResults={props.isSearchResults} />
     </main>
   </div>
 );
