@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Listings from './Listings.jsx';
-import { Item } from 'semantic-ui-react';
+import { Item, Comment } from 'semantic-ui-react';
 
 const SellerProfile = (props) => (
   <div>
-    <div className="media">
+    <div className="media profile">
       <div className="profilePic">
-        <h1>My Store</h1>
+        <h1 className="profileText">{`${props.username}`}</h1>
+        <h3 className="profileText">{`${props.listings.length} items for sale`}</h3>
         <img className="media-object" width="250" src="https://i.imgur.com/MbWdmgj.jpg" />
       </div>
     </div>

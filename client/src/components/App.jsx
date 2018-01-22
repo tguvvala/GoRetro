@@ -6,7 +6,6 @@ import {StripeProvider} from 'react-stripe-elements';
 import Home from './Home.jsx';
 import NewListing from './NewListing.jsx';
 import ViewListing from './ViewListing.jsx';
-import UserListings from './UserListings.jsx';
 import SignIn from './SignIn.jsx';
 import SignUp from './SignUp.jsx';
 import NavBar from './NavBar.jsx';
@@ -186,11 +185,12 @@ class App extends React.Component {
     return (
       <div className="mainPage">
         <div className="navigationbar">
-          <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn}
-          handleLogOut={this.handleLogOut}
-          testFunction={this.testFunction}
-          getListings={this.getListings}
-          getUserListings={this.getUserListings}
+          <NavBar username={ this.state.username }
+          isSignedIn={ this.state.isSignedIn }
+          handleLogOut={ this.handleLogOut }
+          testFunction={ this.testFunction }
+          getListings={ this.getListings }
+          getUserListings={ this.getUserListings }
           userPath={userPath} />
         </div>
         <Switch>
@@ -210,11 +210,16 @@ class App extends React.Component {
             getUserListings={ this.getUserListings }
             deleteListing={ this.deleteListing }
           />
-          <RouteProps exact path='/seller' component={ SellerProfile } listings={ this.state.listings } />
+          <RouteProps exact path='/seller' component={ SellerProfile }
+            listings={ this.state.listings }
+            username={ this.state.username }
+          />
+          <RouteProps path='/new-listing' component={ NewListing }
+            userId={ this.state.userId }
+            username={ this.state.username }
+          /> 
           <Route exact path='/sign-up' component={ SignUp }/>
           <Route exact path='/sign-in' component={ SignIn }/>
-          <RouteProps path='/new-listing' component={ NewListing } userId={this.state.userId} username={this.state.username}/> 
-          <RouteProps path='/user-listings' component={ UserListings } listings={ this.state.listings } /> 
           <Route path='/view-listing' component={ ViewListing } />
           <Route path='/checkout' component={ Checkout } />
         </Switch>

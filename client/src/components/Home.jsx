@@ -6,7 +6,7 @@ import Categories from './Categories.jsx';
 const Home = (props) => (
   <div>
     <div className="primary-header">
-      <img className="mainheaderimage" src="https://i.imgur.com/t0YDCCU.jpg"/>
+      <img className="mainheaderimage" src="https://i.imgur.com/QegtSsJ.jpg"/>
     </div>
     <Categories
       category={ props.category }
