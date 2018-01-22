@@ -179,8 +179,8 @@ class App extends React.Component {
           <RouteProps exact path='/seller' component={ SellerProfile } listings={ this.state.listings } />
           <Route exact path='/sign-up' component={ SignUp }/>
           <Route exact path='/sign-in' component={ SignIn }/>
-          <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 
-          <RouteProps path='/user-listings' component={ UserListings } listings={ this.state.listings }/> 
+          <RouteProps path='/new-listing' component={ NewListing } userId={this.state.userId} username={this.state.username}/> 
+          <RouteProps path='/user-listings' component={ UserListings } listings={ this.state.listings } /> 
           <Route path='/view-listing' component={ ViewListing } />
           <Route path='/checkout' component={ Checkout } />
         </Switch>

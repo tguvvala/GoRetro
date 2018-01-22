@@ -350,11 +350,12 @@ class NewListing extends React.Component {
                 type="text"
                 className="form-control form-control-lg"
                 id="nameInput"
-                placeholder="Your Name"
+                placeholder={this.props.username}
                 name="username"
                 value={this.state.username}
                 onChange={this.handleChange}
                 onBlur={this.handleBlur}
+                readOnly
               />
               <small className="form-text text-muted">
                 YOUR NAME
