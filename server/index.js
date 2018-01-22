@@ -11,7 +11,7 @@ const Strategy = require('passport-facebook').Strategy;
 const User = db.User;
 const port = process.env.PORT || 8080;
 
-const url = 'https://voyage28lego.herokuapp.com';
+const url = 'http://localhost:8080';
 
 passport.use(new Strategy({
   clientID: process.env.CLIENT_ID,
