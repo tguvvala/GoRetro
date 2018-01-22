@@ -130,3 +130,4 @@ const logout = (sessionID, cb) => {
 module.exports.updateOrCreateUser = updateOrCreateUser;
 module.exports.User = User;
 module.exports.logout = logout;
+module.exports.Listing = Listing;

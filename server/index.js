@@ -3,11 +3,11 @@ const express = require('express');
 const db = require('../database/index');
 const mailer = require('../mailer/mailer');
 const aws = require('aws-sdk');
-var passport = require('passport');
+const passport = require('passport');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-var Strategy = require('passport-facebook').Strategy;
+const Strategy = require('passport-facebook').Strategy;
 const User = db.User;
 const port = process.env.PORT || 8080;
 
@@ -41,14 +41,13 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-
 const app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.use(require('cookie-parser')());
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(session({
   secret: 'b12gdh',
@@ -61,7 +60,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/login/facebook', passport.authenticate('facebook'));
-
 
 app.get('/login/facebook/return',
   passport.authenticate('facebook', { failureRedirect: '/' }),
@@ -107,7 +105,6 @@ app.get('/listings', (req, res) => {
       res.status(200).json(data);
     }
   });
-
 });
 
 app.get('/seller', (req, res) => {
@@ -172,7 +169,7 @@ app.get('/sign-s3', (req, res) => {
 app.get('/searchListings', (req, res) => {
   console.log('SEARCH LISTINGS endpoint');
   let queryTerm = req.query;
-   console.log('query req', queryTerm);
+  console.log('query req', queryTerm);
   db.findTitle(queryTerm, function(err, data) {
     console.log('data in searchListings', data);
     if (err) {
@@ -182,6 +179,14 @@ app.get('/searchListings', (req, res) => {
     }
   });
 });
+
+app.delete('/delete', (req, res) => {
+  var itemToDelete = req.body.id;
+  db.Listing.findByIdAndRemove(itemToDelete, (err, item) => {
+    console.log('deleted');
+  })
+  res.send(itemToDelete);
+})
 
 
 app.listen(port, () => {

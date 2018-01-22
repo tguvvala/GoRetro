@@ -11,7 +11,15 @@ const SellerProfile = (props) => (
         <img className="media-object" width="250" src="https://i.imgur.com/MbWdmgj.jpg" />
       </div>
     </div>
-    <Listings listings={ props.listings } setSelectedListing={ props.setSelectedListing } />
+    <Listings
+      listings={ props.listings }
+      category={ props.category }
+      subCategory={ props.subCategory }
+      setSelectedListing={ props.setSelectedListing }
+      isSearchResults={ props.isSearchResults }
+      getUserListings={ props.getUserListings }
+      username={ props.username }
+    />
   </div>
 );
 

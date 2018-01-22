@@ -25,6 +25,7 @@ class App extends React.Component {
     this.handleSubCategoryClick = this.handleSubCategoryClick.bind(this);
     this.resetListings = this.resetListings.bind(this);
     this.searchByUserInput = this.searchByUserInput.bind(this);
+    this.deleteListing = this.deleteListing.bind(this);
     this.state = {
       listings: [],
       category: '',
@@ -158,16 +159,34 @@ class App extends React.Component {
     });
   }
 
-  testFunction() {
+  deleteListing(listingID) {
     $.ajax({
-      url: '/getUser',
+      type: 'DELETE',
+      url: '/delete',
+      data: {'id': listingID},
       success: (data) => {
+        console.log('success delete');
         console.log(data);
       },
-      error: (error) => {
+      error: (err) => {
         console.log('error');
       }
-    })
+    });
+  }
+
+  testFunction() {
+    $.ajax({
+      type: 'DELETE',
+      url: '/delete',
+      data: {'id': '1000'},
+      success: (data) => {
+        console.log('success delete');
+        console.log(data);
+      },
+      error: (err) => {
+        console.log('error');
+      }
+    });
   }
 
   render() {
@@ -183,8 +202,22 @@ class App extends React.Component {
           userPath={userPath} />
         </div>
         <Switch>
-          <RouteProps exact path='/' component={ Home } isSignedIn={this.state.isSignedIn} userId={this.state.userId} username={this.state.username} handleLogOut={this.handleLogOut.bind(this)} listings={ this.state.listings } searchByUserInput = {this.searchByUserInput} category={ this.state.category } subCategory ={this.state.subCategory}handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick }
-            resetListings = {this.resetListings} isSearchResults={this.state.isSearchResults} setSelectedListing={ this.setSelectedListing } getUserListings={ this.getUserListings }/>
+          <RouteProps exact path='/' component={ Home }
+            isSignedIn={ this.state.isSignedIn }
+            userId={ this.state.userId }
+            username={ this.state.username }
+            handleLogOut={ this.handleLogOut.bind(this) }
+            listings={ this.state.listings }
+            searchByUserInput={this.searchByUserInput}
+            category={ this.state.category }
+            subCategory={ this.state.subCategory }
+            handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick }
+            resetListings={ this.resetListings }
+            isSearchResults={ this.state.isSearchResults }
+            setSelectedListing={ this.setSelectedListing }
+            getUserListings={ this.getUserListings }
+            deleteListing={ this.deleteListing }
+          />
           <RouteProps exact path='/seller' component={ SellerProfile } listings={ this.state.listings } />
           <Route exact path='/sign-up' component={ SignUp }/>
           <Route exact path='/sign-in' component={ SignIn }/>
