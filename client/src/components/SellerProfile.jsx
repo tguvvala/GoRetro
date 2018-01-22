@@ -7,9 +7,9 @@ const SellerProfile = (props) => (
   <div>
     <div className="media profile">
       <div className="profilePic">
-        <h1 className="profileText">{`${props.username}`}</h1>
+        <h1 className="profileText">{props.profileInfo.username}</h1>
         <h3 className="profileText">{`${props.listings.length} items for sale`}</h3>
-        <img className="media-object" width="250" src="https://i.imgur.com/MbWdmgj.jpg" />
+        <img className="media-object" width="250" src={props.profileInfo.profilePic} />
       </div>
     </div>
     <Listings

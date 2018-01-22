@@ -10,7 +10,7 @@ body {
 }
 
 .media.profile {
-  
+
 }
 
 .ui.inverted.menu {
@@ -35,6 +35,11 @@ body {
 
 .allListingsButtonItem {
   background-color: #43c0f6 !important;
+}
+
+.deleteButton {
+  margin-right: 20px;
+  font-size: 11px !important;
 }
 
 .profilePic {
