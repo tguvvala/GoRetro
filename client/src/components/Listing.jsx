@@ -19,7 +19,7 @@ class Listing extends React.Component {
 
     return (
       <Item>
-        <Item.Image size ='medium' src={ this.props.listing.imageUrl } />
+        <Item.Image size ='small' src={ this.props.listing.imageUrl } />
         <Item.Content>
           <Item.Header as='a'>{ this.props.listing.title }</Item.Header>
           <Item.Meta>{ this.props.listing.category }</Item.Meta>

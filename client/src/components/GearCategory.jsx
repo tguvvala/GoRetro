@@ -17,10 +17,10 @@ class GearCategory extends React.Component {
 
   render() {
     return (
-      <Dropdown text='Gear' value='Gear'>
-      <Dropdown.Menu >
-        <Dropdown.Item  onClick={this.handleCategorySelect.bind(this)} text='All' value='Gear'/>
-        <Dropdown.Item  onClick={this.handleSubCategorySelect.bind(this)} text='Mens' value='Mens'/>
+    <Dropdown text='Gear' value='Gear'>
+      <Dropdown.Menu>
+        <Dropdown.Item onClick={this.handleCategorySelect.bind(this)} text='All' value='Gear'/>
+        <Dropdown.Item onClick={this.handleSubCategorySelect.bind(this)} text='Mens' value='Mens'/>
         <Dropdown.Item onClick={this.handleSubCategorySelect.bind(this)} text='Womens' value='Womens'/>
         <Dropdown.Item onClick={this.handleSubCategorySelect.bind(this)} text='Kids' value='Kids'/>
       </Dropdown.Menu>

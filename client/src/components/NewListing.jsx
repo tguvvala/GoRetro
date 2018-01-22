@@ -19,7 +19,7 @@ class NewListing extends React.Component {
       imageUrl: ''
     };
 
-    // Generial validation rules
+    // General validation rules
     this.validate = {
       valueEntered: (field) => {
         return this.state[field].length > 0;

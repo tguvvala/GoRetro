@@ -85,6 +85,11 @@ app.get('/logOut', (req, res) => {
   });
 });
 
+app.get('/getUser', (req, res) => {
+  var theCurrentUser = req.user;
+  res.send(theCurrentUser);
+})
+
 const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-east-2';
 
@@ -107,6 +112,7 @@ app.get('/listings', (req, res) => {
 
 app.get('/seller', (req, res) => {
   let queryTerm = req.query;
+  console.log(queryTerm);
   db.findQuery(queryTerm, function(err, data) {
     if (err) {
       res.status(500).send(err);
@@ -114,13 +120,6 @@ app.get('/seller', (req, res) => {
       res.status(200).json(data);
     }
   });
-  // db.findQuery(queryTerm, function(err, data) {
-  //   if (err) {
-  //     res.status(500).send(err);
-  //   } else {
-  //     res.status(200).json(data);
-  //   }
-  // });
 });
 
 app.post('/listings', (req, res) => {

@@ -11,6 +11,7 @@ class _CardForm extends React.Component {
     )
   }
 }
+
 const CardForm = injectStripe(_CardForm)
 
 class Checkout extends React.Component {

@@ -13,8 +13,7 @@ const SellerProfile = (props) => (
         <dl className="dl-horizontal">
           <dt>Display name</dt><dd className="clearfix">Zay</dd>
           <dt>Email</dt><dd>Lee</dd>
-          <dt>Contact Me</dt><dd><a href="https://i.imgur.com/MbWdmgj.jpg">link go here</a></dd>
-          <button className="pull-right btn-danger" id="sendTracks"><a id="email" href="mailto:kzay91@gmail.com">send tracks</a></button>
+          <button className="pull-right btn-danger"><a id="email" href="mailto:kzay91@gmail.com">Contact Me</a></button>
         </dl>
       </div>
     </div>
