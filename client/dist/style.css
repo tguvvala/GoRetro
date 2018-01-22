@@ -1,10 +1,4 @@
 body {
-
-}
-
-.theNavBar {
-  /* background-color: black !important; */
-  border: 0.5px solid black !important;
 }
 
 .mainheaderimage {
@@ -16,8 +10,36 @@ body {
 }
 
 .ui.inverted.menu {
-  background-color: #fedc3d !important;
+  /* background-color: #fedc3d !important; */
   border: 0.5px solid black !important;
+}
+
+.categoryMenu {
+  background-color: #fedc3d !important;
+}
+
+.categoryMenuItem {
+  color: black !important;
+}
+
+.cartButton {
+  background-color: #43c0f6 !important;
+}
+
+.allListingsButtonItem {
+  background-color: #43c0f6 !important;
+}
+
+.profilePic {
+  width: 300px; /*can be in percentage also.*/
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+}
+
+.img {
+  max-width: 50% !important;
 }
 
 /* .ui.inverted.menu.item {
@@ -25,16 +47,16 @@ body {
 } */
 
 .item {
-  color: black !important;
   font-weight: bold !important;
 }
 
-.ui.button {
+.ui.categoryMenu.menu {
+  padding-left: 30px;
 }
 
 /* responsive settings required */
 .searchBox {
-  margin-left: 47%;
+  margin-left: 45%;
 }
 
 .allListingsButtonItem {

@@ -17,18 +17,18 @@ class Categories extends React.Component {
 
   render() {
     return (
-      <Menu inverted>
-        <Menu.Item>
+      <Menu className="categoryMenu">
+        <Menu.Item className="categoryMenuItem">
           <ElectronicsCategory handleCategoryClick={this.props.handleCategoryClick} handleSubCategoryClick= { this.props.handleSubCategoryClick} />
         </Menu.Item>
-        <Menu.Item>
+        <Menu.Item className="categoryMenuItem">
           <TableTopCategory handleCategoryClick={this.props.handleCategoryClick} handleSubCategoryClick= { this.props.handleSubCategoryClick} />
         </Menu.Item>
-        <Menu.Item>
+        <Menu.Item className="categoryMenuItem">
           <GearCategory handleCategoryClick={this.props.handleCategoryClick} handleSubCategoryClick= { this.props.handleSubCategoryClick} />
         </Menu.Item>
-        <Menu.Item>
-          <AllListingsButton handleClick={this.props.resetListings} />
+        <Menu.Item className="categoryMenuItem" onClick={this.props.resetListings}>
+          All Listings
         </Menu.Item>
         <Menu.Item className="searchBox">
           <SearchBar searchByUserInput={this.props.searchByUserInput} />

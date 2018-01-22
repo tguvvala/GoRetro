@@ -10,7 +10,7 @@ class Listing extends React.Component {
     super(props);
   }
 
-  handleSubCategorySelect() {
+  findUserListings() {
     this.props.getUserListings(this.props.listing.username);
   }
 
@@ -23,10 +23,11 @@ class Listing extends React.Component {
         <Item.Content>
           <Item.Header as='a'>{ this.props.listing.title }</Item.Header>
           <Item.Meta>{ this.props.listing.category }</Item.Meta>
-          <Link to={ path }><Item.Extra onClick={ this.handleSubCategorySelect.bind(this) }>
+          <Link to={ path }>
+          <Item.Extra onClick={ this.findUserListings.bind(this) }>
             { this.props.listing.username }
-          </Item.Extra></Link>
-          <Item.Extra>$150</Item.Extra>
+          </Item.Extra>
+          </Link>
           <Item.Extra>{ this.props.listing.description}</Item.Extra>
         </Item.Content>
       </Item>

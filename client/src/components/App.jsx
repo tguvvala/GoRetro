@@ -19,6 +19,8 @@ class App extends React.Component {
     this.getListings = this.getListings.bind(this);
     this.filterListings = this.filterListings.bind(this);
     this.getUserListings = this.getUserListings.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this)
+    this.testFunction = this.testFunction.bind(this)
     this.handleCategoryClick = this.handleCategoryClick.bind(this);
     this.handleSubCategoryClick = this.handleSubCategoryClick.bind(this);
     this.resetListings = this.resetListings.bind(this);
@@ -88,6 +90,7 @@ class App extends React.Component {
     this.setState({ category: category, subCategory: '', isSearchResults: false });
     this.filterListings('category', category );
   }
+
   resetListings() {
     this.setState({category: '', subCategory: '', isSearchResults: false});
     this.filterListings('');
@@ -168,10 +171,16 @@ class App extends React.Component {
   }
 
   render() {
+    let userPath = `/seller?username=${this.state.username}`
     return (
       <div className="mainPage">
         <div className="navigationbar">
-          <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn} handleLogOut={this.handleLogOut.bind(this)} testFunction={this.testFunction.bind(this)} getListings={this.getListings}/>
+          <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn}
+          handleLogOut={this.handleLogOut}
+          testFunction={this.testFunction}
+          getListings={this.getListings}
+          getUserListings={this.getUserListings}
+          userPath={userPath} />
         </div>
         <Switch>
           <RouteProps exact path='/' component={ Home } isSignedIn={this.state.isSignedIn} userId={this.state.userId} username={this.state.username} handleLogOut={this.handleLogOut.bind(this)} listings={ this.state.listings } searchByUserInput = {this.searchByUserInput} category={ this.state.category } subCategory ={this.state.subCategory}handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick }
