@@ -171,7 +171,7 @@ class App extends React.Component {
     return (
       <div className="mainPage">
         <div className="navigationbar">
-          <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn} handleLogOut={this.handleLogOut.bind(this)} testFunction={this.testFunction.bind(this)} />
+          <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn} handleLogOut={this.handleLogOut.bind(this)} testFunction={this.testFunction.bind(this)} getListings={this.getListings}/>
         </div>
         <Switch>
           <RouteProps exact path='/' component={ Home } isSignedIn={this.state.isSignedIn} userId={this.state.userId} username={this.state.username} handleLogOut={this.handleLogOut.bind(this)} listings={ this.state.listings } searchByUserInput = {this.searchByUserInput} category={ this.state.category } subCategory ={this.state.subCategory}handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick }

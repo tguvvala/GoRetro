@@ -6,7 +6,7 @@ const NavBar = (props) => (
   <div>
     <Menu className="theNavBar" fixed='top'>
       <Container>
-        <Menu.Item as={Link} to='/' position='right'>Home</Menu.Item>
+        <Menu.Item as={Link} to='/' position='right' onClick={props.getListings}>Home</Menu.Item>
         { !props.isSignedIn &&
         <Menu.Item as={Link} to="/sign-in">Login</Menu.Item> }
         { !props.isSignedIn &&

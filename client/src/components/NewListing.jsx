@@ -12,7 +12,7 @@ class NewListing extends React.Component {
       description: '',
       category: '',
       subCategory: '',
-      username: '',
+      username: props.username,
       email: '',
       zipCode: '',
       condition: '',
