@@ -160,13 +160,16 @@ class App extends React.Component {
   }
 
   deleteListing(listingID) {
+    var that = this;
     $.ajax({
       type: 'DELETE',
       url: '/delete',
       data: {'id': listingID},
-      success: (data) => {
+      success: (listings) => {
         console.log('success delete');
-        console.log(data);
+        that.setState({
+          listings: listings
+        })
       },
       error: (err) => {
         console.log('error');
@@ -175,18 +178,7 @@ class App extends React.Component {
   }
 
   testFunction() {
-    $.ajax({
-      type: 'DELETE',
-      url: '/delete',
-      data: {'id': '1000'},
-      success: (data) => {
-        console.log('success delete');
-        console.log(data);
-      },
-      error: (err) => {
-        console.log('error');
-      }
-    });
+    // test code
   }
 
   render() {

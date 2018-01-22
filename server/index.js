@@ -182,10 +182,20 @@ app.get('/searchListings', (req, res) => {
 
 app.delete('/delete', (req, res) => {
   var itemToDelete = req.body.id;
+  var itemList;
   db.Listing.findByIdAndRemove(itemToDelete, (err, item) => {
     console.log('deleted');
+  }).then(() => {
+    db.Listing.find({}, (err, list) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        itemList = list;
+        res.send(itemList);
+      }
+    })
   })
-  res.send(itemToDelete);
+
 })
 
 
