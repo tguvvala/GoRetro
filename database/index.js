@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 
-// let url = process.env.MONGODB_URI;
+let url = process.env.MONGODB_URI;
 
 
-let url = 'mongodb://localhost/voyagelego';
+// let url = 'mongodb://localhost/voyagelego';
 
 mongoose.connect(url, { useMongoClient: true });
 
@@ -130,3 +130,4 @@ const logout = (sessionID, cb) => {
 module.exports.updateOrCreateUser = updateOrCreateUser;
 module.exports.User = User;
 module.exports.logout = logout;
+module.exports.Listing = Listing;

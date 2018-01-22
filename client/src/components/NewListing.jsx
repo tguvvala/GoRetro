@@ -12,14 +12,14 @@ class NewListing extends React.Component {
       description: '',
       category: '',
       subCategory: '',
-      username: '',
+      username: props.username,
       email: '',
       zipCode: '',
       condition: '',
       imageUrl: ''
     };
 
-    // Generial validation rules
+    // General validation rules
     this.validate = {
       valueEntered: (field) => {
         return this.state[field].length > 0;
@@ -350,11 +350,12 @@ class NewListing extends React.Component {
                 type="text"
                 className="form-control form-control-lg"
                 id="nameInput"
-                placeholder="Your Name"
+                placeholder={this.props.username}
                 name="username"
                 value={this.state.username}
                 onChange={this.handleChange}
                 onBlur={this.handleBlur}
+                readOnly
               />
               <small className="form-text text-muted">
                 YOUR NAME

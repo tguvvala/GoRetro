@@ -1,15 +1,15 @@
 import React from 'react';
 import RouteProps from 'react-route-props';
 import $ from 'jquery';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 import {StripeProvider} from 'react-stripe-elements';
 import Home from './Home.jsx';
 import NewListing from './NewListing.jsx';
 import ViewListing from './ViewListing.jsx';
-import UserListings from './UserListings.jsx';
 import SignIn from './SignIn.jsx';
 import SignUp from './SignUp.jsx';
 import NavBar from './NavBar.jsx';
+import SellerProfile from './SellerProfile.jsx';
 import Checkout from './Checkout.jsx';
 
 class App extends React.Component {
@@ -17,10 +17,14 @@ class App extends React.Component {
     super(props);
     this.getListings = this.getListings.bind(this);
     this.filterListings = this.filterListings.bind(this);
+    this.getUserListings = this.getUserListings.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this)
+    this.testFunction = this.testFunction.bind(this)
     this.handleCategoryClick = this.handleCategoryClick.bind(this);
     this.handleSubCategoryClick = this.handleSubCategoryClick.bind(this);
     this.resetListings = this.resetListings.bind(this);
     this.searchByUserInput = this.searchByUserInput.bind(this);
+    this.deleteListing = this.deleteListing.bind(this);
     this.state = {
       listings: [],
       category: '',
@@ -86,6 +90,7 @@ class App extends React.Component {
     this.setState({ category: category, subCategory: '', isSearchResults: false });
     this.filterListings('category', category );
   }
+
   resetListings() {
     this.setState({category: '', subCategory: '', isSearchResults: false});
     this.filterListings('');
@@ -136,46 +141,91 @@ class App extends React.Component {
       }
     });
   }
-render() {
-    // if (this.state.isSignedIn) {
 
-    // }
+  getUserListings(username) {
+    console.log('getting user listings');
+    var that = this;
+    $.ajax({
+      url: `/seller?username=${username}`,
+      success: (listings) => {
+        this.setState({
+          listings: listings
+        });
+      },
+      error: () => {
+        console.log('error');
+      }
+    });
+  }
+
+  deleteListing(listingID) {
+    var that = this;
+    $.ajax({
+      type: 'DELETE',
+      url: '/delete',
+      data: {'id': listingID},
+      success: (listings) => {
+        console.log('success delete');
+        that.setState({
+          listings: listings
+        })
+      },
+      error: (err) => {
+        console.log('error');
+      }
+    });
+  }
+
+  testFunction() {
+    // test code
+  }
+
+  render() {
+    let userPath = `/seller?username=${this.state.username}`
     return (
-      <div>
-      <NavBar username={this.state.username} isSignedIn={this.state.isSignedIn} handleLogOut={this.handleLogOut.bind(this)} />
-      <Switch>
-        <RouteProps exact path='/' component={ Home } isSignedIn={this.state.isSignedIn} userId={this.state.userId} username={this.state.username} handleLogOut={this.handleLogOut.bind(this)} listings={ this.state.listings } searchByUserInput = {this.searchByUserInput} category={ this.state.category } subCategory ={this.state.subCategory}handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick }
-          resetListings = {this.resetListings} isSearchResults={this.state.isSearchResults} setSelectedListing={ this.setSelectedListing }/>
-        <Route exact path='/sign-up' component={ SignUp }/>
-        <Route exact path='/sign-in' component={ SignIn }/>
-        <RouteProps path='/new-listing' component={ NewListing } userId={ '1' } /> 
-        <RouteProps path='/user-listings' component={ UserListings } listings={ this.state.listings }/> 
-        <Route path='/view-listing' component={ ViewListing } />
-        <Route path='/checkout' component={ Checkout } />
-      </Switch>
+      <div className="mainPage">
+        <div className="navigationbar">
+          <NavBar username={ this.state.username }
+          isSignedIn={ this.state.isSignedIn }
+          handleLogOut={ this.handleLogOut }
+          testFunction={ this.testFunction }
+          getListings={ this.getListings }
+          getUserListings={ this.getUserListings }
+          userPath={userPath} />
+        </div>
+        <Switch>
+          <RouteProps exact path='/' component={ Home }
+            isSignedIn={ this.state.isSignedIn }
+            userId={ this.state.userId }
+            username={ this.state.username }
+            handleLogOut={ this.handleLogOut.bind(this) }
+            listings={ this.state.listings }
+            searchByUserInput={this.searchByUserInput}
+            category={ this.state.category }
+            subCategory={ this.state.subCategory }
+            handleCategoryClick={ this.handleCategoryClick } handleSubCategoryClick={ this.handleSubCategoryClick }
+            resetListings={ this.resetListings }
+            isSearchResults={ this.state.isSearchResults }
+            setSelectedListing={ this.setSelectedListing }
+            getUserListings={ this.getUserListings }
+            deleteListing={ this.deleteListing }
+          />
+          <RouteProps exact path='/seller' component={ SellerProfile }
+            listings={ this.state.listings }
+            username={ this.state.username }
+          />
+          <RouteProps path='/new-listing' component={ NewListing }
+            userId={ this.state.userId }
+            username={ this.state.username }
+          /> 
+          <Route exact path='/sign-up' component={ SignUp }/>
+          <Route exact path='/sign-in' component={ SignIn }/>
+          <Route path='/view-listing' component={ ViewListing } />
+          <Route path='/checkout' component={ Checkout } />
+        </Switch>
       </div>
     );
   }
-
-//
-// render () {
-//     if (this.state.isSignedIn) {
-//       return (
-//         <div>
-//           <p>Welcome</p>
-//           <a onClick={ this.handleLogOut.bind(this) }> Log out</a>
-//         </div>
-//       )
-//     } else {
-//       return (
-//         <div>
-//         <p>Sign in</p>
-//           <a href="/login/facebook">Log In with Facebook</a>
-//         </div>
-//       )
-//     }
-//   }
-
 }
 
 

@@ -1,19 +1,78 @@
-* {
-  font-family: 'Fredoka One', cursive;
+body {
 }
 
-#header-area {
-  margin-top: 60px;
-  margin-bottom: 100px;
-
-  /* background-color: #ED2225; */
-  background-image: url("img/redwall.png");
-  object-fit: cover;
-  /* opacity: .80; */
-
+.mainheaderimage {
   width: 100%;
-  height: 130px;
-  z-index: 999;
+}
+
+.media {
+  margin-top: 100px;
+}
+
+.media.profile {
+  
+}
+
+.ui.inverted.menu {
+  /* background-color: #fedc3d !important; */
+  border: 0.5px solid black !important;
+}
+
+.profileText {
+  text-align: center !important;
+}
+
+.categoryMenu {
+}
+
+.categoryMenuItem {
+  color: black !important;
+}
+
+.cartButton {
+  background-color: #43c0f6 !important;
+}
+
+.allListingsButtonItem {
+  background-color: #43c0f6 !important;
+}
+
+.profilePic {
+  width: 300px; /*can be in percentage also.*/
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+}
+
+.img {
+  max-width: 50% !important;
+}
+
+/* .ui.inverted.menu.item {
+  color: black !important;
+} */
+
+.item {
+  font-weight: bold !important;
+}
+
+.ui.categoryMenu.menu {
+  padding-left: 30px;
+}
+
+/* responsive settings required */
+.searchBox {
+  margin-left: 45%;
+}
+
+.allListingsButtonItem {
+  background-color: #01abaa !important;
+  color: white !important;
+}
+
+.listingsView {
+  margin-top: 30px;
 }
 
 #logo {
@@ -23,6 +82,7 @@
   /* width: 173.5px;
   height: 112.5px; */
 }
+
 .productimg {
   height: auto;
   width: auto;
@@ -36,10 +96,6 @@
   width: auto;
 
   max-width: 250px;
-
-}
-
-.ctabuttons:hover {
 
 }
 
@@ -62,13 +118,16 @@
   padding-right: 20px;
 }
 
-#categoriesArea {
+/* #categoriesArea {
   margin-top: 100px;
   padding-top: 40px;
+} */
+
+.categoryContainer {
+  margin-top: 20px;
 }
 
 .categories {
-
   text-align: center;
   padding-bottom: 20px;
 }
@@ -181,11 +240,11 @@
   height:0;
   transition: .5s ease;
 } */
-
+/*
 .container:hover .overlay {
   bottom: 0;
   height: 100%;
-}
+} */
 
 .info {
   color: white;

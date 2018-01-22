@@ -18,7 +18,6 @@ class ViewListing extends React.Component {
       listing: ''
     };
 
-
     // Generial validation rules
     this.validate = {
       valueEntered: (field) => {

@@ -11,16 +11,16 @@ class ElectronicsCategory extends React.Component {
     this.props.handleCategoryClick(data.value);
   }
 
-   handleSubCategorySelect(e, data) {
+  handleSubCategorySelect(e, data) {
     this.props.handleSubCategoryClick(data.value)
   }
 
   render() {
     return (
-      <Dropdown text='Electronics' value='Electronics'>
-      <Dropdown.Menu >
-        <Dropdown.Item  onClick={this.handleCategorySelect.bind(this)} text='All' value='Electronics'/>
-        <Dropdown.Item  onClick={this.handleSubCategorySelect.bind(this)} text='Console' value='Console'/>
+    <Dropdown text='Electronics' value='Electronics'>
+      <Dropdown.Menu>
+        <Dropdown.Item onClick={this.handleCategorySelect.bind(this)} text='All' value='Electronics'/>
+        <Dropdown.Item onClick={this.handleSubCategorySelect.bind(this)} text='Console' value='Console'/>
         <Dropdown.Item onClick={this.handleSubCategorySelect.bind(this)} text='PC' value='PC'/>
         <Dropdown.Item onClick={this.handleSubCategorySelect.bind(this)} text='Handheld' value='Handheld'/>
       </Dropdown.Menu>
