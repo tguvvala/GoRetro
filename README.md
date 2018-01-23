@@ -59,18 +59,11 @@ GoRetro is a marketplace where you can buy and sell nostalgic, vintage, and old-
 11. [Commit and push your app code to Heroku](https://devcenter.heroku.com/articles/deploying-nodejs)
 
 ## Future considerations
-* User Login
-* User Account management
-* OAuth via Passport
-* Allow users to create, read, update, delete listings
-* Dynamic searching
+* Dynamic searching using Elastic Search
 * Page refresh capability
-* Allow multiple categories for a listing
-* Use mapping API to utilize location information
+* Payment option
 * Chat
 * “Build” meetups
-* Enhanced UI
-* More robust form validation
 
 ##  Acknowledgments
 The team at HackBlocks for allowing us to expand upon their codebase. 
