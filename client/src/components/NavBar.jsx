@@ -39,7 +39,6 @@ class NavBar extends React.Component {
                 </Button.Content>
               </Button>
             </Menu.Item>
-            <Menu.Item onClick={this.props.testFunction.bind(this)}>test</Menu.Item>
           </Container>
         </Menu>
       </div>

@@ -109,14 +109,16 @@ app.get('/listings', (req, res) => {
 
 app.get('/seller', (req, res) => {
   let queryTerm = req.query;
-  console.log(queryTerm);
-  db.findQuery(queryTerm, function(err, data) {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).json(data);
-    }
-  });
+
+  var sellerData = [];
+  db.Listing.find(queryTerm).sort({createdAt: -1}).then((listings) => {
+    sellerData.push(listings);
+  }).then(() => {
+    db.Seller.find(queryTerm).then((info) => {
+      sellerData.push(info);
+      res.status(200).json(sellerData);
+    })
+  })
 });
 
 app.post('/listings', (req, res) => {
@@ -186,14 +188,17 @@ app.delete('/delete', (req, res) => {
   db.Listing.findByIdAndRemove(itemToDelete, (err, item) => {
     console.log('deleted');
   }).then(() => {
-    db.Listing.find({}, (err, list) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        itemList = list;
-        res.send(itemList);
-      }
+    db.Listing.find({}).sort({createdAt: -1}).then((listings) => {
+      res.send(listings);
     })
+    // db.Listing.find({}, (err, list) => {
+    //   if (err) {
+    //     res.status(500).send(err);
+    //   } else {
+    //     itemList = list;
+    //     res.send(itemList);
+    //   }
+    // })
   })
 })
 

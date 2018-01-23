@@ -150,7 +150,6 @@ class NewListing extends React.Component {
       data: this.state,
       dataType: 'json',
       success: function(data) {
-        alert('YOUR LISTING WAS SUCCESSFULLY ADDED!\nYOUR LISTING ID IS: ' + ' ' + data['_id']);
         window.location.href = '/';
       }.bind(this),
       error: function(err) {

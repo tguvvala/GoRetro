@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
       searchTitle: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.debounceFunc = _.debounce(this.handleSearchBar, 1500);
+    this.debounceFunc = _.debounce(this.handleSearchBar, 500);
     this.handleSearchBar = this.handleSearchBar.bind(this);
   }
 

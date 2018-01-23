@@ -47,7 +47,50 @@ let listingSchema = mongoose.Schema({
   }
 });
 
+let sellerSchema = mongoose.Schema({
+  username: String,
+  profilePic: String
+})
+
 let Listing = mongoose.model('Listing', listingSchema);
+let Seller = mongoose.model('Seller', sellerSchema);
+
+
+Seller.findOne({ username: 'TJ Guvvala' }, (err, user) => {
+  if (!user) {
+    let TJ = new Seller({
+      username: 'TJ Guvvala',
+      profilePic: 'https://i.imgur.com/PCBrljm.jpg'
+    }).save();
+  }
+});
+
+Seller.findOne({ username: 'Dan Kelly' }, (err, user) => {
+  if (!user) {
+    let Dan = new Seller({
+      username: 'Dan Kelly',
+      profilePic: 'https://i.imgur.com/r6Ieg8f.png'
+    }).save();
+  }
+});
+
+Seller.findOne({ username: 'Peter Wang' }, (err, user) => {
+  if (!user) {
+    let Peter = new Seller({
+      username: 'Peter Wang',
+      profilePic: 'https://i.imgur.com/gh6a1Vh.png'
+    }).save();
+  }
+});
+
+Seller.findOne({ username: 'Zay Lee' }, (err, user) => {
+  if (!user) {
+    let TJ = new Seller({
+      username: 'Zay Lee',
+      profilePic: 'https://i.imgur.com/iqokiUV.jpg'
+    }).save();
+  }
+});
 
 module.exports.saveListing = (listingInfo, callback) => {
   Listing.create({
@@ -65,9 +108,14 @@ module.exports.saveListing = (listingInfo, callback) => {
   });
 };
 
-module.exports.findQuery = (query, callback) => {
+module.exports.findQuery = (query, callback, callbackDos) => {
   Listing.find(query)
     .sort({ createdAt: -1 })
+    .exec(callback);
+};
+
+module.exports.findSellerInfo = (query, callback) => {
+  Seller.find(query)
     .exec(callback);
 };
 
@@ -131,3 +179,4 @@ module.exports.updateOrCreateUser = updateOrCreateUser;
 module.exports.User = User;
 module.exports.logout = logout;
 module.exports.Listing = Listing;
+module.exports.Seller = Seller;

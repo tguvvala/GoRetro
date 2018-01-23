@@ -27,6 +27,7 @@ class App extends React.Component {
     this.deleteListing = this.deleteListing.bind(this);
     this.state = {
       listings: [],
+      profileInfo: [],
       category: '',
       subCategory: '',
       isSignedIn: false,
@@ -147,14 +148,18 @@ class App extends React.Component {
     var that = this;
     $.ajax({
       url: `/seller?username=${username}`,
-      success: (listings) => {
+      success: (info) => {
+        console.log(info);
         this.setState({
-          listings: listings
+          listings: info[0],
+          profileInfo: info[1][0]
         });
       },
       error: () => {
         console.log('error');
       }
+    }).done(() => {
+      console.log(this.state.profileInfo);
     });
   }
 
@@ -177,7 +182,6 @@ class App extends React.Component {
   }
 
   testFunction() {
-    // test code
   }
 
   render() {
@@ -213,6 +217,7 @@ class App extends React.Component {
           <RouteProps exact path='/seller' component={ SellerProfile }
             listings={ this.state.listings }
             username={ this.state.username }
+            profileInfo={ this.state.profileInfo }
           />
           <RouteProps path='/new-listing' component={ NewListing }
             userId={ this.state.userId }
