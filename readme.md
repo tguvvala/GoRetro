@@ -1,7 +1,6 @@
 # GoRetro #
 
-#### This app is straight :fire: ####
-Lego Trader lets you trade your lego sets with other Lego enthusiasts!
+GoRetro is a marketplace for geeks of all ages! Buy and trade old-school gear here!
 
 ## Greenfield Team 
 * [Peter Wang - Software Engineer](https://github.com/Ergo117) :star2: 
@@ -25,7 +24,11 @@ Lego Trader lets you trade your lego sets with other Lego enthusiasts!
     "react-form-validator-core": "^0.3.0",
     "react-route-props": "^1.0.4",
     "react-router-dom": "^4.2.2",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "semantic-react": "^0.12.0",
+    "semantic-ui-react": "^0.77.2",
+    "stripe": "^5.4.0",
+    "underscore": "^1.8.3"
 
 ## To run the app locally
 1. In the root directory of your app run ```npm install```
