@@ -4,10 +4,10 @@
 Lego Trader lets you trade your lego sets with other Lego enthusiasts!
 
 ## Greenfield Team 
-* [Luna Kim - Software Engineer](https://github.com/lunakim96) :star2: 
-* [Grant Spilsbury - Software Engineer](https://github.com/grantspilsbury) :star2: 
-* [Patty Kovash - Scrum Master](https://github.com/PattyKovash) :star2: 
-* [Ralph Plumley - Product Owner](https://github.com/ralphplumley) :star2: 
+* [Peter Wang - Software Engineer](https://github.com/Ergo117) :star2: 
+* [Tejaswi Guvvala - Software Engineer](https://github.com/tguvvala) :star2: 
+* [Daniel Kelly - Scrum Master](https://github.com/DanielJKelly) :star2: 
+* [Steven Lee - Product Owner](https://github.com/zaySeoul) :star2: 
 
 ## Dependencies
     "aws-sdk": "^2.181.0",
