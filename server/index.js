@@ -190,7 +190,7 @@ app.delete('/delete', (req, res) => {
   }).then(() => {
     db.Listing.find({}).sort({createdAt: -1}).then((listings) => {
       res.send(listings);
-    });
+    })
     // db.Listing.find({}, (err, list) => {
     //   if (err) {
     //     res.status(500).send(err);
@@ -199,8 +199,8 @@ app.delete('/delete', (req, res) => {
     //     res.send(itemList);
     //   }
     // })
-  });
-});
+  })
+})
 
 
 app.listen(port, () => {
