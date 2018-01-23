@@ -6,7 +6,7 @@ import { Item } from 'semantic-ui-react';
 const Listings = (props) => (
   <div className="container listingsView">
     <h3>{(props.category && props.subCategory) ? `${props.category} > ${props.subCategory}` : props.category ? props.category : props.isSearchResults ? 'Search Results' : 'Most Recent Listings'}</h3>
-    <h3>{!props.listings.length ? `Sorry, no relavent listings.`: ''}</h3>
+    <h3>{!props.listings.length ? 'Sorry, no relavent listings.' : ''}</h3>
     <Item.Group divided>
       { props.listings.map(listing =>
         <Listing

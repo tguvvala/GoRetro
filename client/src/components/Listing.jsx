@@ -3,7 +3,6 @@ import RouteProps from 'react-route-props';
 import { Link } from 'react-router-dom';
 import { Item, Button } from 'semantic-ui-react';
 
-
 class Listing extends React.Component {
 
   constructor(props) {
@@ -39,9 +38,9 @@ class Listing extends React.Component {
           <Item.Header as={Link} to={viewPath}>{ this.props.listing.title }</Item.Header>
           <Item.Meta>{ this.props.listing.category }</Item.Meta>
           <Link to={ path }>
-          <Item.Extra onClick={ this.findUserListings }>
-            { this.props.listing.username }
-          </Item.Extra>
+            <Item.Extra onClick={ this.findUserListings }>
+              { this.props.listing.username }
+            </Item.Extra>
           </Link>
           <Item.Extra>{ this.props.listing.description}</Item.Extra>
           { this.props.username === this.props.listing.username &&

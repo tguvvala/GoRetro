@@ -12,11 +12,9 @@ const SignUp = (props) => (
         <div className="form-group">
           <input type="email" id="inputEmail" className="form-control form-control-lg" placeholder="Email address" required autoFocus />
         </div>
-
         <div className="form-group">
           <input type="password" id="inputPassword" className="form-control form-control-lg" placeholder="Password" required />
         </div>
-
         <div className="form-group row">
           <div className="col-sm-10">
             <button className="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>

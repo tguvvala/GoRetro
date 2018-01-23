@@ -1,5 +1,5 @@
 import React from 'react';
-import {CardElement, StripeProvider, Elements, injectStripe} from 'react-stripe-elements';
+import { CardElement, StripeProvider, Elements, injectStripe } from 'react-stripe-elements';
 
 class _CardForm extends React.Component {
   render() {
@@ -8,11 +8,11 @@ class _CardForm extends React.Component {
         <CardElement />
         <button className="payBtn">Pay</button>
       </form>
-    )
+    );
   }
 }
 
-const CardForm = injectStripe(_CardForm)
+const CardForm = injectStripe(_CardForm);
 
 class Checkout extends React.Component {
   render() {
@@ -23,7 +23,7 @@ class Checkout extends React.Component {
           <CardForm />
         </Elements>
       </div>
-    )
+    );
   }
 }
 

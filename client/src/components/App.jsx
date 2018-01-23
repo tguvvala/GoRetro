@@ -2,7 +2,7 @@ import React from 'react';
 import RouteProps from 'react-route-props';
 import $ from 'jquery';
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
-import {StripeProvider} from 'react-stripe-elements';
+import { StripeProvider } from 'react-stripe-elements';
 import Home from './Home.jsx';
 import NewListing from './NewListing.jsx';
 import ViewListing from './ViewListing.jsx';
@@ -18,8 +18,8 @@ class App extends React.Component {
     this.getListings = this.getListings.bind(this);
     this.filterListings = this.filterListings.bind(this);
     this.getUserListings = this.getUserListings.bind(this);
-    this.handleLogOut = this.handleLogOut.bind(this)
-    this.testFunction = this.testFunction.bind(this)
+    this.handleLogOut = this.handleLogOut.bind(this);
+    this.testFunction = this.testFunction.bind(this);
     this.handleCategoryClick = this.handleCategoryClick.bind(this);
     this.handleSubCategoryClick = this.handleSubCategoryClick.bind(this);
     this.resetListings = this.resetListings.bind(this);
@@ -46,6 +46,7 @@ class App extends React.Component {
     }, 1000);
   }
 
+  // updates state based on result from db query using user search input
   searchByUserInput(result) {
     this.setState({
       listings: result,
@@ -55,6 +56,7 @@ class App extends React.Component {
     });
   }
 
+  // checks whether or not a user is signed in
   signIn() {
     var that = this;
     $.ajax({
@@ -173,7 +175,7 @@ class App extends React.Component {
         console.log('success delete');
         that.setState({
           listings: listings
-        })
+        });
       },
       error: (err) => {
         console.log('error');
@@ -185,17 +187,17 @@ class App extends React.Component {
   }
 
   render() {
-    let userPath = `/seller?username=${this.state.username}`
+    let userPath = `/seller?username=${this.state.username}`;
     return (
       <div className="mainPage">
         <div className="navigationbar">
           <NavBar username={ this.state.username }
-          isSignedIn={ this.state.isSignedIn }
-          handleLogOut={ this.handleLogOut }
-          testFunction={ this.testFunction }
-          getListings={ this.getListings }
-          getUserListings={ this.getUserListings }
-          userPath={userPath} />
+            isSignedIn={ this.state.isSignedIn }
+            handleLogOut={ this.handleLogOut }
+            testFunction={ this.testFunction }
+            getListings={ this.getListings }
+            getUserListings={ this.getUserListings }
+            userPath={userPath} />
         </div>
         <Switch>
           <RouteProps exact path='/' component={ Home }
@@ -232,6 +234,5 @@ class App extends React.Component {
     );
   }
 }
-
 
 export default App;
