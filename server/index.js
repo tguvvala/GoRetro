@@ -193,9 +193,9 @@ app.delete('/delete', (req, res) => {
         itemList = list;
         res.send(itemList);
       }
-    })
-  })
-})
+    });
+  });
+});
 
 
 app.listen(port, () => {
