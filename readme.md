@@ -73,4 +73,4 @@ GoRetro is a marketplace where you can buy and sell nostalgic, vintage, and old-
 * More robust form validation
 
 ##  Acknowledgments
-:clap: The HiRs that helped with our issues! :clap:
+The team at HackBlocks for allowing us to expand upon their codebase. 
