@@ -1,6 +1,6 @@
 # GoRetro #
 
-GoRetro is a marketplace for geeks of all ages! Buy and trade old-school gear here!
+GoRetro is a marketplace where you can buy and sell nostalgic, vintage, and old-school belongings!
 
 ## Greenfield Team 
 * [Peter Wang - Software Engineer](https://github.com/Ergo117) :star2: 
