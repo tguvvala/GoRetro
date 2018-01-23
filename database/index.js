@@ -1,14 +1,10 @@
 const mongoose = require('mongoose');
 
-
-let url = process.env.MONGODB_URI;
-
-
-// let url = 'mongodb://localhost/voyagelego';
+const url = process.env.MONGODB_URI;
 
 mongoose.connect(url, { useMongoClient: true });
 
-let db = mongoose.connection;
+const db = mongoose.connection;
 
 db.on('error', () => {
   console.error('Connection error!');
@@ -18,7 +14,7 @@ db.once('open', () => {
   console.log('Connected!');
 });
 
-let listingSchema = mongoose.Schema({
+const listingSchema = mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -47,15 +43,15 @@ let listingSchema = mongoose.Schema({
   }
 });
 
-let sellerSchema = mongoose.Schema({
+const sellerSchema = mongoose.Schema({
   username: String,
   profilePic: String
-})
+});
 
-let Listing = mongoose.model('Listing', listingSchema);
-let Seller = mongoose.model('Seller', sellerSchema);
+const Listing = mongoose.model('Listing', listingSchema);
+const Seller = mongoose.model('Seller', sellerSchema);
 
-
+// Dummy data for demo purposes
 Seller.findOne({ username: 'TJ Guvvala' }, (err, user) => {
   if (!user) {
     let TJ = new Seller({
@@ -122,7 +118,7 @@ module.exports.findSellerInfo = (query, callback) => {
 module.exports.findTitle = (query, callback) => {
   console.log('qqq', `/${query.title}/`);
   console.log('hardcoded', '/Poke/');
-  Listing.find({title: { "$regex": `${query.title}`, "$options": "i" } }, (err, results) => {
+  Listing.find({title: { '$regex': `${query.title}`, '$options': 'i' } }, (err, results) => {
     if (err) {
       console.log('err in database findTitle', err);
       callback(err, null);
@@ -173,7 +169,6 @@ const updateOrCreateUser = (query, cb) => {
 const logout = (sessionID, cb) => {
   User.update({ sessionID: sessionID }, { $set: { sessionID: '' }}, cb);
 };
-
 
 module.exports.updateOrCreateUser = updateOrCreateUser;
 module.exports.User = User;

@@ -73,6 +73,6 @@ const Commentry = () => (
       <Button content='Add Reply' labelPosition='left' icon='edit' primary />
     </Form>
   </Comment.Group>
-)
+);
 
 export default Commentry;

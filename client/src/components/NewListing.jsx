@@ -84,7 +84,6 @@ class NewListing extends React.Component {
     return valid;
   }
 
-
   // Function that validates an individual form field.
   // If invalid, error styling is added to the field
   isFieldValid(prop) {

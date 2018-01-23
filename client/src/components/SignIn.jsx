@@ -9,10 +9,9 @@ const SignIn = (props) => (
     </ol>
     <div className="col col-lg-4">
       <h3 className="contact-header">Please sign in with Facebook</h3>
-
-    <Button href="/login/facebook" color='facebook'>
-      <Icon name='facebook' /> Facebook
-    </Button>
+      <Button href="/login/facebook" color='facebook'>
+        <Icon name='facebook' /> Facebook
+      </Button>
     </div>
   </div>
 );

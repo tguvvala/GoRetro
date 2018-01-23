@@ -4,42 +4,12 @@ const db = require('../database/index');
 const mailer = require('../mailer/mailer');
 const aws = require('aws-sdk');
 const passport = require('passport');
+const passportConfig = require('./passport-config');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-const Strategy = require('passport-facebook').Strategy;
 const User = db.User;
 const port = process.env.PORT || 8080;
-
-const url = 'http://localhost:8080';
-
-passport.use(new Strategy({
-  clientID: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: url + '/login/facebook/return',
-  passReqToCallback: true
-},
-function(req, accessToken, refreshToken, profile, done) {
-  console.log(profile);
-  db.updateOrCreateUser({ fbId: profile.id, displayName: profile.displayName, sessionID: req.sessionID }, function (err, user) {
-    return done(err, user);
-  });
-}
-));
-
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    if (err) {
-      done(err, null);
-    } else {
-      done(err, user);
-    }
-  });
-});
 
 const app = express();
 
@@ -86,7 +56,7 @@ app.get('/logOut', (req, res) => {
 app.get('/getUser', (req, res) => {
   var theCurrentUser = req.user;
   res.send(theCurrentUser);
-})
+});
 
 const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-east-2';
@@ -108,17 +78,16 @@ app.get('/listings', (req, res) => {
 });
 
 app.get('/seller', (req, res) => {
-  let queryTerm = req.query;
-
-  var sellerData = [];
+  const queryTerm = req.query;
+  let sellerData = [];
   db.Listing.find(queryTerm).sort({createdAt: -1}).then((listings) => {
     sellerData.push(listings);
   }).then(() => {
     db.Seller.find(queryTerm).then((info) => {
       sellerData.push(info);
       res.status(200).json(sellerData);
-    })
-  })
+    });
+  });
 });
 
 app.post('/listings', (req, res) => {
@@ -190,18 +159,9 @@ app.delete('/delete', (req, res) => {
   }).then(() => {
     db.Listing.find({}).sort({createdAt: -1}).then((listings) => {
       res.send(listings);
-    })
-    // db.Listing.find({}, (err, list) => {
-    //   if (err) {
-    //     res.status(500).send(err);
-    //   } else {
-    //     itemList = list;
-    //     res.send(itemList);
-    //   }
-    // })
-  })
-})
-
+    });
+  });
+});
 
 app.listen(port, () => {
   console.log(`App listening on port ${ port }`);

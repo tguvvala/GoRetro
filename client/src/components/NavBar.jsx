@@ -42,7 +42,7 @@ class NavBar extends React.Component {
           </Container>
         </Menu>
       </div>
-    )
+    );
   }
 }
 
